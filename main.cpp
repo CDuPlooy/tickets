@@ -1,7 +1,11 @@
 #include <iostream>
 #include "Object.h"
-#include "Integer.h"
+#include "NullObject.h"
+
+using namespace std;
 
 int main(){
-      Object a;
+      NullObject a;
+      
+      return 0;
 }
