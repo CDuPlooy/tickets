@@ -1,3 +1,7 @@
+/*
+Connor Armand Du Plooy
+u16169532
+*/
 #include "NullObject.h"
 NullObject *NullObject::_singleton = NULL;
 

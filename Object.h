@@ -1,3 +1,8 @@
+/*
+Connor Armand Du Plooy
+u16169532
+*/
+
 #ifndef OBJECT_H
 #define OBJECT_H
 

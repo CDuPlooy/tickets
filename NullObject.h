@@ -1,3 +1,7 @@
+/*
+Connor Armand Du Plooy
+u16169532
+*/
 #ifndef NULLOBJECT_H
 #define NULLOBJECT_H
 #include "Object.h"
