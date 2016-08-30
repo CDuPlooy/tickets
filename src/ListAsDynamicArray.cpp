@@ -1,4 +1,6 @@
 #include "ListAsDynamicArray.h"
+#include <iostream> //Marker:Remove on release
+using namespace std;//Marker:Remove on release
 //Constructors
 ListAsDynamicArray::~ListAsDynamicArray(){
       delete [] this->objectPointers;
@@ -14,18 +16,19 @@ ListAsDynamicArray::ListAsDynamicArray(){
 }
 //Overloaded Functions
 size_t ListAsDynamicArray::getSize(){
-      return this->objectCount;
+      return this->objectCount-1;
 }
 
 void ListAsDynamicArray::grow(){
       Object **new_pnter = new Object*[this->chunkSize*2];
       size_t i;
-      for(i = 0 ; i < this->chunkSize ; i++)
+      for(i = 0 ; i < this->objectCount ; i++)
             new_pnter[i] = this->objectPointers[i];
-      for(; i < this->chunkSize * 2 ; i++)
+      for(i++ ; i < this->chunkSize * 2 ; i++)
             new_pnter[i] = NULL;
 
       delete [] this->objectPointers;
+      this->chunkSize *= 2;
       this->objectPointers = new_pnter;
 }
 
@@ -53,8 +56,7 @@ void ListAsDynamicArray::push_back(Object *object){
       this->objectPointers[this->objectCount++] = object;
 }
 void ListAsDynamicArray::pop_back(){
-      delete this->objectPointers[this->objectCount];
-      this->objectPointers[this->objectCount] = NULL;
+      this->objectPointers[this->objectCount-1] = NULL;
       this->objectCount--;
 }
 

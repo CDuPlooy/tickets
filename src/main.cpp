@@ -19,8 +19,14 @@ int main(){
       Integer b = 3;
 
       ListAsDynamicArray *d = new ListAsDynamicArray();
+      d->push_back(&b);
       d->push_back(&a);
-      cout << d->getSize() << std::endl;
+      d->pop_back();
+
+
+
+
+      d->at(d->getSize())->print(cout);
       delete d;
       return 0;
 }
