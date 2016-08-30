@@ -13,6 +13,9 @@ public:
       int compare(Object const &) const = 0;
       void print(std::ostream & = std::cout) const = 0;
       std::string getId() const = 0;
-      //Unique Functions
+      //Unique Functions (To List)
+      virtual void push_back(Object *object) = 0;
+      virtual void pop_back() = 0;
+      virtual Object *at(size_t i) = 0;
 };
 #endif

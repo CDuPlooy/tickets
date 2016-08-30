@@ -9,6 +9,7 @@ u16169532
 
 #include "List.h"
 #include "ListAsVector.h"
+#include "ListAsDynamicArray.h"
 
 using namespace std;
 
@@ -17,17 +18,9 @@ int main(){
 
       Integer b = 3;
 
-
-
-      ListAsVector c;
-      c.push_back(&a);
-      c.push_back(&b);
-      c.push_back(&c);
-
-      c.print(std::cout);
-      c.at(0)->print();
-      c.at(1)->print();
-      c.at(2)->print();
-
+      ListAsDynamicArray *d = new ListAsDynamicArray();
+      d->push_back(&a);
+      cout << d->getSize() << std::endl;
+      delete d;
       return 0;
 }
