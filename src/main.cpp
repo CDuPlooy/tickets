@@ -10,6 +10,9 @@ u16169532
 #include "List.h"
 #include "ListAsVector.h"
 #include "ListAsDynamicArray.h"
+#include "FixedSizeMatrix.h"
+#include "Matrix.h"
+#include "Container.h"
 
 using namespace std;
 
@@ -24,7 +27,8 @@ int main(){
       d->pop_back();
 
 
-
+      FixedSizeMatrix fsm(0);
+      fsm.add(&a);
 
       d->at(d->getSize())->print(cout);
       delete d;
