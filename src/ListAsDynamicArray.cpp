@@ -61,7 +61,7 @@ void ListAsDynamicArray::pop_back(){
 }
 
 Object *ListAsDynamicArray::at(size_t i){
-      if(i <= this->objectCount)
+      if(i <= this->objectCount) 
             return this->objectPointers[i];
       return NULL;
 }

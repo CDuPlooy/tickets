@@ -4,4 +4,4 @@
 #*/
 
 compile_all:
-	clang++ src/main.cpp src/List.cpp src/NullObject.cpp src/Integer.cpp src/ListAsVector.cpp -o test -ggdb
+	clang++ src/main.cpp src/ListAsDynamicArray.cpp src/List.cpp src/NullObject.cpp src/Integer.cpp src/ListAsVector.cpp -o test -ggdb
