@@ -5,7 +5,8 @@ compile_bind_all: compile_nullObject compile_integer compile_list compile_listAs
 	@clear
 	@echo "Binding and linking . . ."
 	g++ src/NullObject.o src/Container.o src/Matrix.o src/FixedSizeMatrix.o src/Integer.o  src/List.o src/ListAsDynamicArray.o src/ListAsVector.o src/main.cpp -ggdb -o src/test -Wall
-	@echo "Finished!\n"
+	@echo "\n"
+	@echo "Finished!"
 
 compile_container:
 	g++ -c src/Container.cpp -o src/Container.o -ggdb -Wall
@@ -32,4 +33,6 @@ compile_nullObject:
 	g++ -c src/NullObject.cpp -o src/NullObject.o -ggdb -Wall
 
 clean:
-	rm src/*.o
+	@rm src/*.o
+	@clear
+	@echo "Cleaned all object files!"
