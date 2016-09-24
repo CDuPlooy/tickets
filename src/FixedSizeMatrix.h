@@ -8,12 +8,13 @@
 class FixedSizeMatrix : public Matrix{
 public:
       FixedSizeMatrix();
-      FixedSizeMatrix(short);  //A variable which determines what kind of list to use.
+      FixedSizeMatrix(short , size_t);  //A variable which determines what kind of list to use.
       ~FixedSizeMatrix();
       void next();
       void previous();
       void add(Object *object);
 private:
       List *list;
+      size_t rows;
 };
 #endif

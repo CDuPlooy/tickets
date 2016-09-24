@@ -36,3 +36,6 @@ clean:
 	@rm src/*.o
 	@clear
 	@echo "Cleaned all object files!"
+	
+run:
+	src/test

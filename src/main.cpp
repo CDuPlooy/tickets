@@ -17,20 +17,9 @@ u16169532
 using namespace std;
 
 int main(){
-      NullObject a;
 
-      Integer b = 3;
+      FixedSizeMatrix fs(0);
+      fs.add((Object *)&fs);
 
-      ListAsDynamicArray *d = new ListAsDynamicArray();
-      d->push_back(&b);
-      d->push_back(&a);
-      d->pop_back();
-
-
-      FixedSizeMatrix fsm(0);
-      fsm.add(&a);
-
-      d->at(d->getSize())->print(cout);
-      delete d;
       return 0;
 }
