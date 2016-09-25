@@ -2,12 +2,9 @@
 Connor Armand Du Plooy
 u16169532
 */
-
+#include <iostream>
 #ifndef OBJECT_H
 #define OBJECT_H
-
-#include <iostream>
-
 class Object{
 protected:
       virtual int compareTo(Object const &) const = 0;

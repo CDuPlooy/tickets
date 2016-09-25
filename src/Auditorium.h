@@ -1,6 +1,12 @@
 #ifndef AUDITORIUM_H
 #define AUDITORIUM_H
 #include "Object.h"
+//Defines
+#define SEAT_VOID 0
+#define SEAT_EMPTY 1
+#define SEAT_TAKEN 2
+
+//Class
 class Auditorium : public Object{
 protected:
       int compareTo(Object const &) const;
