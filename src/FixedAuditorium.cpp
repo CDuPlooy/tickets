@@ -1,4 +1,5 @@
 #include <iostream>
+#include "cColours.h"
 #include "FixedAuditorium.h"
 
 fixedAuditorium::fixedAuditorium(size_t _rows , size_t _columns){
@@ -29,11 +30,11 @@ int fixedAuditorium::compare(Object const &) const{
 }
 void fixedAuditorium::print(std::ostream &out)  const{
 	for(size_t i = 0 ; i < rows ; i++){
-		for(size_t j = 0 ; j < columns ; j++){
+		for(size_t j = 0 ; j < columns ; j++){ //Marker:SpecialCase ---> Coloured output might not work for a text box
 			if( data[i][j] == SEAT_EMPTY )
-				out << "[0] ";
+				out << "[" BLUE "0" RESET "] ";
 			else if ( data[i][j] == SEAT_TAKEN )
-				out << "[X] ";
+				out << "[" RED "X"  RESET "] ";
 		}
 	out << std::endl;
 	}
@@ -85,4 +86,41 @@ bool fixedAuditorium::checkBoundry( size_t r, size_t c){
 	if( c > columns )
 		return false;
 	return true;
+}
+
+bool fixedAuditorium::bookAdv(size_t size){
+	size_t spaces = 0;
+
+	bool spaceFound = false;
+	size_t j;
+	size_t i;
+
+	for( i = 0 ; i < rows ; i++){
+		for(j = 0 ; j < columns ; j++){
+			if( data[i][j] == SEAT_EMPTY ){
+				spaces++;
+			}
+			else{
+				spaces = 0;
+				continue;
+			}
+
+			if(spaces == size){
+				spaceFound = true;
+				break;
+			}
+		}
+		if(spaceFound)
+			break;
+		spaces = 0;
+	}
+
+	if(spaceFound)
+		for(size_t c = 0  ; c  < size ; c++){
+			book(i,j-c);
+		}
+
+
+
+	return spaceFound;
 }

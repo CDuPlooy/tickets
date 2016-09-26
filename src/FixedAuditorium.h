@@ -19,6 +19,8 @@ public:
       void cancelBooking(size_t , size_t );
       bool findFree(size_t &, size_t &);
       bool checkBoundry( size_t , size_t );
+      bool bookAdv(size_t);
+
 private:
       size_t rows , columns;
       size_t seats;
