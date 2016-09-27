@@ -112,6 +112,9 @@ bool dynamicAuditorium::setVoid(size_t r, size_t c, size_t s , bool vertical){		
 	}
 }
 
+void dynamicAuditorium::setState( size_t r, size_t c, short s){
+	data[r][c] = s;
+}
 
 bool dynamicAuditorium::bookAdv(size_t size){
 	size_t spaces = 0;

@@ -1,10 +1,10 @@
 # Connor Armand du Plooy
 # u16169532
 
-compile_bind_all: compile_nullObject compile_integer compile_list compile_listAsVector compile_listAsDynamicArray compile_container compile_dynamicAuditorium compile_matrix compile_fixedSizeMatrix compile_fixedAuditorium compile_Auditorium
+compile_bind_all: compile_nullObject compile_integer compile_list compile_listAsVector compile_listAsDynamicArray compile_container compile_dynamicAuditorium compile_matrix compile_AuditoriumModeller compile_fixedSizeMatrix compile_fixedAuditorium compile_Auditorium
 	@clear
 	@echo "Binding and linking . . ."
-	g++ src/NullObject.o src/Container.o src/Matrix.o src/FixedSizeMatrix.o src/Auditorium.o src/FixedAuditorium.o src/DynamicAuditorium.o  src/Integer.o  src/List.o src/ListAsDynamicArray.o src/ListAsVector.o src/main.cpp -ggdb -o src/test -Wall
+	g++ src/NullObject.o src/Container.o src/Matrix.o src/FixedSizeMatrix.o src/Auditorium.o src/FixedAuditorium.o src/DynamicAuditorium.o src/AuditoriumModeller.o src/Integer.o  src/List.o src/ListAsDynamicArray.o src/ListAsVector.o src/main.cpp -ggdb -o src/test -Wall
 	@echo "\n"
 	@echo "Finished!"
 
@@ -34,6 +34,9 @@ compile_dynamicAuditorium:
 
 compile_Auditorium:
 	g++ -c src/Auditorium.cpp -o src/Auditorium.o -ggdb -Wall
+
+compile_AuditoriumModeller:
+	g++ -c src/AuditoriumModeller.cpp -o src/AuditoriumModeller.o -ggdb -Wall
 
 compile_integer:
 	g++ -c src/Integer.cpp -o src/Integer.o -ggdb -Wall

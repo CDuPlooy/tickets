@@ -33,3 +33,7 @@ std::string Auditorium::getId() const{
 int Auditorium::compareTo(Object const &) const{
 	return 1; //Marker:Unsure
 }
+
+void Auditorium::setState( size_t , size_t , short ){
+	return; //empty declaration
+}

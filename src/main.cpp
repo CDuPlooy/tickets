@@ -14,42 +14,15 @@ u16169532
 #include "DynamicAuditorium.h"
 #include "FixedAuditorium.h"
 #include "Container.h"
+#include "AuditoriumModeller.h"
 #include "cColours.h"
 
 using namespace std;
 
 int main(){
-      cout << GREEN "tickets - Connor Armand du Plooy u16169532 2016" RESET << endl;
-      dynamicAuditorium da(25,25);
+      AuditoriumModeller am;
+      am.loadFromFile("test.txt");
 
-      da.setVoid(0,3,3,false);
-
-
-      da.print(cout);
-      std::cout << "_________________________________________________________________" << std::endl;
-      char a;
-      cin >> a;
-
-      da.bookAdv(5);
-      da.bookAdv(2);
-      da.book(3,4);
-      da.bookAdv(1);
-      da.bookAdv(25);
-      da.bookAdv(11);
-            da.bookAdv(25);
-                  da.bookAdv(25);
-                        da.bookAdv(25);
-                              da.bookAdv(25);
-                                          da.bookAdv(2);
-                                                      da.bookAdv(6);
-      da.bookAdv(12);
-      da.bookAdv(3);
-      da.bookAdv(444);
-      da.bookAdv(4);
-      da.bookAdv(45);
-
-
-
-      da.print(cout);
+      am.getAuditorium()->print(cout);
       return 0;
 }

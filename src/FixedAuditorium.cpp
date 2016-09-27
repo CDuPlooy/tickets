@@ -39,7 +39,9 @@ void fixedAuditorium::print(std::ostream &out)  const{
 	out << std::endl;
 	}
 }
-
+void fixedAuditorium::setState( size_t r, size_t c, short s){
+	data[r][c] = s;
+}
 bool fixedAuditorium::book(size_t r, size_t c){
 	if(!checkBoundry(r, c))
 		return false;
@@ -53,7 +55,26 @@ bool fixedAuditorium::book(size_t r, size_t c){
 	return true;
 }
 
-
+bool fixedAuditorium::setVoid(size_t r, size_t c, size_t s , bool vertical){		//Modify this function so it can set void in rows too.
+	if(vertical){
+		for( size_t i = 0 ; i < s ; i++ ){									    //Maybe use a template pattern for this or tag it as one.
+			if(checkBoundry(r , c + i))
+				data[r][c + i] = SEAT_VOID;
+			else
+				return false;
+		}
+		return true;
+	}
+	else{
+		for( size_t i = 0 ; i < s ; i++ ){									    //Maybe use a template pattern for this or tag it as one.
+			if(checkBoundry(c + i , r))
+				data[c+i][r] = SEAT_VOID;
+			else
+				return false;
+		}
+		return true;
+	}
+}
 
 int fixedAuditorium::compareTo(Object const &) const{
 	return 1; //Marker:Unsure

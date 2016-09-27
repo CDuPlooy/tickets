@@ -20,6 +20,13 @@ public:
       void print(std::ostream & = std::cout) const;
       std::string getId() const;
       //Unique Functions
+      bool book(size_t , size_t);
+      void cancelBooking(size_t , size_t );
+      bool findFree(size_t &, size_t &);
+      bool checkBoundry( size_t , size_t );
+      bool setVoid(size_t , size_t , size_t , bool );
+      bool  bookAdv(size_t size);
+      void setState( size_t , size_t , short );
 private:
       short seating; //Fixed , variable or flexible
 };
