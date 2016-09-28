@@ -5,8 +5,8 @@
 #ifndef LISTASDLL_H
 #define LISTASDLL_H
 #include "Object.h"
-
-class ListAsDLL : public List{
+#include "ListAsSLL.h"
+class ListAsDLL : public ListAsSLL{
 protected:
       int compareTo(Object const &) const;
 public:
