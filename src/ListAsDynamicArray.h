@@ -26,8 +26,8 @@ public:
       void pop_back();
       Object *at(size_t i);
       //Unique Functions (Unique to ListAsDynamicArray)
-      void grow();
-      size_t getSize();
+      void grow(); /**< Grows the dynamic array by doubling it's size.*/
+      size_t getSize();  /**< Returns the size of the array.*/
 private:
       Object **objectPointers;
       size_t objectCount;
