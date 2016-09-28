@@ -1,3 +1,7 @@
+//!  A wrapper for double linked lists.
+/*!
+  Provides an interface for classes which need to store large numbers of elements.
+*/
 #ifndef LISTASDLL_H
 #define LISTASDLL_H
 #include "Object.h"

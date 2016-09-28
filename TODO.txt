@@ -1,3 +1,0 @@
-* Add options for dumping auditorium to file.
-* Add options for dumping new auditorium to file.
-* Don't dump ASCII values to file

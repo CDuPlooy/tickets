@@ -1,6 +1,6 @@
-/*
-Connor Armand Du Plooy
-u16169532
+//!  A wrapper for single linked lists.
+/*!
+  Provides an interface for classes which need to store large numbers of elements.
 */
 
 #ifndef LISTASDYNAMICARRAY_H

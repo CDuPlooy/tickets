@@ -1,3 +1,7 @@
+//!  An auditorium which can be of variable length and width.
+/*!
+  Assumes length is equal to width.
+*/
 #ifndef FIXEDAUDITORIUM_H
 #define FIXEDAUDITORIUM_H
 #include "Object.h"

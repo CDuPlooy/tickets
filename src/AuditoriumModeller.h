@@ -1,3 +1,7 @@
+//!  Can model auditoriums.
+/*!
+      Creates auditoriums from text files.
+*/
 #ifndef AUDITORIUM_MODELLER_H
 #define AUDITORIUM_MODELLER_H
 #include <string>

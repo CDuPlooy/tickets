@@ -1,3 +1,7 @@
+//!  An auditorium which can be of variable length and width.
+/*!
+  Really is just a clone of fixed auditorium.
+*/
 #ifndef DYNAMICAUDITORIUM_H
 #define DYNAMICAUDITORIUM_H
 #include "Object.h"
@@ -23,7 +27,7 @@ public:
       bool  bookAdv(size_t size);
       void setState( size_t , size_t , short );
       std::string dumpRaw();
-      
+
 private:
       size_t rows , columns;
       size_t seats;

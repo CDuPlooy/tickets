@@ -1,3 +1,7 @@
+//!  An abstract class.
+/*!
+  Provides an interface for classes which need to store large numbers of elements.
+*/
 #ifndef LIST_H
 #define LIST_H
 #include "Object.h"

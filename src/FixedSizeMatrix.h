@@ -1,3 +1,7 @@
+//!  A fixed size matrix with iterators.
+/*!
+  Provides an interface to the auditoriums for managing internal data.
+*/
 #ifndef FIXEDSIZEMATRIX_H
 #define FIXEDSIZEMATRIX_H
 #include "Object.h"

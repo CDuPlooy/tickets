@@ -1,3 +1,4 @@
+//!  Terminal Colour Codes.
 #ifndef C_COLOURS_H
 #define C_COLOURS_H
 

@@ -1,3 +1,8 @@
+//!  An abstract class.
+/*!
+  An abstract class which provides an interface to the different types of auditoriums.
+*/
+
 #ifndef AUDITORIUM_H
 #define AUDITORIUM_H
 #include "Object.h"

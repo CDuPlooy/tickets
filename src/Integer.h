@@ -1,3 +1,4 @@
+//!  The integer class is used for debugging and testing.
 #ifndef INTEGER_H
 #define INTEGER_H
 #include "Object.h"

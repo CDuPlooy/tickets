@@ -1,3 +1,7 @@
+//!  An abstract class.
+/*!
+  An abstract class which provides an interface to the different types of lists and matrixes.
+*/
 #ifndef CONTAINER_H
 #define CONTAINER_H
 #include "Object.h"

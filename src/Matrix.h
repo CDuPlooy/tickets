@@ -1,3 +1,7 @@
+//!  An abstract class.
+/*!
+  A Wrapper for the list objects.
+*/
 #ifndef MATRIX_H
 #define MATRIX_H
 #include "Object.h"

@@ -1,6 +1,6 @@
-/*
-Connor Armand Du Plooy
-u16169532
+//!  A class which is used to determine of an object exists / has been initialised.
+/*!
+  This class is a singleton
 */
 #ifndef NULLOBJECT_H
 #define NULLOBJECT_H

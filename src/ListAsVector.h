@@ -1,3 +1,7 @@
+//! A class for storing objects in a vector using the STL
+/*!
+  Provides an interface for classes which need to store large numbers of elements.
+*/
 #ifndef LISTASVECTOR_H
 #define LISTASVECTOR_H
 #include "List.h"
