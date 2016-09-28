@@ -1,3 +1,7 @@
+//!  A wrapper for single linked lists.
+/*!
+  Provides an interface for classes which need to store large numbers of elements.
+*/
 #ifndef LISTASSLL_H
 #define LISTASSLL_H
 #include "Object.h"
