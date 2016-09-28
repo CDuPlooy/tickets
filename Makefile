@@ -54,6 +54,8 @@ compile_nullObject:src/NullObject.cpp src/NullObject.h
 
 clean:
 	@rm src/*.o
+	@rm -r documentation/html
+	@rm -r documentation/latex
 	@clear
 	@echo "Cleaned all object files!"
 
