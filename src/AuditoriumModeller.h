@@ -12,21 +12,21 @@ protected:
       int compareTo(Object const &) const;
 public:
       //Constructors
-      AuditoriumModeller();
-      ~AuditoriumModeller();
+      AuditoriumModeller(); /**< AuditoriumModeller Constructor. */
+      ~AuditoriumModeller(); /**< AuditoriumModeller Destructor.*/
 
       //Overloaded Functions
       bool isNull(void) const;
-      int compare(Object const &) const;
-      void print(std::ostream & = std::cout) const;
-      std::string getId() const;
+      int compare(Object const &) const;/**< */
+      void print(std::ostream & = std::cout) const;/**< */
+      std::string getId() const;/**< */
       //Unique Functions
-      bool loadFromFile(std::string);
+      bool loadFromFile(std::string);/**< Loads an auditorium from a text file.*/
 
 
       //Unique functions
-      Auditorium *getAuditorium();
+      Auditorium *getAuditorium();/**< Returns an auditorium instance. Please note that this function depends on loadFromFile.*/
 private:
-      Auditorium *auditorium;
+      Auditorium *auditorium;/**! An internal auditorium instance returned by getAuditorium.*/
 };
 #endif

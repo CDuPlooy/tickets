@@ -18,8 +18,8 @@ public:
       void add(Object *obj);
       bool setValue(size_t row , size_t column , short value);
       short getValue(size_t row , size_t column);
-      size_t getRows();
-      size_t getColumns();
+      size_t getRows();  /**< Returns the amount of rows in the current FixedSizeMatrix.*/
+      size_t getColumns();  /**< Returns the amount of columns in the current FixedSizeMatrix.*/
       bool checkBoundry( size_t row, size_t column);
 private:
       short **data;

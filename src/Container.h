@@ -13,10 +13,10 @@ public:
       ~Container();
       Object *getCurrent();
 
-      virtual void add(Object *object) = 0;
-      virtual void next() = 0;
-      virtual void previous() = 0;
-      Object *current;
+      virtual void add(Object *object) = 0; /**< Adds an object to the container */
+      virtual void next() = 0; /**< Iterates to the next instance of Object in Container*/
+      virtual void previous() = 0; /**<Iterates to the previous instance of Object in Container*/
+      Object *current; /**<A pointer to an Object instance. */
 
       //Inheritance from object
       bool isNull(void) const;

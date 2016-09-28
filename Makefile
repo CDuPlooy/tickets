@@ -1,6 +1,8 @@
 # Connor Armand du Plooy
 # u16169532
 
+FLAGS = -Wall -Werror -ggdb -pedantic-errors
+
 compile_bind_all: compile_nullObject compile_integer compile_list compile_listAsVector compile_listAsDynamicArray compile_container compile_listAsSLL compile_listAsDLL compile_dynamicAuditorium compile_matrix compile_AuditoriumModeller compile_fixedSizeMatrix compile_fixedAuditorium compile_Auditorium
 	@clear
 	@echo "Binding and linking . . ."
@@ -8,56 +10,57 @@ compile_bind_all: compile_nullObject compile_integer compile_list compile_listAs
 	@echo "\n"
 	@echo "Finished!"
 
-compile_container:
-	g++ -c src/Container.cpp -o src/Container.o -ggdb -Wall
+compile_container: src/Container.cpp src/Container.h
+	g++ -c src/Container.cpp -o src/Container.o ${FLAGS}
 
-compile_matrix:
-	g++ -c src/Matrix.cpp -o src/Matrix.o -ggdb -Wall
+compile_matrix: src/Matrix.cpp src/Matrix.h
+	g++ -c src/Matrix.cpp -o src/Matrix.o ${FLAGS}
 
-compile_fixedSizeMatrix:
-	g++ -c src/FixedSizeMatrix.cpp -o src/FixedSizeMatrix.o -ggdb -Wall
+compile_fixedSizeMatrix: src/FixedSizeMatrix.cpp src/FixedSizeMatrix.h
+	g++ -c src/FixedSizeMatrix.cpp -o src/FixedSizeMatrix.o ${FLAGS}
 
-compile_list:
-	g++ -c src/List.cpp -o src/List.o -ggdb -Wall
+compile_list:src/List.cpp src/List.h
+	g++ -c src/List.cpp -o src/List.o ${FLAGS}
 
-compile_listAsVector:
-	g++ -c src/ListAsVector.cpp -o src/ListAsVector.o -ggdb -Wall
+compile_listAsVector:src/ListAsVector.cpp src/ListAsVector.h
+	g++ -c src/ListAsVector.cpp -o src/ListAsVector.o ${FLAGS}
 
-compile_listAsSLL:
-	g++ -c src/ListAsSLL.cpp -o src/ListAsSLL.o -ggdb -Wall
+compile_listAsSLL:src/ListAsSLL.cpp src/ListAsSLL.h
+	g++ -c src/ListAsSLL.cpp -o src/ListAsSLL.o ${FLAGS}
 
-compile_listAsDLL:
-	g++ -c src/ListAsDLL.cpp -o src/ListAsDLL.o -ggdb -Wall
+compile_listAsDLL:src/ListAsDLL.cpp src/ListAsDLL.h
+	g++ -c src/ListAsDLL.cpp -o src/ListAsDLL.o ${FLAGS}
 
-compile_listAsDynamicArray:
-	g++ -c src/ListAsDynamicArray.cpp -o src/ListAsDynamicArray.o -ggdb -Wall
+compile_listAsDynamicArray: src/ListAsDynamicArray.cpp src/ListAsDynamicArray.h
+	g++ -c src/ListAsDynamicArray.cpp -o src/ListAsDynamicArray.o ${FLAGS}
 
-compile_fixedAuditorium:
-	g++ -c src/FixedAuditorium.cpp -o src/FixedAuditorium.o -ggdb -Wall
+compile_fixedAuditorium: src/FixedAuditorium.cpp src/FixedAuditorium.h
+	g++ -c src/FixedAuditorium.cpp -o src/FixedAuditorium.o ${FLAGS}
 
-compile_dynamicAuditorium:
-	g++ -c src/DynamicAuditorium.cpp -o src/DynamicAuditorium.o -ggdb -Wall
+compile_dynamicAuditorium:src/DynamicAuditorium.cpp src/DynamicAuditorium.h
+	g++ -c src/DynamicAuditorium.cpp -o src/DynamicAuditorium.o ${FLAGS}
 
-compile_Auditorium:
-	g++ -c src/Auditorium.cpp -o src/Auditorium.o -ggdb -Wall
+compile_Auditorium:src/Auditorium.cpp src/Auditorium.h
+	g++ -c src/Auditorium.cpp -o src/Auditorium.o ${FLAGS}
 
-compile_AuditoriumModeller:
-	g++ -c src/AuditoriumModeller.cpp -o src/AuditoriumModeller.o -ggdb -Wall
+compile_AuditoriumModeller:src/AuditoriumModeller.cpp src/AuditoriumModeller.h
+	g++ -c src/AuditoriumModeller.cpp -o src/AuditoriumModeller.o ${FLAGS}
 
-compile_integer:
-	g++ -c src/Integer.cpp -o src/Integer.o -ggdb -Wall
+compile_integer:src/Integer.cpp src/Integer.h
+	g++ -c src/Integer.cpp -o src/Integer.o ${FLAGS}
 
-compile_nullObject:
-	g++ -c src/NullObject.cpp -o src/NullObject.o -ggdb -Wall
+compile_nullObject:src/NullObject.cpp src/NullObject.h
+	g++ -c src/NullObject.cpp -o src/NullObject.o ${FLAGS}
 
 clean:
 	@rm src/*.o
 	@clear
 	@echo "Cleaned all object files!"
-compile_docs:
+
+compile_docs: documentation/doxyConfig.cfg
 	@echo "Compiling documentation..."
-	@cd documentation
-	@$(MAKE) -C documentation
+	@$(MAKE) -C documentation	#Executes make in a directory
 	@echo "Finished compiling documentation!"
+
 run:
 	src/a.out
