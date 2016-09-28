@@ -32,9 +32,9 @@ void fixedAuditorium::print(std::ostream &out)  const{
 	for(size_t i = 0 ; i < rows ; i++){
 		for(size_t j = 0 ; j < columns ; j++){ //Marker:SpecialCase ---> Coloured output might not work for a text box
 			if( data[i][j] == SEAT_EMPTY )
-				out << "[" BLUE "0" RESET "] ";
+				out << RESET "[" BLUE "0" RESET "] ";
 			else if ( data[i][j] == SEAT_TAKEN )
-				out << "[" RED "X"  RESET "] ";
+				out << RESET "[" RED "X"  RESET "] ";
 		}
 	out << std::endl;
 	}
@@ -144,4 +144,18 @@ bool fixedAuditorium::bookAdv(size_t size){
 
 
 	return spaceFound;
+}
+
+std::string fixedAuditorium::dumpRaw(){
+	std::string buffer;
+	for(size_t i = 0 ; i < rows ; i++){
+		for(size_t j = 0 ; j < columns ; j++){ //Marker:SpecialCase ---> Coloured output might not work for a text box
+			if( data[i][j] == SEAT_EMPTY )
+				buffer.append("[0] ");
+			else if ( data[i][j] == SEAT_TAKEN )
+				buffer.append("[X] ");
+		}
+		buffer.push_back('\n');
+	}
+	return buffer;
 }

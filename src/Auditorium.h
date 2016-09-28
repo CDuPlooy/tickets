@@ -20,13 +20,14 @@ public:
       void print(std::ostream & = std::cout) const;
       std::string getId() const;
       //Unique Functions
-      bool book(size_t , size_t);
-      void cancelBooking(size_t , size_t );
-      bool findFree(size_t &, size_t &);
-      bool checkBoundry( size_t , size_t );
-      bool setVoid(size_t , size_t , size_t , bool );
-      bool  bookAdv(size_t size);
-      void setState( size_t , size_t , short );
+      virtual bool book(size_t , size_t) = 0;
+      virtual void cancelBooking(size_t , size_t ) = 0;
+      virtual bool findFree(size_t &, size_t &) = 0;
+      virtual bool checkBoundry( size_t , size_t ) = 0;
+      virtual bool setVoid(size_t , size_t , size_t , bool ) = 0;
+      virtual bool bookAdv(size_t size) = 0;
+      virtual void setState( size_t , size_t , short ) = 0;
+      virtual std::string dumpRaw() = 0;
 private:
       short seating; //Fixed , variable or flexible
 };

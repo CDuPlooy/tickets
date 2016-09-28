@@ -22,6 +22,8 @@ public:
       bool setVoid(size_t , size_t , size_t , bool );
       bool bookAdv(size_t);
       void setState( size_t , size_t , short );
+      std::string dumpRaw();
+
 
 private:
       size_t rows , columns;

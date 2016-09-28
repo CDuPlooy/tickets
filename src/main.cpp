@@ -22,7 +22,6 @@ using namespace std;
 int main(){
       AuditoriumModeller am;
       am.loadFromFile("test.txt");
-
-      am.getAuditorium()->print(cout);
+      //am.getAuditorium()->print(cout);
       return 0;
 }

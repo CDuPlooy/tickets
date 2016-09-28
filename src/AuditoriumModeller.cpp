@@ -33,6 +33,8 @@ bool AuditoriumModeller::loadFromFile(std::string filename){
 	std::fstream fs(filename.c_str());
 	std::string buffer;
 	size_t lines = 0;
+	if(!fs.is_open())
+		return false;
 
 	while( !fs.eof() ){
 		fs >> buffer;
@@ -48,19 +50,25 @@ bool AuditoriumModeller::loadFromFile(std::string filename){
 	else
 		auditorium = new fixedAuditorium( lines , lines );
 
-	size_t rows = 0 , columns = 0;
-	for( size_t i = 0 ; i < buffer.size() ;  i++ ){
-		if( buffer.at(i) == 'X' )
-			auditorium->setState( rows , columns , SEAT_TAKEN);
-		else
-			auditorium->setState( rows , columns , SEAT_VOID);
+	std::string line;
+	size_t rows = 0, columns = 0;
+	for(size_t i = 0 ; i < buffer.size() ; i++){
+		if(buffer.at(i) != '\n')
+			line.push_back(buffer.at(i));
+		else{ //We now have a complete line , parse it and start constructing
+			for(size_t j = 1 ; j < line.length() ; j++){
+				//Parse the string
 
-		rows++;
-		if(rows > lines){
-			rows = 0;
+				if( line.at(j) == 'X' )
+					auditorium->setState(rows++,columns,SEAT_TAKEN);
+				if( line.at(j) == '0' )
+					auditorium->setState(rows++,columns,SEAT_EMPTY);
+			}
+			std::cout << ">>" << line << "<<";
 			columns++;
+			line.clear();
+			line = "";
 		}
-
 	}
 	return true;
 
