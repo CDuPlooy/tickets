@@ -7,13 +7,13 @@
 #include "Object.h"
 #include "Auditorium.h"
 #include "FixedSizeMatrix.h"
-class fixedAuditorium : public Auditorium{
+class FixedAuditorium : public Auditorium{
 protected:
       int compareTo(Object const &) const;
 public:
       //Constructors
-      ~fixedAuditorium();
-      fixedAuditorium(size_t , size_t);
+      ~FixedAuditorium();
+      FixedAuditorium(size_t , size_t);
       //Overloaded Functions
       bool isNull(void) const;
       int compare(Object const &) const;

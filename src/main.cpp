@@ -20,8 +20,12 @@ u16169532
 using namespace std;
 
 int main(){
-      AuditoriumModeller am;
-      am.loadFromFile("test.txt");
-      //am.getAuditorium()->print(cout);
+      fixedAuditorium fa(10,10);
+      fa.book(0, 2);
+      fa.book(0, 2);
+      fa.book(1, 2);
+      fa.bookAdv(9);
+      fa.print(cout);
+
       return 0;
 }

@@ -1,4 +1,5 @@
 #include "ListAsDynamicArray.h"
+#include "FixedSizeMatrix.h"
 #include <iostream> //Marker:Remove on release
 using namespace std;//Marker:Remove on release
 //Constructors
