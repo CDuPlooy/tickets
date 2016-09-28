@@ -2,21 +2,22 @@
 #include "cColours.h"
 #include "FixedAuditorium.h"
 #include "Seats.h"
-fixedAuditorium::fixedAuditorium(size_t _rows , size_t _columns){
+FixedAuditorium::FixedAuditorium(size_t _rows , size_t _columns){
+	seats = 0;
 	fa = new FixedSizeMatrix( _rows , _columns );
 }
 
-fixedAuditorium::~fixedAuditorium(){
+FixedAuditorium::~FixedAuditorium(){
 	delete fa;
 }
 //Overloaded Functions
-bool fixedAuditorium::isNull(void) const{
+bool FixedAuditorium::isNull(void) const{
 	return 1; //Marker unsure
 }
-int fixedAuditorium::compare(Object const &) const{
+int FixedAuditorium::compare(Object const &) const{
 	return 1; //Marker unsure
 }
-void fixedAuditorium::print(std::ostream &out)  const{
+void FixedAuditorium::print(std::ostream &out)  const{
 	for(size_t i = 0 ; i < fa->getRows() ; i++){
 		for(size_t j = 0 ; j < fa->getColumns() ; j++){ //Marker:SpecialCase ---> Coloured output might not work for a text box
 			if( fa->getValue(i,j) == SEAT_EMPTY )
@@ -27,12 +28,12 @@ void fixedAuditorium::print(std::ostream &out)  const{
 	out << std::endl;
 	}
 }
-void fixedAuditorium::setState( size_t r, size_t c, short s){
+void FixedAuditorium::setState( size_t r, size_t c, short s){
 	if(!fa->checkBoundry(r, c))
 		return;
 	fa->setValue(r, c, s);
 }
-bool fixedAuditorium::book(size_t r, size_t c){
+bool FixedAuditorium::book(size_t r, size_t c){
 	if(!fa->checkBoundry(r, c))
 		return false;
 
@@ -45,7 +46,7 @@ bool fixedAuditorium::book(size_t r, size_t c){
 	return true;
 }
 
-bool fixedAuditorium::setVoid(size_t r, size_t c, size_t s , bool vertical){		//Modify this function so it can set void in rows too.
+bool FixedAuditorium::setVoid(size_t r, size_t c, size_t s , bool vertical){		//Modify this function so it can set void in rows too.
 	if(vertical){
 		for( size_t i = 0 ; i < s ; i++ ){									    //Maybe use a template pattern for this or tag it as one.
 			if(checkBoundry(r , c + i))
@@ -66,15 +67,15 @@ bool fixedAuditorium::setVoid(size_t r, size_t c, size_t s , bool vertical){		//
 	}
 }
 
-int fixedAuditorium::compareTo(Object const &) const{
+int FixedAuditorium::compareTo(Object const &) const{
 	return 1; //Marker:Unsure
 }
 
-std::string fixedAuditorium::getId() const{
+std::string FixedAuditorium::getId() const{
 	return "Fixed Auditorium";
 }
 
-bool fixedAuditorium::findFree(size_t &r, size_t &c){
+bool FixedAuditorium::findFree(size_t &r, size_t &c){
 	for(size_t i = 0 ; i < fa->getRows() ; i++)
 		for(size_t j = 0 ; j < fa->getColumns() ; j++)
 			if(fa->getValue(i, j) == SEAT_EMPTY){
@@ -85,17 +86,17 @@ bool fixedAuditorium::findFree(size_t &r, size_t &c){
 		return false;
 }
 
-void fixedAuditorium::cancelBooking(size_t r , size_t c ){
+void FixedAuditorium::cancelBooking(size_t r , size_t c ){
 	if(!checkBoundry(r, c))
 		return;
 	fa->setValue(r , c,  SEAT_EMPTY);
 }
 
-bool fixedAuditorium::checkBoundry( size_t r, size_t c){
+bool FixedAuditorium::checkBoundry( size_t r, size_t c){
 	return fa->checkBoundry(r , c);
 }
 
-bool fixedAuditorium::bookAdv(size_t size){
+bool FixedAuditorium::bookAdv(size_t size){
 	size_t spaces = 0;
 
 	bool spaceFound = false;
@@ -132,7 +133,7 @@ bool fixedAuditorium::bookAdv(size_t size){
 	return spaceFound;
 }
 
-std::string fixedAuditorium::dumpRaw(){
+std::string FixedAuditorium::dumpRaw(){
 	std::string buffer;
 	for(size_t i = 0 ; i < fa->getRows() ; i++){
 		for(size_t j = 0 ; j < fa->getColumns() ; j++){ //Marker:SpecialCase ---> Coloured output might not work for a text box

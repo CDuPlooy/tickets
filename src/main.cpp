@@ -20,10 +20,11 @@ u16169532
 using namespace std;
 
 int main(){
-      fixedAuditorium fa(10,10);
+      DynamicAuditorium  fa(10,10);
       fa.book(0, 2);
       fa.book(0, 2);
       fa.book(1, 2);
+      fa.setVoid(5, 5, 5, false);
       fa.bookAdv(9);
       fa.print(cout);
 

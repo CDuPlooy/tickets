@@ -2,17 +2,18 @@
 /*!
   Really is just a clone of fixed auditorium.
 */
-#ifndef DYNAMICAUDITORIUM_H
-#define DYNAMICAUDITORIUM_H
+#ifndef DynamicAuditorium_H
+#define DynamicAuditorium_H
 #include "Object.h"
 #include "Auditorium.h"
-class dynamicAuditorium : public Auditorium{
+#include "FixedSizeMatrix.h"
+class DynamicAuditorium : public Auditorium{
 protected:
       int compareTo(Object const &) const;
 public:
       //Constructors
-      ~dynamicAuditorium();
-      dynamicAuditorium(size_t , size_t);
+      ~DynamicAuditorium();
+      DynamicAuditorium(size_t , size_t);
       //Overloaded Functions
       bool isNull(void) const;
       int compare(Object const &) const;
@@ -29,8 +30,7 @@ public:
       std::string dumpRaw();
 
 private:
-      size_t rows , columns;
+      FixedSizeMatrix *fa;
       size_t seats;
-      short **data;
 };
 #endif

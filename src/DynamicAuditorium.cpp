@@ -2,74 +2,63 @@
 #include "cColours.h"
 #include "Seats.h"
 
-int dynamicAuditorium::compareTo(Object const &) const{
+int DynamicAuditorium::compareTo(Object const &) const{
 	return 1; //Marker:Unsure
 }
 //Constructors
-dynamicAuditorium::dynamicAuditorium(size_t _rows , size_t _columns){
+DynamicAuditorium::DynamicAuditorium(size_t _rows , size_t _columns){
 	seats = 0;
-	rows = _rows;
-	columns = _columns;
-	data = new short*[_rows];
-	for(size_t i = 0 ; i < _rows ; i++){
-		data[i] = new short[_columns];
-		for(size_t j = 0 ; j < _columns ; j++){
-			data[i][j] = SEAT_EMPTY;
-		}
-	}
+	fa = new FixedSizeMatrix( _rows , _columns );
 }
 
-dynamicAuditorium::~dynamicAuditorium(){
-	for(size_t i = 0 ; i < rows ; i++){
-			delete [] data[i];
-		}
-	delete [] data;
+DynamicAuditorium::~DynamicAuditorium(){
+	delete fa;
 }
 
 //Overloaded Functions
-bool dynamicAuditorium::isNull(void) const{
+bool DynamicAuditorium::isNull(void) const{
 	return false;
 }
-int dynamicAuditorium::compare(Object const &) const{
+int DynamicAuditorium::compare(Object const &) const{
 	return 1; //Marker:Unsure
 }
 
-void dynamicAuditorium::print(std::ostream &out) const{
-	for(size_t i = 0 ; i < rows ; i++){		//Marker:SpecialCase ---> Coloured output might not work for a text box
-		for(size_t j = 0 ; j < columns ; j++){
-			if( data[i][j] == SEAT_EMPTY )
+void DynamicAuditorium::print(std::ostream &out) const{
+	for(size_t i = 0 ; i < fa->getRows() ; i++){		//Marker:SpecialCase ---> Coloured output might not work for a text box
+		for(size_t j = 0 ; j < fa->getColumns() ; j++){
+			if( fa->getValue(i,j)  == SEAT_EMPTY )
 				out << RESET "[" BLUE "0" RESET "] ";
-			else if ( data[i][j] == SEAT_TAKEN )
+			else if ( fa->getValue(i,j)== SEAT_TAKEN )
 				out << RESET "[" RED "X"  RESET "] ";
-			else if ( data[i][j] == SEAT_VOID )
+			else if ( fa->getValue(i,j) == SEAT_VOID )
 				out << "    ";
 		}
 	out << std::endl;
 	}
 }
 
-std::string dynamicAuditorium::getId() const{
-	return "dynamicAuditorium";
+std::string DynamicAuditorium::getId() const{
+	return "DynamicAuditorium";
 }
 //Unique Functions
-bool dynamicAuditorium::book( size_t r , size_t c ){
+bool DynamicAuditorium::book( size_t r , size_t c ){
 	if(!checkBoundry(r, c))
 		return false;
 
-	if( data[r][c] == SEAT_TAKEN )
+	if( fa->getValue(r,c)== SEAT_TAKEN )
 		return false;
 	else{
-		data[r][c] = SEAT_TAKEN;
+		fa->setValue(r,c,SEAT_TAKEN);
 		seats++;
 	}
 	return true;
 }
 
 
-bool dynamicAuditorium::findFree(size_t &r, size_t &c){
-	for(size_t i = 0 ; i < rows ; i++)
-		for(size_t j = 0 ; j < columns ; j++)
-			if(data[i][j] == SEAT_EMPTY){
+bool DynamicAuditorium::findFree(size_t &r, size_t &c){
+	for(size_t i = 0 ; i < fa->getRows() ; i++)
+		for(size_t j = 0 ; j < fa->getColumns() ; j++)
+			if(fa->getValue(i,j) == SEAT_EMPTY){
 				r = i;
 				c =j;
 				return true;
@@ -77,27 +66,27 @@ bool dynamicAuditorium::findFree(size_t &r, size_t &c){
 		return false;
 }
 
-void dynamicAuditorium::cancelBooking(size_t r , size_t c ){
+void DynamicAuditorium::cancelBooking(size_t r , size_t c ){
 	if(!checkBoundry(r, c))
 		return;
-	data[r][c] = SEAT_EMPTY;
+	fa->setValue(r,c,SEAT_EMPTY);
 }
 
-bool dynamicAuditorium::checkBoundry( size_t r, size_t c){
-	if( r > rows )
+bool DynamicAuditorium::checkBoundry( size_t r, size_t c){
+	if( r > fa->getRows() )
 		return false;
-	if( c > columns )
+	if( c > fa->getColumns() )
 		return false;
-	if( data[r][c] == SEAT_VOID )
+	if( fa->getValue(r,c) == SEAT_VOID )
 		return false;
 	return true;
 }
 
-bool dynamicAuditorium::setVoid(size_t r, size_t c, size_t s , bool vertical){		//Modify this function so it can set void in rows too.
+bool DynamicAuditorium::setVoid(size_t r, size_t c, size_t s , bool vertical){		//Modify this function so it can set void in rows too.
 	if(vertical){
 		for( size_t i = 0 ; i < s ; i++ ){									    //Maybe use a template pattern for this or tag it as one.
 			if(checkBoundry(r , c + i))
-				data[r][c + i] = SEAT_VOID;
+				fa->setValue(r,c + i,SEAT_VOID);
 			else
 				return false;
 		}
@@ -106,7 +95,7 @@ bool dynamicAuditorium::setVoid(size_t r, size_t c, size_t s , bool vertical){		
 	else{
 		for( size_t i = 0 ; i < s ; i++ ){									    //Maybe use a template pattern for this or tag it as one.
 			if(checkBoundry(c + i , r))
-				data[c+i][r] = SEAT_VOID;
+				fa->setValue(c + i,r,SEAT_VOID);
 			else
 				return false;
 		}
@@ -114,20 +103,20 @@ bool dynamicAuditorium::setVoid(size_t r, size_t c, size_t s , bool vertical){		
 	}
 }
 
-void dynamicAuditorium::setState( size_t r, size_t c, short s){
-	data[r][c] = s;
+void DynamicAuditorium::setState( size_t r, size_t c, short s){
+	fa->setValue(r , c , s);
 }
 
-bool dynamicAuditorium::bookAdv(size_t size){
+bool DynamicAuditorium::bookAdv(size_t size){
 	size_t spaces = 0;
 
 	bool spaceFound = false;
 	size_t j;
 	size_t i;
 
-	for( i = 0 ; i < rows ; i++){
-		for(j = 0 ; j < columns ; j++){
-			if( data[i][j] == SEAT_EMPTY ){
+	for( i = 0 ; i < fa->getRows() ; i++){
+		for(j = 0 ; j < fa->getColumns() ; j++){
+			if( fa->getValue(i, j) == SEAT_EMPTY ){
 				spaces++;
 			}
 			else{
@@ -153,13 +142,13 @@ bool dynamicAuditorium::bookAdv(size_t size){
 }
 
 
-std::string dynamicAuditorium::dumpRaw(){
+std::string DynamicAuditorium::dumpRaw(){
 	std::string buffer;
-	for(size_t i = 0 ; i < rows ; i++){
-		for(size_t j = 0 ; j < columns ; j++){ //Marker:SpecialCase ---> Coloured output might not work for a text box
-			if( data[i][j] == SEAT_EMPTY )
+	for(size_t i = 0 ; i < fa->getRows() ; i++){
+		for(size_t j = 0 ; j < fa->getColumns() ; j++){ //Marker:SpecialCase ---> Coloured output might not work for a text box
+			if(fa->getValue(i,j) == SEAT_EMPTY )
 				buffer.append("[0] ");
-			else if ( data[i][j] == SEAT_TAKEN )
+			else if (fa->getValue(i,j) == SEAT_TAKEN )
 				buffer.append("[X] ");
 		}
 		buffer.push_back('\n');

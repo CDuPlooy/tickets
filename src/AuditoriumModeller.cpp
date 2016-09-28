@@ -47,9 +47,9 @@ bool AuditoriumModeller::loadFromFile(std::string filename){
 		delete auditorium; //Marker:Unsure	Free the pointer if it's already been allocated.
 
 	if( buffer.find("   ") )
-		auditorium = new dynamicAuditorium( lines , lines );
+		auditorium = new DynamicAuditorium( lines , lines );
 	else
-		auditorium = new fixedAuditorium( lines , lines );
+		auditorium = new FixedAuditorium( lines , lines );
 
 	std::string line;
 	size_t rows = 0, columns = 0;
