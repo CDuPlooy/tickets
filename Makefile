@@ -4,7 +4,7 @@
 compile_bind_all: compile_nullObject compile_integer compile_list compile_listAsVector compile_listAsDynamicArray compile_container compile_dynamicAuditorium compile_matrix compile_AuditoriumModeller compile_fixedSizeMatrix compile_fixedAuditorium compile_Auditorium
 	@clear
 	@echo "Binding and linking . . ."
-	g++ src/NullObject.o src/Container.o src/Matrix.o src/FixedSizeMatrix.o src/Auditorium.o src/FixedAuditorium.o src/DynamicAuditorium.o src/AuditoriumModeller.o src/Integer.o  src/List.o src/ListAsDynamicArray.o src/ListAsVector.o src/main.cpp -ggdb -o src/test -Wall
+	g++ src/NullObject.o src/Container.o src/Matrix.o src/FixedSizeMatrix.o src/Auditorium.o src/FixedAuditorium.o src/DynamicAuditorium.o src/AuditoriumModeller.o src/Integer.o  src/List.o src/ListAsDynamicArray.o src/ListAsVector.o src/main.cpp -ggdb -o src/a.out -Wall
 	@echo "\n"
 	@echo "Finished!"
 
@@ -50,4 +50,4 @@ clean:
 	@echo "Cleaned all object files!"
 
 run:
-	src/test
+	src/a.out

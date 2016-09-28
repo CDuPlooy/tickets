@@ -1,5 +1,7 @@
 #include "DynamicAuditorium.h"
 #include "cColours.h"
+#include "Seats.h"
+
 int dynamicAuditorium::compareTo(Object const &) const{
 	return 1; //Marker:Unsure
 }

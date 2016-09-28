@@ -6,6 +6,7 @@
 #define FIXEDAUDITORIUM_H
 #include "Object.h"
 #include "Auditorium.h"
+#include "FixedSizeMatrix.h"
 class fixedAuditorium : public Auditorium{
 protected:
       int compareTo(Object const &) const;
@@ -28,10 +29,9 @@ public:
       void setState( size_t , size_t , short );
       std::string dumpRaw();
 
-
 private:
-      size_t rows , columns;
+      FixedSizeMatrix *fa;
       size_t seats;
-      short **data;
+
 };
 #endif

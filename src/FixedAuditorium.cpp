@@ -1,25 +1,13 @@
 #include <iostream>
 #include "cColours.h"
 #include "FixedAuditorium.h"
-
+#include "Seats.h"
 fixedAuditorium::fixedAuditorium(size_t _rows , size_t _columns){
-	seats = 0;
-	rows = _rows;
-	columns = _columns;
-	data = new short*[_rows];
-	for(size_t i = 0 ; i < _rows ; i++){
-		data[i] = new short[_columns];
-		for(size_t j = 0 ; j < _columns ; j++){
-			data[i][j] = SEAT_EMPTY;
-		}
-	}
+	fa = new FixedSizeMatrix( _rows , _columns );
 }
 
 fixedAuditorium::~fixedAuditorium(){
-	for(size_t i = 0 ; i < rows ; i++){
-			delete [] data[i];
-		}
-	delete [] data;
+	delete fa;
 }
 //Overloaded Functions
 bool fixedAuditorium::isNull(void) const{
@@ -29,27 +17,29 @@ int fixedAuditorium::compare(Object const &) const{
 	return 1; //Marker unsure
 }
 void fixedAuditorium::print(std::ostream &out)  const{
-	for(size_t i = 0 ; i < rows ; i++){
-		for(size_t j = 0 ; j < columns ; j++){ //Marker:SpecialCase ---> Coloured output might not work for a text box
-			if( data[i][j] == SEAT_EMPTY )
+	for(size_t i = 0 ; i < fa->getRows() ; i++){
+		for(size_t j = 0 ; j < fa->getColumns() ; j++){ //Marker:SpecialCase ---> Coloured output might not work for a text box
+			if( fa->getValue(i,j) == SEAT_EMPTY )
 				out << RESET "[" BLUE "0" RESET "] ";
-			else if ( data[i][j] == SEAT_TAKEN )
+			else if ( fa->getValue(i,j) == SEAT_TAKEN )
 				out << RESET "[" RED "X"  RESET "] ";
 		}
 	out << std::endl;
 	}
 }
 void fixedAuditorium::setState( size_t r, size_t c, short s){
-	data[r][c] = s;
+	if(!fa->checkBoundry(r, c))
+		return;
+	fa->setValue(r, c, s);
 }
 bool fixedAuditorium::book(size_t r, size_t c){
-	if(!checkBoundry(r, c))
+	if(!fa->checkBoundry(r, c))
 		return false;
 
-	if(data[r][c] == SEAT_TAKEN)
+	if(fa->getValue(r,c) == SEAT_TAKEN)
 		return false;
 	else{
-		data[r][c] = SEAT_TAKEN;
+		fa->setValue(r , c,  SEAT_TAKEN);
 		seats++;
 	}
 	return true;
@@ -59,7 +49,7 @@ bool fixedAuditorium::setVoid(size_t r, size_t c, size_t s , bool vertical){		//
 	if(vertical){
 		for( size_t i = 0 ; i < s ; i++ ){									    //Maybe use a template pattern for this or tag it as one.
 			if(checkBoundry(r , c + i))
-				data[r][c + i] = SEAT_VOID;
+				fa->setValue(r , c + i,  SEAT_VOID);
 			else
 				return false;
 		}
@@ -68,7 +58,7 @@ bool fixedAuditorium::setVoid(size_t r, size_t c, size_t s , bool vertical){		//
 	else{
 		for( size_t i = 0 ; i < s ; i++ ){									    //Maybe use a template pattern for this or tag it as one.
 			if(checkBoundry(c + i , r))
-				data[c+i][r] = SEAT_VOID;
+				fa->setValue(c + i, r ,  SEAT_VOID);
 			else
 				return false;
 		}
@@ -85,9 +75,9 @@ std::string fixedAuditorium::getId() const{
 }
 
 bool fixedAuditorium::findFree(size_t &r, size_t &c){
-	for(size_t i = 0 ; i < rows ; i++)
-		for(size_t j = 0 ; j < columns ; j++)
-			if(data[i][j] == SEAT_EMPTY){
+	for(size_t i = 0 ; i < fa->getRows() ; i++)
+		for(size_t j = 0 ; j < fa->getColumns() ; j++)
+			if(fa->getValue(i, j) == SEAT_EMPTY){
 				r = i;
 				c =j;
 				return true;
@@ -98,15 +88,11 @@ bool fixedAuditorium::findFree(size_t &r, size_t &c){
 void fixedAuditorium::cancelBooking(size_t r , size_t c ){
 	if(!checkBoundry(r, c))
 		return;
-	data[r][c] = SEAT_EMPTY;
+	fa->setValue(r , c,  SEAT_EMPTY);
 }
 
 bool fixedAuditorium::checkBoundry( size_t r, size_t c){
-	if( r > rows )
-		return false;
-	if( c > columns )
-		return false;
-	return true;
+	return fa->checkBoundry(r , c);
 }
 
 bool fixedAuditorium::bookAdv(size_t size){
@@ -116,9 +102,9 @@ bool fixedAuditorium::bookAdv(size_t size){
 	size_t j;
 	size_t i;
 
-	for( i = 0 ; i < rows ; i++){
-		for(j = 0 ; j < columns ; j++){
-			if( data[i][j] == SEAT_EMPTY ){
+	for( i = 0 ; i < fa->getRows() ; i++){
+		for(j = 0 ; j < fa->getColumns() ; j++){
+			if( fa->getValue(i, j) == SEAT_EMPTY ){
 				spaces++;
 			}
 			else{
@@ -148,11 +134,11 @@ bool fixedAuditorium::bookAdv(size_t size){
 
 std::string fixedAuditorium::dumpRaw(){
 	std::string buffer;
-	for(size_t i = 0 ; i < rows ; i++){
-		for(size_t j = 0 ; j < columns ; j++){ //Marker:SpecialCase ---> Coloured output might not work for a text box
-			if( data[i][j] == SEAT_EMPTY )
+	for(size_t i = 0 ; i < fa->getRows() ; i++){
+		for(size_t j = 0 ; j < fa->getColumns() ; j++){ //Marker:SpecialCase ---> Coloured output might not work for a text box
+			if( fa->getValue(i,j) == SEAT_EMPTY )
 				buffer.append("[0] ");
-			else if ( data[i][j] == SEAT_TAKEN )
+			else if ( fa->getValue(i,j)  == SEAT_TAKEN )
 				buffer.append("[X] ");
 		}
 		buffer.push_back('\n');

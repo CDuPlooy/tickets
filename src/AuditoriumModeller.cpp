@@ -3,6 +3,7 @@
 #include "Auditorium.h"
 #include "FixedAuditorium.h"
 #include "DynamicAuditorium.h"
+#include "Seats.h"
 
 AuditoriumModeller::AuditoriumModeller(){
 	auditorium = NULL;

@@ -11,14 +11,19 @@
 #include "ListAsVector.h"
 class FixedSizeMatrix : public Matrix{
 public:
-      FixedSizeMatrix();
-      FixedSizeMatrix(short , size_t);  //A variable which determines what kind of list to use.
-      ~FixedSizeMatrix();
+      FixedSizeMatrix(size_t rows , size_t columns);  //A variable which determines what kind of list to use.
+      virtual ~FixedSizeMatrix();
       void next();
       void previous();
-      void add(Object *object);
+      void add(Object *obj);
+      bool setValue(size_t row , size_t column , short value);
+      short getValue(size_t row , size_t column);
+      size_t getRows();
+      size_t getColumns();
+      bool checkBoundry( size_t row, size_t column);
 private:
-      List *list;
+      short **data;
+      size_t columns;
       size_t rows;
 };
 #endif
