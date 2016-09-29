@@ -28,9 +28,9 @@ int ListAsDLL::compareTo(Object const &) const{
 }
 
 
-void ListAsDLL::add( int value ){
+void ListAsDLL::add( Object *value ){
 	NodeDouble *node = new NodeDouble();
-	node->set(value);
+	//node->set(value);
 	node->setNext(NULL);
 	node->setPrev(NULL);
 
@@ -48,6 +48,25 @@ void ListAsDLL::add( int value ){
 
 }
 
+void ListAsDLL::previous(){
+
+}
+
+void ListAsDLL::next(){
+
+}
+
+void ListAsDLL::push_back(Object *object) {
+
+}
+
+void ListAsDLL::pop_back(){
+
+}
+
+Object *ListAsDLL::at(size_t i){
+	return NULL;
+}
 
 void ListAsDLL::dump(){
 	if(head == NULL)
@@ -104,17 +123,6 @@ void ListAsDLL::remove(int value){
 		delete temp;
 		return;
 	}
-}
-
-void ListAsDLL::push_back(Object *object){
-
-}
-void ListAsDLL::pop_back(){
-
-}
-
-Object *ListAsDLL::at(size_t i){
-	return NULL;
 }
 
 //TODO: Properly implement the linked list for ListAsDLL and ListAsSLL. As A note to myself , the push_back , pop_back and at functions should be overloaded in all subclasses of List so that all of them can work with Objects.

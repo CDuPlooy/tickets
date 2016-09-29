@@ -13,14 +13,18 @@ class FixedSizeMatrix : public Matrix{
 public:
       FixedSizeMatrix(size_t rows , size_t columns);  //A variable which determines what kind of list to use.
       virtual ~FixedSizeMatrix();
-      void next();
-      void previous();
-      void add(Object *obj);
       bool setValue(size_t row , size_t column , short value);
       short getValue(size_t row , size_t column);
       size_t getRows();  /**< Returns the amount of rows in the current FixedSizeMatrix.*/
       size_t getColumns();  /**< Returns the amount of columns in the current FixedSizeMatrix.*/
       bool checkBoundry( size_t row, size_t column);
+      //Implemented from list
+       void add(Object *object);
+       void next();
+       void previous();
+       void push_back(Object *object) ;
+       void pop_back();
+       Object *at(size_t i);
 private:
       short **data;
       size_t columns;

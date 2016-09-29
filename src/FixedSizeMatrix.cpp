@@ -2,14 +2,6 @@
 #include "FixedSizeMatrix.h"
 #include "Seats.h"
 
-void FixedSizeMatrix::next(){
-
-}
-
-void FixedSizeMatrix::previous(){
-
-}
-
 FixedSizeMatrix::FixedSizeMatrix(size_t _rows , size_t _columns){
 	rows = _rows;
 	columns = _columns;
@@ -59,5 +51,25 @@ size_t FixedSizeMatrix::getColumns(){
 }
 
 void FixedSizeMatrix::add(Object *obj){
-	
+
+}
+
+void FixedSizeMatrix::next(){
+
+}
+
+void FixedSizeMatrix::previous(){
+
+}
+
+void FixedSizeMatrix::push_back(Object *object) {
+
+}
+
+void FixedSizeMatrix::pop_back(){
+
+}
+
+Object *FixedSizeMatrix::at(size_t i){
+	return NULL;
 }

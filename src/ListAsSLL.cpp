@@ -28,9 +28,9 @@ int ListAsSLL::compareTo(Object const &) const{
 }
 
 
-void ListAsSLL::add( int value ){
+void ListAsSLL::add( Object *value ){
 	Node *node = new Node();
-	node->set(value);
+	//node->set(value); //TODO: Fix this.
 	node->setNext(NULL);
 
 	if( !head ){
@@ -97,9 +97,19 @@ void ListAsSLL::remove(int value){
 	}
 }
 
-void ListAsSLL::push_back(Object *object){
+
+void ListAsSLL::next(){
 
 }
+
+void ListAsSLL::previous(){
+
+}
+
+void ListAsSLL::push_back(Object *object) {
+
+}
+
 void ListAsSLL::pop_back(){
 
 }
