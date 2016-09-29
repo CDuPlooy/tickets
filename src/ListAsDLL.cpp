@@ -106,4 +106,4 @@ void ListAsDLL::remove(int value){
 	}
 }
 
-//TODO: Properly implement the linked list for ListAsDLL and ListAsSLL.
+//TODO: Properly implement the linked list for ListAsDLL and ListAsSLL. As A note to myself , the push_back , pop_back and at functions should be overloaded in all subclasses of List so that all of them can work with Objects.
