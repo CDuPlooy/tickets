@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Matrix.h"
 #include "FixedSizeMatrix.h"
 #include "Seats.h"
@@ -29,6 +30,7 @@ bool FixedSizeMatrix::checkBoundry( size_t row, size_t column){
 	return true;
 }
 bool FixedSizeMatrix::setValue(size_t row , size_t column , short value){
+	//std::cout << row << "<->" << column << std::endl;
 	if(!checkBoundry(row, column))
 		return false;
 	data[row][column] = value;
@@ -45,6 +47,7 @@ short FixedSizeMatrix::getValue(size_t row , size_t column){
 size_t FixedSizeMatrix::getRows(){
 	return rows;
 }
+
 
 size_t FixedSizeMatrix::getColumns(){
 	return columns;

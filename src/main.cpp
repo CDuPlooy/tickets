@@ -18,10 +18,28 @@ u16169532
 #include "Container.h"
 #include "AuditoriumModeller.h"
 #include "cColours.h"
+#include "Seats.h"
 
 using namespace std;
 
 int main(){
-      FixedSizeMatrix Lad(2,2);
+      // FixedAuditorium fa(5,5);
+      // fa.bookAdv(5);
+      // fa.bookAdv(5);
+      // fa.bookAdv(5);
+      // fa.bookAdv(5);
+      // fa.bookAdv(5);
+      // fa.setState(0, 0, SEAT_VOID);
+      // fa.setState(1, 1, SEAT_VOID);
+      // fa.setState(2, 2, SEAT_VOID);
+      // fa.setState(3, 3, SEAT_VOID);
+      // fa.setState(4, 4, SEAT_VOID);
+      //
+      // cout << fa.dumpRaw() << endl;
+      // return 1;
+      AuditoriumModeller am;
+      am.loadFromFile("test.txt");
+      am.getAuditorium()->print(cout);
+      cout << am.getAuditorium()->dumpRaw() << endl;
       return 0;
 }

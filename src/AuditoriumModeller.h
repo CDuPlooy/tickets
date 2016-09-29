@@ -26,7 +26,10 @@ public:
 
       //Unique functions
       Auditorium *getAuditorium();/**< Returns an auditorium instance. Please note that this function depends on loadFromFile.*/
+
+
 private:
-      Auditorium *auditorium;/**! An internal auditorium instance returned by getAuditorium.*/
+      Auditorium *auditorium; /**! An internal auditorium instance returned by getAuditorium.*/
+      bool  getRowSize(std::string filename , size_t &rows , size_t &columns ); /**! Parses a file to determine the auditorium size.*/
 };
 #endif

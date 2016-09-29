@@ -31,48 +31,72 @@ std::string AuditoriumModeller::getId() const{
 }
 
 bool AuditoriumModeller::loadFromFile(std::string filename){
-	std::fstream fs(filename.c_str());
+	std::fstream fs(filename.c_str());	//TODO: You need to read the entire file first to know how large the matrix needs to be.
 	std::string buffer;
-	size_t lines = 0;
+	size_t rows = 0  , columns = 0 ;
+	size_t row = 0 , column = 0;
+	if(!getRowSize(filename, rows , columns))
+		return false;
+	columns--;
+	auditorium = new FixedAuditorium(rows,columns);
+
 	if(!fs.is_open())
 		return false;
 
 	while( !fs.eof() ){
-		fs >> buffer;
-		lines++;
+		getline(fs,buffer);
+		for(size_t i = 0 ; i < buffer.size() ; i++){
+			if(buffer.at(i) == 'X'){
+				auditorium->setState(row, column, SEAT_TAKEN);
+				column++;
+			}
+			else if(buffer.at(i) == '0'){
+				auditorium->setState(row, column, SEAT_EMPTY);
+
+				column++;
+			}
+			else if(buffer.at(i) == 'V'){
+				auditorium->setState(row, column, SEAT_VOID);
+				column++;
+			}
+		}
+		row++;
+		column = 0;
 	}
 	fs.close();
 
-	if(auditorium)
-		delete auditorium; //Marker:Unsure	Free the pointer if it's already been allocated.
-
-	if( buffer.find("   ") )
-		auditorium = new DynamicAuditorium( lines , lines );
-	else
-		auditorium = new FixedAuditorium( lines , lines );
-
-	std::string line;
-	size_t rows = 0, columns = 0;
-	for(size_t i = 0 ; i < buffer.size() ; i++){
-		if(buffer.at(i) != '\n')
-			line.push_back(buffer.at(i));
-		else{ //We now have a complete line , parse it and start constructing
-			for(size_t j = 1 ; j < line.length() ; j++){
-				//Parse the string
-
-				if( line.at(j) == 'X' )
-					auditorium->setState(rows++,columns,SEAT_TAKEN);
-				if( line.at(j) == '0' )
-					auditorium->setState(rows++,columns,SEAT_EMPTY);
-			}
-			std::cout << ">>" << line << "<<";
-			columns++;
-			line.clear();
-			line = "";
-		}
-	}
 	return true;
+}
 
+bool AuditoriumModeller::getRowSize(std::string filename , size_t &rows , size_t &columns ){
+	std::fstream fs(filename.c_str());	//TODO: You need to read the entire file first to know how large the matrix needs to be.
+	std::string buffer;
+	std::vector <size_t>temp;
+	columns = 0;
+
+	if(!fs.is_open())
+		return false;
+
+	while( !fs.eof() ){
+		getline(fs,buffer);
+		rows = 0;
+		for(size_t j = 0 ; j < buffer.size() ; j++)
+			if(buffer.at(j) == '[')
+				rows++;
+		temp.push_back(rows);
+		columns++;
+	}
+	fs.close();
+
+	size_t largest = temp.at(0);
+	for(size_t i = 0 ; i < temp.size() ; i++){
+		if(largest < temp.at(i))
+			largest = temp.at(i);
+	}
+	rows = largest;
+	if(columns > 0)
+		columns = columns - 1;
+	return true;
 }
 
 Auditorium *AuditoriumModeller::getAuditorium(){

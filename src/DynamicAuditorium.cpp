@@ -150,6 +150,8 @@ std::string DynamicAuditorium::dumpRaw(){
 				buffer.append("[0] ");
 			else if (fa->getValue(i,j) == SEAT_TAKEN )
 				buffer.append("[X] ");
+			else if (fa->getValue(i,j) == SEAT_VOID )
+				buffer.append("[V] ");	//TEMP
 		}
 		buffer.push_back('\n');
 	}

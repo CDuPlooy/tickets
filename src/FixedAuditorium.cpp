@@ -24,6 +24,8 @@ void FixedAuditorium::print(std::ostream &out)  const{
 				out << RESET "[" BLUE "0" RESET "] ";
 			else if ( fa->getValue(i,j) == SEAT_TAKEN )
 				out << RESET "[" RED "X"  RESET "] ";
+				else if ( fa->getValue(i,j) == SEAT_VOID )
+						out << "    ";
 		}
 	out << std::endl;
 	}
@@ -141,6 +143,8 @@ std::string FixedAuditorium::dumpRaw(){
 				buffer.append("[0] ");
 			else if ( fa->getValue(i,j)  == SEAT_TAKEN )
 				buffer.append("[X] ");
+				else if ( fa->getValue(i,j)  == SEAT_VOID )
+					buffer.append("[V] ");
 		}
 		buffer.push_back('\n');
 	}
