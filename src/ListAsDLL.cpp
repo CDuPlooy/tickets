@@ -106,4 +106,16 @@ void ListAsDLL::remove(int value){
 	}
 }
 
+void ListAsDLL::push_back(Object *object){
+
+}
+void ListAsDLL::pop_back(){
+
+}
+
+Object *ListAsDLL::at(size_t i){
+	return NULL;
+}
+
 //TODO: Properly implement the linked list for ListAsDLL and ListAsSLL. As A note to myself , the push_back , pop_back and at functions should be overloaded in all subclasses of List so that all of them can work with Objects.
+//TODO: Container should be a parent of list if I'm not mistaken.

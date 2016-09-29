@@ -96,3 +96,14 @@ void ListAsSLL::remove(int value){
 		return;
 	}
 }
+
+void ListAsSLL::push_back(Object *object){
+
+}
+void ListAsSLL::pop_back(){
+
+}
+
+Object *ListAsSLL::at(size_t i){
+	return NULL;
+}

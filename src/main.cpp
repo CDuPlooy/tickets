@@ -21,7 +21,6 @@ u16169532
 using namespace std;
 
 int main(){
-      ListAsDLL lad;
 
       return 0;
 }

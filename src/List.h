@@ -5,7 +5,8 @@
 #ifndef LIST_H
 #define LIST_H
 #include "Object.h"
-class List : public Object{
+#include "Container.h"
+class List : public Container{
 protected:
       int compareTo(Object const &) const =0;
 public:
