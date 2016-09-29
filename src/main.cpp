@@ -10,6 +10,7 @@ u16169532
 #include "List.h"
 #include "ListAsVector.h"
 #include "ListAsDynamicArray.h"
+#include "ListAsDLL.h"
 #include "FixedSizeMatrix.h"
 #include "DynamicAuditorium.h"
 #include "FixedAuditorium.h"
@@ -20,13 +21,7 @@ u16169532
 using namespace std;
 
 int main(){
-      DynamicAuditorium  fa(10,10);
-      fa.book(0, 2);
-      fa.book(0, 2);
-      fa.book(1, 2);
-      fa.setVoid(5, 5, 5, false);
-      fa.bookAdv(9);
-      fa.print(cout);
+      ListAsDLL lad;
 
       return 0;
 }

@@ -18,3 +18,5 @@ public:
 private:
 };
 #endif
+
+//TODO: Not all these functions are marked as pure virtual. Look this up and fix it.
