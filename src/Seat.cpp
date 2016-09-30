@@ -37,3 +37,10 @@ void Seat::setState(short state){
 short Seat::getState(){
 	return state;
 }
+
+void Seat::bind(Person *aPerson){
+	if(person)
+		delete person;
+	person = aPerson;
+	setState(SEAT_TAKEN);
+}
