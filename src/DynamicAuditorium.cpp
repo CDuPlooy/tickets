@@ -1,6 +1,6 @@
 #include "DynamicAuditorium.h"
 #include "cColours.h"
-#include "Seats.h"
+#include "Seat.h"
 
 int DynamicAuditorium::compareTo(Object const &) const{
 	return 1; //Marker:Unsure
@@ -26,11 +26,11 @@ int DynamicAuditorium::compare(Object const &) const{
 void DynamicAuditorium::print(std::ostream &out) const{
 	for(size_t i = 0 ; i < fa->getRows() ; i++){		//Marker:SpecialCase ---> Coloured output might not work for a text box
 		for(size_t j = 0 ; j < fa->getColumns() ; j++){
-			if( fa->getValue(i,j)  == SEAT_EMPTY )
+			if( fa->getValue(i,j)->getState()  == SEAT_EMPTY )
 				out << RESET "[" BLUE "0" RESET "] ";
-			else if ( fa->getValue(i,j)== SEAT_TAKEN )
+			else if ( fa->getValue(i,j)->getState() == SEAT_TAKEN )
 				out << RESET "[" RED "X"  RESET "] ";
-			else if ( fa->getValue(i,j) == SEAT_VOID )
+			else if ( fa->getValue(i,j)->getState()  == SEAT_VOID )
 				out << "    ";
 		}
 	out << std::endl;
@@ -45,10 +45,10 @@ bool DynamicAuditorium::book( size_t r , size_t c ){
 	if(!checkBoundry(r, c))
 		return false;
 
-	if( fa->getValue(r,c)== SEAT_TAKEN )
+	if( fa->getValue(r,c)->getState() == SEAT_TAKEN )
 		return false;
 	else{
-		fa->setValue(r,c,SEAT_TAKEN);
+		fa->getValue(r, c)->setState(SEAT_TAKEN);
 		seats++;
 	}
 	return true;
@@ -77,7 +77,7 @@ bool DynamicAuditorium::checkBoundry( size_t r, size_t c){
 		return false;
 	if( c > fa->getColumns() )
 		return false;
-	if( fa->getValue(r,c) == SEAT_VOID )
+	if( fa->getValue(r,c)->getState() == SEAT_VOID )
 		return false;
 	return true;
 }
@@ -86,7 +86,7 @@ bool DynamicAuditorium::setVoid(size_t r, size_t c, size_t s , bool vertical){		
 	if(vertical){
 		for( size_t i = 0 ; i < s ; i++ ){									    //Maybe use a template pattern for this or tag it as one.
 			if(checkBoundry(r , c + i))
-				fa->setValue(r,c + i,SEAT_VOID);
+				fa->getValue(r,c+i)->setState(SEAT_VOID);
 			else
 				return false;
 		}
@@ -95,7 +95,7 @@ bool DynamicAuditorium::setVoid(size_t r, size_t c, size_t s , bool vertical){		
 	else{
 		for( size_t i = 0 ; i < s ; i++ ){									    //Maybe use a template pattern for this or tag it as one.
 			if(checkBoundry(c + i , r))
-				fa->setValue(c + i,r,SEAT_VOID);
+				fa->getValue(c+i,r)->setState(SEAT_VOID);
 			else
 				return false;
 		}
@@ -104,7 +104,7 @@ bool DynamicAuditorium::setVoid(size_t r, size_t c, size_t s , bool vertical){		
 }
 
 void DynamicAuditorium::setState( size_t r, size_t c, short s){
-	fa->setValue(r , c , s);
+	fa->getValue(r, c)->setState(s);
 }
 
 bool DynamicAuditorium::bookAdv(size_t size){
@@ -146,11 +146,11 @@ std::string DynamicAuditorium::dumpRaw(){
 	std::string buffer;
 	for(size_t i = 0 ; i < fa->getRows() ; i++){
 		for(size_t j = 0 ; j < fa->getColumns() ; j++){ //Marker:SpecialCase ---> Coloured output might not work for a text box
-			if(fa->getValue(i,j) == SEAT_EMPTY )
+			if(fa->getValue(i,j)->getState() == SEAT_EMPTY )
 				buffer.append("[0] ");
-			else if (fa->getValue(i,j) == SEAT_TAKEN )
+			else if (fa->getValue(i,j)->getState() == SEAT_TAKEN )
 				buffer.append("[X] ");
-			else if (fa->getValue(i,j) == SEAT_VOID )
+			else if (fa->getValue(i,j)->getState() == SEAT_VOID )
 				buffer.append("[V] ");	//TEMP
 		}
 		buffer.push_back('\n');

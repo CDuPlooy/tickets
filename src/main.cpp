@@ -18,28 +18,34 @@ u16169532
 #include "Container.h"
 #include "AuditoriumModeller.h"
 #include "cColours.h"
-#include "Seats.h"
+#include "Seat.h"
 
 using namespace std;
 
 int main(){
-      // FixedAuditorium fa(5,5);
-      // fa.bookAdv(5);
-      // fa.bookAdv(5);
-      // fa.bookAdv(5);
-      // fa.bookAdv(5);
-      // fa.bookAdv(5);
-      // fa.setState(0, 0, SEAT_VOID);
-      // fa.setState(1, 1, SEAT_VOID);
-      // fa.setState(2, 2, SEAT_VOID);
-      // fa.setState(3, 3, SEAT_VOID);
-      // fa.setState(4, 4, SEAT_VOID);
-      //
-      // cout << fa.dumpRaw() << endl;
-      // return 1;
+      cout << "Testing the fixed size matrix!" << endl;
+      FixedSizeMatrix fa(5,5);
+      fa.setValue(0, 0, SEAT_TAKEN);
+      fa.setValue(0, 1, SEAT_VOID);
+      fa.dump();
+      cout << "_____________DONE______________" << endl;
+
+      cout << "Testing the fixed auditorium!" << endl;
+      DynamicAuditorium fixedaudit(5,5);
+      fixedaudit.bookAdv(5);
+      fixedaudit.book(1, 1);
+      fixedaudit.setVoid(0, 0, 3, false);
+      fixedaudit.print(cout);
+      std::cout << fixedaudit.dumpRaw() << std::endl;
+      cout << "_____________DONE______________" << endl;
+
+
+      cout << "Testing the auditorium modeller!" << endl;
       AuditoriumModeller am;
       am.loadFromFile("test.txt");
       am.getAuditorium()->print(cout);
       cout << am.getAuditorium()->dumpRaw() << endl;
+      cout << "_____________DONE______________" << endl;
+
       return 0;
 }

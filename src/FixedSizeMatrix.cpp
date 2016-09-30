@@ -1,16 +1,16 @@
 #include <iostream>
 #include "Matrix.h"
 #include "FixedSizeMatrix.h"
-#include "Seats.h"
+#include "Seat.h"
 
 FixedSizeMatrix::FixedSizeMatrix(size_t _rows , size_t _columns){
 	rows = _rows;
 	columns = _columns;
-	data = new short*[_rows];
+	data = new Seat**[_rows];
 	for(size_t i = 0 ; i < _rows ; i++){
-		data[i] = new short[_columns];
+		data[i] = new Seat*[_columns];
 		for(size_t j = 0 ; j < _columns ; j++){
-			data[i][j] = SEAT_EMPTY;
+			data[i][j] = new Seat(NULL);  //Marker:Unsure
 		}
 	}
 }
@@ -33,13 +33,13 @@ bool FixedSizeMatrix::setValue(size_t row , size_t column , short value){
 	//std::cout << row << "<->" << column << std::endl;
 	if(!checkBoundry(row, column))
 		return false;
-	data[row][column] = value;
+	data[row][column]->setState(value);
 	return true;
 }
 
-short FixedSizeMatrix::getValue(size_t row , size_t column){
+Seat *FixedSizeMatrix::getValue(size_t row , size_t column){
 	if(!checkBoundry(row, column))
-		return false;
+		return NULL;
 
 	return data[row][column];
 }
@@ -77,4 +77,13 @@ Object *FixedSizeMatrix::at(size_t row, size_t column){
 	if(!checkBoundry(row, column))
 		return NULL;
 	return NULL;	//TODO: Fix the at implementation so it returns Object *.
+}
+
+void FixedSizeMatrix::dump(){
+	for(size_t i = 0 ; i < rows ; i++){
+		for(size_t j = 0 ; j < columns ; j++){
+			std::cout << data[i][j]->getState() << " ";
+		}
+		std::cout << std::endl;
+	}
 }

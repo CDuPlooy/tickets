@@ -1,9 +1,10 @@
 #include <fstream>
+#include <vector>
 #include "AuditoriumModeller.h"
+#include "DynamicAuditorium.h"
 #include "Auditorium.h"
 #include "FixedAuditorium.h"
-#include "DynamicAuditorium.h"
-#include "Seats.h"
+#include "Seat.h"
 
 AuditoriumModeller::AuditoriumModeller(){
 	auditorium = NULL;
@@ -69,7 +70,7 @@ bool AuditoriumModeller::loadFromFile(std::string filename){
 }
 
 bool AuditoriumModeller::getRowSize(std::string filename , size_t &rows , size_t &columns ){
-	std::fstream fs(filename.c_str());	
+	std::fstream fs(filename.c_str());
 	std::string buffer;
 	std::vector <size_t>temp;
 	columns = 0;
