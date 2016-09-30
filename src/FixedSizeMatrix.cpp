@@ -17,6 +17,8 @@ FixedSizeMatrix::FixedSizeMatrix(size_t _rows , size_t _columns){
 
 FixedSizeMatrix::~FixedSizeMatrix(){
 	for(size_t i = 0 ; i < rows ; i++){
+			for(size_t j = 0 ; j < columns ; j++)
+				delete data[i][j];
 			delete [] data[i];
 		}
 	delete [] data;

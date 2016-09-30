@@ -24,28 +24,31 @@ using namespace std;
 
 int main(){
       cout << "Testing the fixed size matrix!" << endl;
-      FixedSizeMatrix fa(5,5);
-      fa.setValue(0, 0, SEAT_TAKEN);
-      fa.setValue(0, 1, SEAT_VOID);
-      fa.dump();
+      FixedSizeMatrix *fa = new FixedSizeMatrix(5,5);
+      fa->setValue(0, 0, SEAT_TAKEN);
+      fa->setValue(0, 1, SEAT_VOID);
+      fa->dump();
+      delete fa;
       cout << "_____________DONE______________" << endl;
 
       cout << "Testing the fixed auditorium!" << endl;
-      DynamicAuditorium fixedaudit(5,5);
-      fixedaudit.bookAdv(5);
-      fixedaudit.book(1, 1);
-      fixedaudit.setVoid(0, 0, 3, false);
-      fixedaudit.print(cout);
-      std::cout << fixedaudit.dumpRaw() << std::endl;
+      DynamicAuditorium *fixedaudit = new DynamicAuditorium(5,5);
+      fixedaudit->bookAdv(5);
+      fixedaudit->book(1, 1);
+      fixedaudit->setVoid(0, 0, 3, false);
+      fixedaudit->print(cout);
+      std::cout << fixedaudit->dumpRaw() << std::endl;
+      delete fixedaudit;
       cout << "_____________DONE______________" << endl;
 
 
       cout << "Testing the auditorium modeller!" << endl;
-      AuditoriumModeller am;
-      am.loadFromFile("test.txt");
-      am.getAuditorium()->print(cout);
-      cout << am.getAuditorium()->dumpRaw() << endl;
+      AuditoriumModeller *am = new AuditoriumModeller();
+      am->loadFromFile("test.txt");
+      am->getAuditorium()->print(cout);
+      cout << am->getAuditorium()->dumpRaw() << endl;
       cout << "_____________DONE______________" << endl;
+      delete am;
 
       return 0;
 }

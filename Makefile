@@ -72,6 +72,7 @@ compile_docs: documentation/doxyConfig.cfg
 	@echo "Compiling documentation..."
 	@$(MAKE) -C documentation	#Executes make in a directory
 	@echo "Finished compiling documentation!"
-
+valgrind:
+	valgrind src/a.out
 run:
 	src/a.out

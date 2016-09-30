@@ -11,7 +11,7 @@ AuditoriumModeller::AuditoriumModeller(){
 }
 
 AuditoriumModeller::~AuditoriumModeller(){
-
+	delete auditorium;
 }
 
 //Overloaded Functions
