@@ -40,7 +40,7 @@ void Person::setColumn(size_t column){
 
 void Person::setAge(unsigned short age){
 	this->age = age;
-	
+
 }
 
 size_t Person::getRow(){
@@ -49,4 +49,12 @@ size_t Person::getRow(){
 
 size_t Person::getColunn(){
 	return column;
+}
+
+float Person::getFee(){
+	return fee;
+}
+
+void Person::setFee(float fee){
+	this->fee = fee;
 }

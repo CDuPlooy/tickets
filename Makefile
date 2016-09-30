@@ -2,11 +2,13 @@
 # u16169532
 
 FLAGS = -Wall -Werror -ggdb -pedantic-errors
+RFLAGS = -O3
+DFLAGS = -ggdb
 
-compile_bind_all: compile_nullObject compile_integer compile_list compile_listAsVector compile_listAsDynamicArray compile_NullPerson compile_container compile_Seat compile_listAsSLL compile_Person compile_listAsDLL compile_dynamicAuditorium compile_matrix compile_AuditoriumModeller compile_fixedSizeMatrix compile_fixedAuditorium compile_Auditorium
+compile_bind_all: compile_nullObject compile_integer compile_list compile_listAsVector compile_listAsDynamicArray compile_NullPerson compile_container compile_Seat compile_listAsSLL compile_Person compile_Adult compile_Minor compile_Pensioner compile_listAsDLL compile_dynamicAuditorium compile_matrix compile_AuditoriumModeller compile_fixedSizeMatrix compile_fixedAuditorium compile_Auditorium
 	@clear
 	@echo "Binding and linking . . ."
-	g++ src/NullObject.o src/Container.o src/Matrix.o src/FixedSizeMatrix.o src/Auditorium.o src/FixedAuditorium.o src/DynamicAuditorium.o src/AuditoriumModeller.o src/Seat.o src/Integer.o src/Person.o src/NullPerson.o src/List.o src/ListAsDynamicArray.o src/ListAsVector.o src/ListAsSLL.cpp src/ListAsDLL.cpp  src/main.cpp -ggdb -o src/a.out -Wall
+	g++ src/NullObject.o src/Container.o src/Matrix.o src/FixedSizeMatrix.o src/Auditorium.o src/FixedAuditorium.o src/DynamicAuditorium.o src/AuditoriumModeller.o src/Seat.o src/Integer.o src/Person.o src/Minor.o src/Adult.o src/Pensioner.o src/NullPerson.o src/List.o src/ListAsDynamicArray.o src/ListAsVector.o src/ListAsSLL.cpp src/ListAsDLL.cpp  src/main.cpp -ggdb -o src/a.out -Wall
 	@echo "\n"
 	@echo "Finished!"
 
@@ -49,6 +51,16 @@ compile_AuditoriumModeller:src/AuditoriumModeller.cpp src/AuditoriumModeller.h
 compile_Person:src/Person.cpp src/Person.h
 	g++ -c src/Person.cpp -o src/Person.o ${FLAGS}
 
+compile_Adult:src/Adult.cpp src/Adult.h
+	g++ -c src/Adult.cpp -o src/Adult.o ${FLAGS}
+
+compile_Pensioner:src/Pensioner.cpp src/Pensioner.h
+	g++ -c src/Pensioner.cpp -o src/Pensioner.o ${FLAGS}
+
+compile_Minor:src/Minor.cpp src/Minor.h
+	g++ -c src/Minor.cpp -o src/Minor.o ${FLAGS}
+
+
 compile_NullPerson:src/NullPerson.cpp src/NullPerson.h
 	g++ -c src/NullPerson.cpp -o src/NullPerson.o ${FLAGS}
 
@@ -72,7 +84,12 @@ compile_docs: documentation/doxyConfig.cfg
 	@echo "Compiling documentation..."
 	@$(MAKE) -C documentation	#Executes make in a directory
 	@echo "Finished compiling documentation!"
-valgrind:
+
+valgrind: compile_bind_all
 	valgrind src/a.out
+
+gdb: compile_bind_all
+	gdb src/a.out
+
 run:
 	src/a.out

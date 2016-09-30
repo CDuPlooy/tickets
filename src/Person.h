@@ -25,12 +25,14 @@ public:
       void setColumn(size_t column);
       size_t getColunn();
       void setAge(unsigned short age);
-
+      float getFee();
+      void setFee(float fee);
 private:
       std::string name;
       unsigned short age;
       size_t row;
       size_t column;
+      float fee;
 };
 #endif
 
