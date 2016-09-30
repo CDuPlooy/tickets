@@ -1,3 +1,4 @@
+//!  Prints tickets for auditoriums.
 #ifndef TICKETPRINTER_H
 #define TICKETPRINTER_H
 #include "Object.h"

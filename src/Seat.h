@@ -1,4 +1,3 @@
-//!  Implementation of pensioner for person.
 #ifndef SEAT_H
 #define SEAT_H
 #include "Object.h"
@@ -9,6 +8,7 @@
 #define SEAT_TAKEN 1
 #define SEAT_VOID 2
 //END
+//!  Implements seats which will be bound to people.
 class Seat : public Object{
 protected:
       int compareTo(Object const &) const;

@@ -1,10 +1,9 @@
-//!  The integer class is used for debugging and testing.
 #ifndef LISTASDYNAMICARRAY_H
 #define LISTASDYNAMICARRAY_H
 //Defines
 #define DEF_CHUNK_SIZE 1 //Change the default chunk size for the dynamic array.
 #include "List.h"
-
+//!  An Implementation of STL vectors used for storing Objects.
 class ListAsDynamicArray : public List{
 protected:
       int compareTo(Object const &) const;
