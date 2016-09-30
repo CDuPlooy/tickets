@@ -1,3 +1,5 @@
+//!  Node class used to implement single, double and quadruple linked list.
+
 #ifndef NODE_H
 #define NODE_H
 #include <cstddef>

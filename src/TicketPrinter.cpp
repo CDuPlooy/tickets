@@ -1,3 +1,5 @@
+//!  A class which is used to print tickets
+
 #include "TicketPrinter.h"
 int TicketPrinter::compareTo(Object const &) const{
 	return false;

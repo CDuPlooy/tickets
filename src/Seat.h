@@ -1,7 +1,4 @@
-//!A class to represent seats inside of auditoriums
-/*!
-  Seats can be bound to a person , a seat's state should also be set when it is bound to a person.
-*/
+//!  Implementation of pensioner for person.
 #ifndef SEAT_H
 #define SEAT_H
 #include "Object.h"

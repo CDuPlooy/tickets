@@ -1,3 +1,5 @@
+//!  Implementation of pensioner for person.
+
 #ifndef PENSIONER_H
 #define PENSIONER_H
 #include "Person.h"

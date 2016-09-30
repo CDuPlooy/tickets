@@ -1,3 +1,4 @@
+//!  An object used to represent a seat which has no person.
 #ifndef NULLPERSON_H
 #define NULLPERSON_H
 #include "NullObject.h"

@@ -1,3 +1,5 @@
+//!  Implementation of minor for person.
+
 #ifndef MINOR_H
 #define MINOR_H
 #include "Person.h"

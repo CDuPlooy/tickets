@@ -1,3 +1,5 @@
+//!  Subclass of Node used to implement double linked lists.
+
 #ifndef NODEDOUBLE_H
 #define NODEDOUBLE_H
 #include "Node.h"

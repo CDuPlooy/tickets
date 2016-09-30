@@ -1,3 +1,5 @@
+//!  Implementation of adult for person.
+
 #ifndef ADULT_H
 #define ADULT_H
 #include "Person.h"

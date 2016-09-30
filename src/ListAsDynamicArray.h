@@ -1,8 +1,4 @@
-//!  A wrapper for single linked lists.
-/*!
-  Provides an interface for classes which need to store large numbers of elements.
-*/
-
+//!  The integer class is used for debugging and testing.
 #ifndef LISTASDYNAMICARRAY_H
 #define LISTASDYNAMICARRAY_H
 //Defines

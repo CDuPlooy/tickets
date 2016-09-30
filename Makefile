@@ -5,6 +5,8 @@ FLAGS = -Wall -Werror -ggdb -pedantic-errors
 RFLAGS = -O3
 DFLAGS = -ggdb
 
+.PHONY: documentation
+
 compile_bind_all: compile_nullObject compile_integer compile_list compile_listAsVector compile_listAsDynamicArray compile_NullPerson compile_container compile_Seat compile_listAsSLL compile_Person compile_Adult compile_Minor compile_Pensioner compile_listAsDLL compile_dynamicAuditorium compile_matrix compile_AuditoriumModeller compile_fixedSizeMatrix compile_fixedAuditorium compile_Auditorium
 	@clear
 	@echo "Binding and linking . . ."
@@ -80,7 +82,7 @@ clean:
 	@clear
 	@echo "Cleaned all object files!"
 
-compile_docs: documentation/doxyConfig.cfg
+documentation:
 	@echo "Compiling documentation..."
 	@$(MAKE) -C documentation	#Executes make in a directory
 	@echo "Finished compiling documentation!"

@@ -1,7 +1,5 @@
-/*
-Connor Armand Du Plooy
-u16169532
-*/
+//!  Super class which forms the root of all other classes
+
 #include <iostream>
 #ifndef OBJECT_H
 #define OBJECT_H
