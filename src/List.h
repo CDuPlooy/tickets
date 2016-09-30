@@ -21,3 +21,6 @@ public:
       //Unique Functions (To List)
 };
 #endif
+
+
+//TODO: Notice how everything inhereting from list is one dimensional and everything from matrix is two dimensional.
