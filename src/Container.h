@@ -18,7 +18,7 @@ public:
       virtual void previous() = 0; /**<Iterates to the previous instance of Object in Container*/
       virtual void push_back(Object *object) = 0; /**< Adds an Object to the list.*/
       virtual void pop_back() = 0; /**< Removes an Object from the list.*/
-      virtual Object *at(size_t i) = 0; /**< Returns the object at i.*/
+      
       Object *current; /**<A pointer to an Object instance. */
 
       //Inheritance from object

@@ -30,3 +30,5 @@ public:
       virtual std::string dumpRaw() = 0; /**< Dumps the data table without additional colour codes*/
 };
 #endif
+
+//TODO: To implement the reservation system and memento auditoriums should have the functionality of dumping to a file. These files can be used to save states and undo/redo operations.

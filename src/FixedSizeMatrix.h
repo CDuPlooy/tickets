@@ -24,7 +24,8 @@ public:
        void previous();
        void push_back(Object *object) ;
        void pop_back();
-       Object *at(size_t i);
+       Object *at(size_t row, size_t column); /**< Returns the object at i.*/
+
 private:
       short **data;
       size_t columns;

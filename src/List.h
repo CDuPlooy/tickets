@@ -18,6 +18,9 @@ public:
       int compare(Object const &) const = 0;
       void print(std::ostream & = std::cout) const = 0;
       std::string getId() const = 0;
+      //Virtual functions
+      virtual Object *at(size_t i) = 0; /**< Returns the object at i.*/
+
       //Unique Functions (To List)
 };
 #endif

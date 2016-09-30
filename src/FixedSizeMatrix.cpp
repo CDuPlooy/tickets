@@ -73,6 +73,8 @@ void FixedSizeMatrix::pop_back(){
 
 }
 
-Object *FixedSizeMatrix::at(size_t i){
-	return NULL;
+Object *FixedSizeMatrix::at(size_t row, size_t column){
+	if(!checkBoundry(row, column))
+		return NULL;
+	return NULL;	//TODO: Fix the at implementation so it returns Object *.
 }

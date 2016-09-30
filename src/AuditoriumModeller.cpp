@@ -31,7 +31,7 @@ std::string AuditoriumModeller::getId() const{
 }
 
 bool AuditoriumModeller::loadFromFile(std::string filename){
-	std::fstream fs(filename.c_str());	//TODO: You need to read the entire file first to know how large the matrix needs to be.
+	std::fstream fs(filename.c_str());
 	std::string buffer;
 	size_t rows = 0  , columns = 0 ;
 	size_t row = 0 , column = 0;
@@ -69,7 +69,7 @@ bool AuditoriumModeller::loadFromFile(std::string filename){
 }
 
 bool AuditoriumModeller::getRowSize(std::string filename , size_t &rows , size_t &columns ){
-	std::fstream fs(filename.c_str());	//TODO: You need to read the entire file first to know how large the matrix needs to be.
+	std::fstream fs(filename.c_str());	
 	std::string buffer;
 	std::vector <size_t>temp;
 	columns = 0;
