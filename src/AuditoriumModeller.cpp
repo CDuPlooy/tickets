@@ -100,6 +100,10 @@ bool AuditoriumModeller::getRowSize(std::string filename , size_t &rows , size_t
 	return true;
 }
 
+void AuditoriumModeller::unbind(){
+	auditorium = NULL;
+}
+
 Auditorium *AuditoriumModeller::getAuditorium(){
 	return auditorium;
 }

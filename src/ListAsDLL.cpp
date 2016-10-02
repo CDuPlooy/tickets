@@ -83,7 +83,7 @@ void ListAsDLL::dump(){
 	}
 }
 
-void ListAsDLL::remove(int value){
+void ListAsDLL::remove(Object *value){
 	if(head == NULL)
 		return;
 	if(head->getNext() == NULL){

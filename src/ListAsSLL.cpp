@@ -30,7 +30,7 @@ int ListAsSLL::compareTo(Object const &) const{
 
 void ListAsSLL::add( Object *value ){
 	Node *node = new Node();
-	//node->set(value); //TODO: Fix this.
+	node->set(value); //TODO: Fix this.
 	node->setNext(NULL);
 
 	if( !head ){
@@ -56,11 +56,11 @@ void ListAsSLL::dump(){
 	}
 }
 
-void ListAsSLL::remove(int value){
+void ListAsSLL::remove(Object *object){
 	if(head == NULL)
 		return;
 	if(head->getNext() == NULL){
-		if(head->get() == value)
+		if(head->get() == object)
 			delete head;
 		head = NULL;
 	}
@@ -68,7 +68,7 @@ void ListAsSLL::remove(int value){
 	Node *prev = head;
 	Node *temp = head;
 	while( temp ){
-		if( value == temp->get() ){
+		if( object == temp->get() ){
 			found = true;
 			break;
 		}

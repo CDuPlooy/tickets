@@ -21,7 +21,7 @@ public:
       void print(std::ostream & = std::cout) const;
       std::string getId() const;
       //Unique Functions
-      void remove(int value);  /**< Removes an object from the single linked list.*/
+      void remove(Object *value);  /**< Removes an object from the single linked list.*/
       void dump();  /**< For Debugging only.*/
       //Overloaded from list:
       void add(Object *object);

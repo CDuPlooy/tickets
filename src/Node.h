@@ -11,7 +11,7 @@ protected:
 		}
 private:
 	Node *next;
-	int data;
+	Object *data;
 
 public:
 	Node(){
@@ -26,10 +26,10 @@ public:
 	void setNext(Node *node){
 		next = node;
 	}
-	void set( int value ){
+	void set( Object *value ){
 		data = value;
 	}
-	int get(){
+	Object *get(){
 		return data;
 	}
 	//So it can inheret from Object.
