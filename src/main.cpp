@@ -51,5 +51,14 @@ int main(){
       cout << "_____________DONE______________" << endl;
       delete am;
 
+      cout << "Testing ListAsVector!" << endl;
+      ListAsSLL *lv = new ListAsSLL();
+      lv->add(lv);
+      cout << "ID :  ";
+
+      cout << lv->getCurrent()->getId() << endl;
+      delete lv;
+      cout << "_____________DONE______________" << endl;
+
       return 0;
 }

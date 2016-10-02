@@ -23,9 +23,15 @@ public:
       //Unique Functions (Unique to ListAsDynamicArray)
       void grow(); /**< Grows the dynamic array by doubling it's size.*/
       size_t getSize();  /**< Returns the size of the array.*/
+      void add(Object *object);
+      void next();
+      void previous();
+      void setCurrent(Object *object);
+      Object *getCurrent();
 private:
       Object **objectPointers;
       size_t objectCount;
       size_t chunkSize;
+      size_t nCurrent;
 };
 #endif

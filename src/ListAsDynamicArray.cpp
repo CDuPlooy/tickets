@@ -8,6 +8,7 @@ ListAsDynamicArray::~ListAsDynamicArray(){
 }
 ListAsDynamicArray::ListAsDynamicArray(){
       this->objectCount = 0;
+      this->nCurrent = 0;
       this->chunkSize = DEF_CHUNK_SIZE;
 
       this->objectPointers = new Object *[DEF_CHUNK_SIZE];
@@ -55,6 +56,7 @@ void ListAsDynamicArray::push_back(Object *object){
       if(this->objectCount == this->chunkSize)
             grow();
       this->objectPointers[this->objectCount++] = object;
+      current = object;
 }
 void ListAsDynamicArray::pop_back(){
       this->objectPointers[this->objectCount-1] = NULL;
@@ -65,4 +67,24 @@ Object *ListAsDynamicArray::at(size_t i){
       if(i <= this->objectCount)
             return this->objectPointers[i];
       return NULL;
+}
+
+void ListAsDynamicArray::add(Object *object){
+      push_back(object);
+}
+
+void ListAsDynamicArray::next(){
+      current = objectPointers[nCurrent++];
+}
+
+void ListAsDynamicArray::previous(){
+      current = objectPointers[nCurrent--];
+}
+
+void ListAsDynamicArray::setCurrent(Object *object){
+      current = object;
+}
+
+Object *ListAsDynamicArray::getCurrent(){
+      return current;
 }

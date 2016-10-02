@@ -6,6 +6,7 @@ ListAsVector::~ListAsVector(){
 }
 ListAsVector::ListAsVector(){
       objectVector = new std::vector<Object *>();
+      nCurrent = 0;
 }
 //Overloaded Functions
 int ListAsVector::compareTo(Object const &) const{
@@ -29,10 +30,29 @@ void ListAsVector::push_back(Object *object){
       objectVector->push_back(object);
 }
 void ListAsVector::pop_back(){
-      delete objectVector->at(objectVector->size());
       objectVector->pop_back();
 }
 
 Object *ListAsVector::at(size_t i){
       return objectVector->at(i);
+}
+
+void ListAsVector::setCurrent(Object *object){
+      current = object;
+}
+
+Object *ListAsVector::getCurrent(){
+      return current;
+}
+
+void ListAsVector::add(Object *object){
+      push_back(object);
+}
+
+void ListAsVector::next(){
+      current = objectVector->at(nCurrent++);
+}
+
+void ListAsVector::previous(){
+      current = objectVector->at(nCurrent--);
 }

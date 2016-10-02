@@ -25,8 +25,8 @@ public:
       virtual void previous() = 0; /**<Iterates to the previous instance of Object in Container*/
       virtual void push_back(Object *object) = 0; /**< Adds an Object to the list.*/
       virtual void pop_back() = 0; /**< Removes an Object from the list.*/
-      virtual void setCurrent(Object *object);
-      virtual Object *getCurrent();
+      virtual void setCurrent(Object *object) = 0;
+      virtual Object *getCurrent() = 0;
       //Unique Functions (To List)
 };
 #endif

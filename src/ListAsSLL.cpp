@@ -39,8 +39,10 @@ void ListAsSLL::add( Object *value ){
 		}
 
 	Node *temp = head;
+	
 	while( temp->getNext() )
 		temp = temp->getNext();
+
 	temp->setNext(node);
 	current = node;
 }
@@ -130,7 +132,7 @@ void ListAsSLL::pop_back(){
 Object *ListAsSLL::at(size_t i){
 	Node *temp = head;
 	size_t j = 0;
-	while( temp ){
+	while( temp->getNext() ){
 		temp = temp->getNext();
 		if(j++ == i)
 			return temp;

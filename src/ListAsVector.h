@@ -22,10 +22,17 @@ public:
       void push_back(Object *object);
       void pop_back();
       Object *at(size_t i);
+      void setCurrent(Object *object);
+      Object *getCurrent();
+      void add(Object *object);
+      void next(); /**< Iterates to the next instance of Object in Container*/
+      void previous();
 
       //Unique Variables
 private:
       //Unique Variables
       std::vector<Object *> *objectVector;
+      Object *current;
+      size_t nCurrent;
 };
 #endif
