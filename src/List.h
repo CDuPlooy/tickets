@@ -20,7 +20,13 @@ public:
       std::string getId() const = 0;
       //Virtual functions
       virtual Object *at(size_t i) = 0; /**< Returns the object at i.*/
-
+      virtual void add(Object *object) = 0; /**< Adds an object to the container */
+      virtual void next() = 0; /**< Iterates to the next instance of Object in Container*/
+      virtual void previous() = 0; /**<Iterates to the previous instance of Object in Container*/
+      virtual void push_back(Object *object) = 0; /**< Adds an Object to the list.*/
+      virtual void pop_back() = 0; /**< Removes an Object from the list.*/
+      virtual void setCurrent(Object *object);
+      virtual Object *getCurrent();
       //Unique Functions (To List)
 };
 #endif

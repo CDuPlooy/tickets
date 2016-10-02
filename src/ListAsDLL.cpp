@@ -49,22 +49,33 @@ void ListAsDLL::add( Object *value ){
 }
 
 void ListAsDLL::previous(){
-
+	current = ((NodeDouble *)current)->getPrev();
 }
 
 void ListAsDLL::next(){
-
+	current = ((NodeDouble *)current)->getNext();
 }
 
 void ListAsDLL::push_back(Object *object) {
-
+	add(object);
 }
 
 void ListAsDLL::pop_back(){
-
+	NodeDouble *temp = head;
+	while( temp ){
+		temp = temp->getNext();
+	}
+	remove(temp);
 }
 
 Object *ListAsDLL::at(size_t i){
+	NodeDouble *temp = head;
+	size_t j = 0;
+	while( temp ){
+		temp = temp->getNext();
+		if(j++ == i)
+			return temp;
+	}
 	return NULL;
 }
 
@@ -125,5 +136,12 @@ void ListAsDLL::remove(Object *value){
 	}
 }
 
+void ListAsDLL::setCurrent(Object *object){
+	current = object;
+}
+
+Object *ListAsDLL::getCurrent(){
+	return current;
+}
 //TODO: Properly implement the linked list for ListAsDLL and ListAsSLL. As A note to myself , the push_back , pop_back and at functions should be overloaded in all subclasses of List so that all of them can work with Objects.
 //TODO: Having one at function doesn't make sense. A FixedArray isn't indexed the same way a linked list is. Have at(size_t) for lists and at(size_t , size_t) for the matrixes.

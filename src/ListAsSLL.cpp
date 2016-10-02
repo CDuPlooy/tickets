@@ -7,7 +7,7 @@ ListAsSLL::~ListAsSLL(){
 	head = NULL;
 }
 ListAsSLL::ListAsSLL(){
-
+	current = NULL;
 }
 
 bool ListAsSLL::isNull(void) const{
@@ -42,7 +42,7 @@ void ListAsSLL::add( Object *value ){
 	while( temp->getNext() )
 		temp = temp->getNext();
 	temp->setNext(node);
-
+	current = node;
 }
 
 void ListAsSLL::dump(){
@@ -92,28 +92,48 @@ void ListAsSLL::remove(Object *object){
 		}
 
 		prev->setNext(temp->getNext());
+		current  = temp->getNext();
 		delete temp;
 		return;
 	}
 }
 
+void ListAsSLL::setCurrent(Object *object){
+	current = object;
+}
+
+Object *ListAsSLL::getCurrent(){
+	return current;
+}
 
 void ListAsSLL::next(){
-
+	current = ((Node *)current)->getNext();	//Marker:Dangerous,Unsure
 }
 
 void ListAsSLL::previous(){
-
+	int a = 1 + 1;
+	a+=1;			//Previous for list as SSL should have no implementation
 }
 
 void ListAsSLL::push_back(Object *object) {
-
+	add(object);
 }
 
 void ListAsSLL::pop_back(){
-
+	Node *temp = head;
+	while( temp ){
+		temp = temp->getNext();
+	}
+	remove(temp);
 }
 
 Object *ListAsSLL::at(size_t i){
+	Node *temp = head;
+	size_t j = 0;
+	while( temp ){
+		temp = temp->getNext();
+		if(j++ == i)
+			return temp;
+	}
 	return NULL;
 }

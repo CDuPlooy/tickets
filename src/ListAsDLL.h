@@ -28,8 +28,11 @@ public:
       void push_back(Object *object) ;
       void pop_back();
       Object *at(size_t i);
+      void setCurrent(Object *object);
+      Object *getCurrent();
 
 private:
       NodeDouble *head;
+      Object *current;
 };
 #endif

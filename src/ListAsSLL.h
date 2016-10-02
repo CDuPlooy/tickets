@@ -30,7 +30,10 @@ public:
       void push_back(Object *object) ;
       void pop_back();
       Object *at(size_t i);
+      virtual void setCurrent(Object *object);
+      virtual Object *getCurrent();
 private:
       Node *head;
+      Object *current;
 };
 #endif
