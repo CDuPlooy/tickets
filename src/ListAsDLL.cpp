@@ -4,9 +4,15 @@
 
 
 ListAsDLL::~ListAsDLL(){
-
+	Node *temp = head;
+	while( temp ){
+		Node *old = temp;
+		temp = temp->getNext();
+		delete old;
+	}
 }
 ListAsDLL::ListAsDLL(){
+	currentl = NULL;
       head = NULL;
 }
 
@@ -30,12 +36,13 @@ int ListAsDLL::compareTo(Object const &) const{
 
 void ListAsDLL::add( Object *value ){
 	NodeDouble *node = new NodeDouble();
-	//node->set(value);
+	node->set(value);
 	node->setNext(NULL);
 	node->setPrev(NULL);
 
 	if( !head ){
 		head = node;
+		currentl = node;
 		return;
 		}
 
@@ -45,15 +52,15 @@ void ListAsDLL::add( Object *value ){
 	current->setNext(node);
 	node->setPrev(current);
 	node->setNext(NULL);
-
+	currentl = node;
 }
 
 void ListAsDLL::previous(){
-	current = ((NodeDouble *)current)->getPrev();
+	currentl = ((NodeDouble *)currentl)->getPrev();
 }
 
 void ListAsDLL::next(){
-	current = ((NodeDouble *)current)->getNext();
+	currentl = ((NodeDouble *)currentl)->getNext();
 }
 
 void ListAsDLL::push_back(Object *object) {
@@ -137,11 +144,11 @@ void ListAsDLL::remove(Object *value){
 }
 
 void ListAsDLL::setCurrent(Object *object){
-	current = object;
+	currentl = object;
 }
 
 Object *ListAsDLL::getCurrent(){
-	return current;
+	return ((NodeDouble *)currentl)->get();
 }
 //TODO: Properly implement the linked list for ListAsDLL and ListAsSLL. As A note to myself , the push_back , pop_back and at functions should be overloaded in all subclasses of List so that all of them can work with Objects.
 //TODO: Having one at function doesn't make sense. A FixedArray isn't indexed the same way a linked list is. Have at(size_t) for lists and at(size_t , size_t) for the matrixes.

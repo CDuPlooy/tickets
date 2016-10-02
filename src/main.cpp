@@ -54,8 +54,9 @@ int main(){
       cout << "Testing ListAsVector!" << endl;
       ListAsSLL *lv = new ListAsSLL();
       lv->add(lv);
-      cout << "ID :  ";
-
+      lv->add(lv);
+      lv->add(lv);
+      lv->previous();
       cout << lv->getCurrent()->getId() << endl;
       delete lv;
       cout << "_____________DONE______________" << endl;

@@ -33,6 +33,6 @@ public:
 
 private:
       NodeDouble *head;
-      Object *current;
+      Object *currentl;
 };
 #endif

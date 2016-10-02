@@ -4,10 +4,16 @@
 
 
 ListAsSLL::~ListAsSLL(){
-	head = NULL;
+		Node *temp = head;
+		while( temp ){
+			Node *old = temp;
+			temp = temp->getNext();
+			delete old;
+		}
 }
 ListAsSLL::ListAsSLL(){
-	current = NULL;
+	currentl = NULL;
+	head = NULL;
 }
 
 bool ListAsSLL::isNull(void) const{
@@ -35,16 +41,17 @@ void ListAsSLL::add( Object *value ){
 
 	if( !head ){
 		head = node;
+		currentl = node;
 		return;
 		}
 
 	Node *temp = head;
-	
+
 	while( temp->getNext() )
 		temp = temp->getNext();
 
 	temp->setNext(node);
-	current = node;
+	currentl = node;
 }
 
 void ListAsSLL::dump(){
@@ -105,11 +112,11 @@ void ListAsSLL::setCurrent(Object *object){
 }
 
 Object *ListAsSLL::getCurrent(){
-	return current;
+	return currentl;
 }
 
 void ListAsSLL::next(){
-	current = ((Node *)current)->getNext();	//Marker:Dangerous,Unsure
+	currentl = ((Node *)currentl)->getNext();	//Marker:Dangerous,Unsure
 }
 
 void ListAsSLL::previous(){

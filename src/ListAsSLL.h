@@ -34,6 +34,6 @@ public:
       virtual Object *getCurrent();
 private:
       Node *head;
-      Object *current;
+      Object *currentl;
 };
 #endif
