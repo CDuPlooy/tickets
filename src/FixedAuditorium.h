@@ -28,6 +28,8 @@ public:
       bool bookAdv(size_t);
       void setState( size_t , size_t , short );
       std::string dumpRaw();
+      void dumpFile(std::string filename);
+
 
 private:
       FixedSizeMatrix *fa;

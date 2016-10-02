@@ -1,3 +1,4 @@
+#include <fstream>
 #include "DynamicAuditorium.h"
 #include "cColours.h"
 #include "Seat.h"
@@ -156,4 +157,10 @@ std::string DynamicAuditorium::dumpRaw(){
 		buffer.push_back('\n');
 	}
 	return buffer;
+}
+
+void DynamicAuditorium::dumpFile(std::string filename){
+	std::ofstream fs(filename.c_str());
+	fs << dumpRaw();
+	fs.close();
 }

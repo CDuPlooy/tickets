@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include "cColours.h"
 #include "FixedAuditorium.h"
 #include "Seat.h"
@@ -152,4 +153,10 @@ std::string FixedAuditorium::dumpRaw(){
 		buffer.push_back('\n');
 	}
 	return buffer;
+}
+
+void FixedAuditorium::dumpFile(std::string filename){
+	std::ofstream fs(filename.c_str());
+	fs << dumpRaw();
+	fs.close();
 }

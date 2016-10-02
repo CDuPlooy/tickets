@@ -47,7 +47,7 @@ int main(){
       am->loadFromFile("test.txt");
       am->getAuditorium()->print(cout);
       cout << am->getAuditorium()->dumpRaw() << endl;
-      //am->unbind();
+      am->getAuditorium()->dumpFile("Raw.txt");
       cout << "_____________DONE______________" << endl;
       delete am;
 
