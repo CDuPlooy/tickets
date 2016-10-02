@@ -30,7 +30,7 @@ int ListAsSLL::compareTo(Object const &) const{
 
 void ListAsSLL::add( Object *value ){
 	Node *node = new Node();
-	node->set(value); //TODO: Fix this.
+	node->set(value);
 	node->setNext(NULL);
 
 	if( !head ){

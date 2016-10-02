@@ -112,5 +112,3 @@ Auditorium *AuditoriumModeller::getAuditorium(){
 int AuditoriumModeller::compareTo(Object const &) const{
 	return 1; //Marker:Unsure
 }
-
-//TODO: Saving an auditorium should save it's state as well as objects associated with the auditorium.
