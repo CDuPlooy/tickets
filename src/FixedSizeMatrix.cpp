@@ -4,6 +4,7 @@
 #include "Seat.h"
 
 FixedSizeMatrix::FixedSizeMatrix(size_t _rows , size_t _columns){
+	current_x = current_y = 0;
 	rows = _rows;
 	columns = _columns;
 	data = new Seat**[_rows];
@@ -13,12 +14,14 @@ FixedSizeMatrix::FixedSizeMatrix(size_t _rows , size_t _columns){
 			data[i][j] = new Seat(NULL);  //Marker:Unsure
 		}
 	}
+	currentl = data[current_x][current_y];
 }
 
 FixedSizeMatrix::~FixedSizeMatrix(){
 	for(size_t i = 0 ; i < rows ; i++){
-			for(size_t j = 0 ; j < columns ; j++)
+			for(size_t j = 0 ; j < columns ; j++){
 				delete data[i][j];
+			}
 			delete [] data[i];
 		}
 	delete [] data;
@@ -56,24 +59,64 @@ size_t FixedSizeMatrix::getColumns(){
 }
 
 void FixedSizeMatrix::add(Object *obj){
-
+	push_back(obj);
 }
 
 void FixedSizeMatrix::next(){
-
-}
+	if( current_x++ > getRows() - 2 ){
+		current_y++;
+		current_x = 0;
+	}
+	if( current_y > getColumns() - 1 ){
+		current_y = 0;
+		current_x = 0;
+	}
+	currentl = data[current_x][current_y];
+ }
 
 void FixedSizeMatrix::previous(){
+	if( current_x-- == (size_t)-1 ){
+		current_y--;
+		current_x = getRows();
+	}
+	if( current_y == (size_t)-1 ){
+		current_y = getColumns();
+		current_x = getRows();
+	}
 
 }
 
 void FixedSizeMatrix::push_back(Object *object) {
-
+	for(size_t i = 0 ; i < rows ; i++)
+			for(size_t j = 0 ; j < columns ; j++)
+				if( static_cast<Seat *>(data[i][j])->getPerson() == NULL ){
+					delete data[i][j];
+					currentl = data[i][j] = (Seat *)object;	//Marker:Dangerous
+					static_cast<Seat *>(data[i][j])->bind(static_cast<Seat *>(object)->getPerson());
+					return;
+				}
 }
 
 void FixedSizeMatrix::pop_back(){
+	for(size_t i = 0 ; i < rows ; i++)
+			for(size_t j = 0 ; j < columns ; j++){
+				if( static_cast<Seat *>(data[i][j])->getPerson() == NULL ){
+					setValue(i,j-- - 1,SEAT_EMPTY);
+					// data[i--][j--] = NULL;
+					return;
+				}
+			}
 
 }
+
+void FixedSizeMatrix::setCurrent(Object *object){
+	currentl = object;
+}
+
+Object *FixedSizeMatrix::getCurrent(){
+	return currentl;
+}
+
 
 Object *FixedSizeMatrix::at(size_t row, size_t column){
 	if(!checkBoundry(row, column))

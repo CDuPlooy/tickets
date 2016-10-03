@@ -22,10 +22,15 @@ public:
        void previous();
        void push_back(Object *object) ;
        void pop_back();
+       void setCurrent(Object *object);
+       Object *getCurrent();
        Object *at(size_t row, size_t column); /**< Returns the object at i.*/
        //Debug
        void dump();
 private:
+      Object *currentl;
+      size_t current_x;
+      size_t current_y;
       Seat ***data;
       size_t columns;
       size_t rows;

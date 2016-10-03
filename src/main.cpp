@@ -25,8 +25,13 @@ using namespace std;
 int main(){
       cout << "Testing the fixed size matrix!" << endl;
       FixedSizeMatrix *fa = new FixedSizeMatrix(5,5);
-      fa->setValue(0, 0, SEAT_TAKEN);
-      fa->setValue(0, 1, SEAT_VOID);
+      Person person;
+      Seat *seat = new Seat(&person);
+      seat->bind(&person);
+      cout << "\tTesting pushback" << endl;
+      fa->push_back(seat);
+      fa->pop_back();
+
       fa->dump();
       delete fa;
       cout << "_____________DONE______________" << endl;

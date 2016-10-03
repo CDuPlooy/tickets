@@ -1,11 +1,11 @@
 #include "Seat.h"
-
+#include "Debug.h"
 int Seat::compareTo(Object const &seat) const{
 	return 1;
 }
 
 Seat::~Seat(){
-	delete person;
+
 }
 
 Seat::Seat(Person *person){
@@ -30,6 +30,10 @@ std::string Seat::getId() const{
 	return "Seat";
 }
 
+Person *Seat::getPerson(){
+	return person;
+}
+
 void Seat::setState(short state){
 	this->state = state;
 }
@@ -39,8 +43,6 @@ short Seat::getState(){
 }
 
 void Seat::bind(Person *aPerson){
-	if(person)
-		delete person;
 	person = aPerson;
 	setState(SEAT_TAKEN);
 }

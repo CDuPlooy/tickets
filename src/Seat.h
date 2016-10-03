@@ -25,6 +25,7 @@ public:
       void setState(short state); /**< Sets the seat state.*/
       short getState(); /**< Returns the seat state..*/
       void bind(Person *aPerson); /**< Binds a person to a seat.*/
+      Person *getPerson();
 private:
       short state;
       Person *person;
