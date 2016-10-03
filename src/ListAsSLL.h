@@ -35,5 +35,6 @@ public:
 private:
       Node *head;
       Object *currentl;
+      size_t _size;
 };
 #endif

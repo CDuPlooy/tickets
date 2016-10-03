@@ -13,6 +13,7 @@ ListAsSLL::~ListAsSLL(){
 ListAsSLL::ListAsSLL(){
 	currentl = NULL;
 	head = NULL;
+	_size = 0;
 }
 
 bool ListAsSLL::isNull(void) const{
@@ -50,7 +51,8 @@ void ListAsSLL::add( Object *value ){
 		temp = temp->getNext();
 
 	temp->setNext(node);
-	currentl = node;
+	_size++;
+	//currentl = node;
 }
 
 void ListAsSLL::dump(){
@@ -71,12 +73,15 @@ void ListAsSLL::remove(Object *object){
 		if(head->get() == object)
 			delete head;
 		head = NULL;
+		_size--;
+		return;
 	}
 	bool found = false;
 	Node *prev = head;
 	Node *temp = head;
 	while( temp ){
-		if( object == temp->get() ){
+		std::cout << "1.) " << object << " == " << temp << std::endl;
+		if( object == temp ){
 			found = true;
 			break;
 		}
@@ -86,17 +91,26 @@ void ListAsSLL::remove(Object *object){
 
 	if(found){
 		if(temp->getNext() == NULL){
+			_size--;
 			delete temp;
+
 			prev->setNext(NULL);
+			head = prev;
 			return;
 		}
 		else if(temp == head){
-			if( temp->getNext() != NULL )
+			if( temp->getNext() != NULL ){
 				head = temp->getNext();
+			}
 			else
 				head = NULL;
+			_size--;
+
 			delete temp;
 			return;
+		}
+		else{
+
 		}
 
 		prev->setNext(temp->getNext());
@@ -111,7 +125,7 @@ void ListAsSLL::setCurrent(Object *object){
 }
 
 Object *ListAsSLL::getCurrent(){
-	return currentl;
+	return ((Node *)currentl)->get();
 }
 
 void ListAsSLL::next(){
@@ -119,8 +133,21 @@ void ListAsSLL::next(){
 }
 
 void ListAsSLL::previous(){
-	int a = 1 + 1;
-	a+=1;			//Previous for list as SSL should have no implementation
+	Node *temp = head;
+	size_t size = _size;
+	if(_size == 0){
+		currentl = NULL;
+		return;
+	}
+	while( temp ){
+		temp = temp->getNext();
+		size--;
+		if( size == _size - 1 ){
+			currentl  = ((Node *)currentl)->get();
+			return;
+			}
+		}
+	currentl = NULL;
 }
 
 void ListAsSLL::push_back(Object *object) {
@@ -129,7 +156,7 @@ void ListAsSLL::push_back(Object *object) {
 
 void ListAsSLL::pop_back(){
 	Node *temp = head;
-	while( temp ){
+	while( temp->getNext() ){
 		temp = temp->getNext();
 	}
 	remove(temp);

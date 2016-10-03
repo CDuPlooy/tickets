@@ -74,11 +74,11 @@ void ListAsDynamicArray::add(Object *object){
 }
 
 void ListAsDynamicArray::next(){
-      current = objectPointers[nCurrent++];
+      current = objectPointers[++nCurrent];
 }
 
 void ListAsDynamicArray::previous(){
-      current = objectPointers[nCurrent--];
+      current = objectPointers[--nCurrent];
 }
 
 void ListAsDynamicArray::setCurrent(Object *object){
