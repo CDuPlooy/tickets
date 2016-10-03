@@ -12,6 +12,7 @@ ListAsDLL::~ListAsDLL(){
 	}
 }
 ListAsDLL::ListAsDLL(){
+	_size = 0;
 	currentl = NULL;
       head = NULL;
 }
@@ -43,6 +44,7 @@ void ListAsDLL::add( Object *value ){
 	if( !head ){
 		head = node;
 		currentl = node;
+		_size++;
 		return;
 		}
 
@@ -52,7 +54,9 @@ void ListAsDLL::add( Object *value ){
 	current->setNext(node);
 	node->setPrev(current);
 	node->setNext(NULL);
-	currentl = node;
+	// currentl = node;
+	_size++;
+
 }
 
 void ListAsDLL::previous(){
@@ -68,11 +72,21 @@ void ListAsDLL::push_back(Object *object) {
 }
 
 void ListAsDLL::pop_back(){
-	NodeDouble *temp = head;
+	Node *temp = head;
+	size_t size = _size;
+	if(_size == 0){
+		currentl = NULL;
+		return;
+	}
 	while( temp ){
 		temp = temp->getNext();
-	}
-	remove(temp);
+		size--;
+		if( size == _size - 1 ){
+			currentl  = ((Node *)currentl)->get();
+			return;
+			}
+		}
+	currentl = NULL;
 }
 
 Object *ListAsDLL::at(size_t i){
@@ -102,11 +116,15 @@ void ListAsDLL::dump(){
 }
 
 void ListAsDLL::remove(Object *value){
-	if(head == NULL)
+	if(head == NULL){
+		_size = 0;
 		return;
+	}
 	if(head->getNext() == NULL){
-		if(head->get() == value)
+		if(head->get() == value){
+			_size = 0;
 			delete head;
+		}
 		head = NULL;
 	}
 	bool found = false;
@@ -122,6 +140,7 @@ void ListAsDLL::remove(Object *value){
 		}
 
 	if(found){
+		_size--;
 		if(temp->getNext() == NULL){
 			delete temp;
 			prevl->setNext(NULL);

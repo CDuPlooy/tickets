@@ -20,19 +20,24 @@ u16169532
 #include "cColours.h"
 #include "Seat.h"
 #include "Store.h"
+#include "Debug.h"
 
 using namespace std;
 
 int main(){
       cout << "Testing the Store!" << endl;
-      Store *store = new Store(CSLL);
+      Store *store = new Store(CDYNARR);
       Person *a = new Person();
       Seat *b = new Seat(a);
       store->push_back(a);
+      cout << "Person should expand to" << "==>" << store->getCurrent()->getId() << std::endl;
       store->push_back(b);
-      cout << store->getCurrent()->getId() << std::endl;
       store->next();
-      cout << store->getCurrent()->getId() << std::endl;
+      cout  << "Seat should expand to" << "==>" << store->getCurrent()->getId() << std::endl;
+      store->pop_back();
+      store->previous();
+      cout << "Person should expand to" << "==>" << store->getCurrent()->getId() << std::endl;
+
       delete b;
       delete store;
       delete a;

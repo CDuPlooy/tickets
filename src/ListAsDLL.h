@@ -34,5 +34,6 @@ public:
 private:
       NodeDouble *head;
       Object *currentl;
+      size_t _size;
 };
 #endif
