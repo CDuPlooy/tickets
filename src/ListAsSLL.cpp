@@ -1,7 +1,6 @@
-
 #include "Object.h"
 #include "ListAsSLL.h"
-
+#include "Debug.h"
 
 ListAsSLL::~ListAsSLL(){
 		Node *temp = head;
@@ -108,7 +107,7 @@ void ListAsSLL::remove(Object *object){
 }
 
 void ListAsSLL::setCurrent(Object *object){
-	current = object;
+	currentl = object;
 }
 
 Object *ListAsSLL::getCurrent(){

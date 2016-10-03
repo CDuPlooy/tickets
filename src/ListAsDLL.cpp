@@ -4,7 +4,7 @@
 
 
 ListAsDLL::~ListAsDLL(){
-	Node *temp = head;
+	NodeDouble *temp = head;
 	while( temp ){
 		Node *old = temp;
 		temp = temp->getNext();

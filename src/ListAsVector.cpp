@@ -42,7 +42,7 @@ void ListAsVector::setCurrent(Object *object){
 }
 
 Object *ListAsVector::getCurrent(){
-      return current;
+      return objectVector->at(nCurrent);
 }
 
 void ListAsVector::add(Object *object){

@@ -7,10 +7,10 @@ DFLAGS = -ggdb
 
 .PHONY: documentation
 
-compile_bind_all: compile_nullObject compile_integer compile_list compile_listAsVector compile_listAsDynamicArray compile_NullPerson compile_container compile_Seat compile_listAsSLL compile_Person compile_Adult compile_Minor compile_Pensioner compile_listAsDLL compile_dynamicAuditorium compile_matrix compile_AuditoriumModeller compile_fixedSizeMatrix compile_fixedAuditorium compile_Auditorium
+compile_bind_all: compile_nullObject compile_integer compile_list compile_listAsVector compile_listAsDynamicArray compile_NullPerson compile_container compile_Seat compile_listAsSLL compile_Person compile_Adult compile_Minor compile_Pensioner compile_listAsDLL compile_dynamicAuditorium compile_matrix compile_AuditoriumModeller compile_fixedSizeMatrix compile_fixedAuditorium compile_Auditorium compile_Store
 	@clear
 	@echo "Binding and linking . . ."
-	g++ src/NullObject.o src/Container.o src/Matrix.o src/FixedSizeMatrix.o src/Auditorium.o src/FixedAuditorium.o src/DynamicAuditorium.o src/AuditoriumModeller.o src/Seat.o src/Integer.o src/Person.o src/Minor.o src/Adult.o src/Pensioner.o src/NullPerson.o src/List.o src/ListAsDynamicArray.o src/ListAsVector.o src/ListAsSLL.cpp src/ListAsDLL.cpp  src/main.cpp -ggdb -o src/a.out -Wall
+	g++ src/NullObject.o src/Container.o src/Matrix.o src/FixedSizeMatrix.o src/Auditorium.o src/FixedAuditorium.o src/DynamicAuditorium.o src/AuditoriumModeller.o src/Seat.o src/Integer.o src/Person.o src/Minor.o src/Adult.o src/Pensioner.o src/NullPerson.o src/List.o src/ListAsDynamicArray.o src/ListAsVector.o src/ListAsSLL.o src/ListAsDLL.o  src/Store.o src/main.cpp -ggdb -o src/a.out -Wall
 	@echo "\n"
 	@echo "Finished!"
 
@@ -74,6 +74,9 @@ compile_integer:src/Integer.cpp src/Integer.h
 
 compile_nullObject:src/NullObject.cpp src/NullObject.h
 	g++ -c src/NullObject.cpp -o src/NullObject.o ${FLAGS}
+
+compile_Store:src/Store.cpp src/Store.h
+	g++ -c src/Store.cpp -o src/Store.o ${FLAGS}
 
 clean:
 	@rm src/*.o

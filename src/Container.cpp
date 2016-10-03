@@ -1,4 +1,6 @@
 #include "Container.h"
+
+
 Container::Container(){
 
 }
@@ -6,9 +8,7 @@ Container::Container(){
 Container::~Container(){
 
 }
-Object *Container::getCurrent(){
-      return current;
-}
+
 
 int Container::compareTo(Object const &) const{
       return -1;        //Marker:Unsure

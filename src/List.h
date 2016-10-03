@@ -13,6 +13,7 @@ public:
       //Constructors
       ~List();
       List();
+
       //Overloaded Functions
       bool isNull(void) const = 0;
       int compare(Object const &) const = 0;

@@ -19,10 +19,26 @@ u16169532
 #include "AuditoriumModeller.h"
 #include "cColours.h"
 #include "Seat.h"
+#include "Store.h"
 
 using namespace std;
 
 int main(){
+      cout << "Testing the Store!" << endl;
+      Store *store = new Store(CSLL);
+      Person *a = new Person();
+      Seat *b = new Seat(a);
+      store->push_back(a);
+      store->push_back(b);
+      cout << store->getCurrent()->getId() << std::endl;
+      store->next();
+      cout << store->getCurrent()->getId() << std::endl;
+      delete b;
+      delete store;
+      delete a;
+      cout << "_____________DONE______________" << endl;
+
+
       cout << "Testing the fixed size matrix!" << endl;
       FixedSizeMatrix *fa = new FixedSizeMatrix(5,5);
       Person person;
