@@ -28,6 +28,7 @@ public:
       void previous();
       void setCurrent(Object *object);
       Object *getCurrent();
+      bool isAtEnd();
 private:
       Object **objectPointers;
       size_t objectCount;

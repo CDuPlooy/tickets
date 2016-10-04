@@ -27,6 +27,7 @@ public:
       void add(Object *object);
       void next(); /**< Iterates to the next instance of Object in Container*/
       void previous();
+      bool isAtEnd();
 
       //Unique Variables
 private:

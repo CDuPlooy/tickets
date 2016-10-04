@@ -25,6 +25,8 @@ public:
        void setCurrent(Object *object);
        Object *getCurrent();
        Object *at(size_t row, size_t column); /**< Returns the object at i.*/
+       bool isAtEnd(); /**<Returns true when the end of the Container has been reached. */
+
        //Debug
        void dump();
 private:

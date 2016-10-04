@@ -30,6 +30,7 @@ public:
       Object *at(size_t i);
       void setCurrent(Object *object);
       Object *getCurrent();
+      bool isAtEnd();
 
 private:
       NodeDouble *head;

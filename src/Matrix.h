@@ -22,6 +22,8 @@ public:
       virtual void push_back(Object *object) = 0; /**< Adds an Object to the list.*/
       virtual void pop_back() = 0; /**< Removes an Object from the list.*/
       virtual void setCurrent(Object *object) = 0;
+      virtual bool isAtEnd() = 0; /**<Returns true when the end of the Container has been reached. */
+      
       virtual Object *getCurrent() = 0;
 };
 #endif

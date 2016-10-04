@@ -32,6 +32,8 @@ public:
       Object *at(size_t i);
       virtual void setCurrent(Object *object);
       virtual Object *getCurrent();
+      bool isAtEnd();
+      
 private:
       Node *head;
       Object *currentl;

@@ -54,6 +54,9 @@ void ListAsSLL::add( Object *value ){
 	_size++;
 	//currentl = node;
 }
+bool ListAsSLL::isAtEnd(){
+	return ((Node *)currentl)== NULL;
+}
 
 void ListAsSLL::dump(){
 	if(head == NULL)
@@ -124,6 +127,8 @@ void ListAsSLL::setCurrent(Object *object){
 }
 
 Object *ListAsSLL::getCurrent(){
+	if(isAtEnd())
+		return NULL;
 	return ((Node *)currentl)->get();
 }
 

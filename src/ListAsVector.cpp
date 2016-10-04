@@ -1,4 +1,5 @@
 #include "ListAsVector.h"
+#include "Debug.h"
 #include <vector>
 //Constructors
 ListAsVector::~ListAsVector(){
@@ -37,11 +38,17 @@ Object *ListAsVector::at(size_t i){
       return objectVector->at(i);
 }
 
+bool ListAsVector::isAtEnd(){
+      return objectVector->size() == nCurrent;
+}
+
 void ListAsVector::setCurrent(Object *object){
       current = object;
 }
 
 Object *ListAsVector::getCurrent(){
+      if(isAtEnd())
+            return NULL;
       return objectVector->at(nCurrent);
 }
 

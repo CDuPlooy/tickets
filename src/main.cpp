@@ -25,8 +25,31 @@ u16169532
 using namespace std;
 
 int main(){
+      cout << "Testing iterator ! " << endl;
+      Store *itStore = new Store(CDLL);
+      Person *Bob = new Person();
+      Seat *BobSeat = new Seat(Bob);
+      FixedAuditorium *fixedaud = new FixedAuditorium(5,5);
+      itStore->push_back(Bob);
+      itStore->push_back(BobSeat);
+      itStore->push_back(fixedaud);
+      Object *object = itStore->getCurrent();
+
+      while( itStore->isAtEnd() == false ){
+            D_MSG(object->getId());
+            itStore->next();
+            object = itStore->getCurrent();
+      }
+      cout << "_____________DONE______________" << endl;
+      delete itStore;
+      delete Bob;
+      delete BobSeat;
+      delete fixedaud;
+      D_PAUSE("Press any key to continue");
+      return 0;
+
       cout << "Testing the Store!" << endl;
-      Store *store = new Store(CDLL);
+      Store *store = new Store(CVECTOR);
       Person *a = new Person();
       Seat *b = new Seat(a);
       store->push_back(a);

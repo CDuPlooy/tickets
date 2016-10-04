@@ -27,6 +27,7 @@ public:
       void previous();
       void push_back(Object *obj);
       void pop_back();
+      bool isAtEnd();
 
 private:
       Container *container;

@@ -117,6 +117,12 @@ Object *FixedSizeMatrix::getCurrent(){
 	return currentl;
 }
 
+bool FixedSizeMatrix::isAtEnd(){
+	if(current_x == rows)
+		if(current_y == columns)
+			return true;
+	return false;
+}
 
 Object *FixedSizeMatrix::at(size_t row, size_t column){
 	if(!checkBoundry(row, column))

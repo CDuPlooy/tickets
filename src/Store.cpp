@@ -1,4 +1,5 @@
 #include "Store.h"
+#include "Debug.h"
 #include "ListAsSLL.h"
 #include "ListAsDLL.h"
 #include "ListAsVector.h"
@@ -53,7 +54,7 @@ std::string Store::getId() const{
 }
 
 //Iterator implementaion:
-Object *Store::getCurrent(){
+Object *Store::getCurrent(){  //Executes fours times for CVECTOR
       return container->getCurrent();
 }
 
@@ -71,4 +72,8 @@ void Store::push_back(Object *obj){
 
 void Store::pop_back(){
       container->pop_back();
+}
+
+bool Store::isAtEnd(){
+      return container->isAtEnd();
 }
