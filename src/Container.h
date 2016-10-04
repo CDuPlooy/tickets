@@ -21,7 +21,7 @@ public:
       virtual void push_back(Object *object) = 0; /**< Adds an Object to the list.*/
       virtual void pop_back() = 0; /**< Removes an Object from the list.*/
       Object *current; /**<A pointer to an Object instance. */
-
+      virtual bool isAtEnd() = 0; /**<Returns true when the end of the Container has been reached. */
       //Inheritance from object
       bool isNull(void) const;
       int compare(Object const &) const;
