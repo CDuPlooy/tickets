@@ -9,10 +9,10 @@
 class NullObject : public Object{
 protected:
       int compareTo(Object const &) const;
-public:
-      //Constructors
       ~NullObject();
       NullObject();
+public:
+      //Constructors
       //Overloaded Functions
       bool isNull(void) const;
       int compare(Object const &) const;
