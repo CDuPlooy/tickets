@@ -26,7 +26,7 @@ using namespace std;
 
 int main(){
       cout << "Testing the Store!" << endl;
-      Store *store = new Store(CDYNARR);
+      Store *store = new Store(CDLL);
       Person *a = new Person();
       Seat *b = new Seat(a);
       store->push_back(a);

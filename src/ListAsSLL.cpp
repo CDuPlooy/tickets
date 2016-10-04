@@ -80,7 +80,6 @@ void ListAsSLL::remove(Object *object){
 	Node *prev = head;
 	Node *temp = head;
 	while( temp ){
-		std::cout << "1.) " << object << " == " << temp << std::endl;
 		if( object == temp ){
 			found = true;
 			break;
@@ -139,7 +138,8 @@ void ListAsSLL::previous(){
 		currentl = NULL;
 		return;
 	}
-	while( temp ){
+
+	while( temp->getNext() ){
 		temp = temp->getNext();
 		size--;
 		if( size == _size - 1 ){

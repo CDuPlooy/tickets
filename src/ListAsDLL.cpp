@@ -1,4 +1,4 @@
-
+#include "Debug.h"
 #include "Object.h"
 #include "ListAsDLL.h"
 
@@ -60,7 +60,26 @@ void ListAsDLL::add( Object *value ){
 }
 
 void ListAsDLL::previous(){
-	currentl = ((NodeDouble *)currentl)->getPrev();
+
+		NodeDouble *temp = head;
+		size_t size = _size;
+		if(_size == 0){
+			currentl = NULL;
+			return;
+		}
+
+		while( temp->getNext() ){
+			temp = temp->getNext();
+			size--;
+			if( size == _size - 1 ){
+				currentl  = ((NodeDouble *)currentl)->get();
+				return;
+				}
+			}
+
+
+
+		currentl = NULL;
 }
 
 void ListAsDLL::next(){
@@ -167,7 +186,7 @@ void ListAsDLL::setCurrent(Object *object){
 }
 
 Object *ListAsDLL::getCurrent(){
-	return ((NodeDouble *)currentl)->get();
+	return currentl;
 }
 //TODO: Properly implement the linked list for ListAsDLL and ListAsSLL. As A note to myself , the push_back , pop_back and at functions should be overloaded in all subclasses of List so that all of them can work with Objects.
 //TODO: Having one at function doesn't make sense. A FixedArray isn't indexed the same way a linked list is. Have at(size_t) for lists and at(size_t , size_t) for the matrixes.
