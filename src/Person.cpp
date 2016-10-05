@@ -40,7 +40,6 @@ void Person::setColumn(size_t column){
 
 void Person::setAge(unsigned short age){
 	this->age = age;
-
 }
 
 size_t Person::getRow(){

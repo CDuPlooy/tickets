@@ -19,7 +19,16 @@ public:
       int compare(Object const &) const; /**< Used to compare different Auditoriums. */
       void print(std::ostream & = std::cout) const; /**< Generates output for a stream , using std::cout as the default. */
       std::string getId() const;    /**< Returns a string representing the ID/Type of an object. */
+
       //Unique Functions
+      std::string getName(){
+          return name;
+      }
+      
+      void setName(std::string name){
+          this->name = name;
+      }
+      //Pure Virtual Functions
       virtual bool book(size_t row, size_t column) = 0;    /**< Creates a booking at row <-> column. */
       virtual void cancelBooking(size_t row, size_t column) = 0; /**< Cancels a booking at row <-> column.  */
       virtual bool findFree(size_t &row, size_t &column) = 0; /**< Finds a free space at row <-> column or forwards.*/
@@ -29,6 +38,8 @@ public:
       virtual void setState( size_t row, size_t column, short value ) = 0; /**< Sets row <-> column to value. */
       virtual std::string dumpRaw() = 0; /**< Dumps the data table without additional colour codes*/
       virtual void dumpFile(std::string filename) = 0; /**< Dumps the auditorium to a file.*/
+    private:
+      std::string name;
 };
 #endif
 

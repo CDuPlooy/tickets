@@ -7,10 +7,10 @@ DFLAGS = -ggdb
 
 .PHONY: documentation
 
-compile_bind_all: compile_nullObject compile_integer compile_list compile_listAsVector compile_listAsDynamicArray compile_NullPerson compile_container compile_Seat compile_listAsSLL compile_Person compile_Adult compile_Minor compile_Pensioner compile_listAsDLL compile_dynamicAuditorium compile_matrix compile_AuditoriumModeller compile_AuditoriumList compile_fixedSizeMatrix compile_fixedAuditorium compile_Auditorium compile_Store
+compile_bind_all: compile_nullObject compile_integer compile_list compile_listAsVector compile_listAsDynamicArray compile_NullPerson compile_container compile_Seat compile_listAsSLL compile_Person compile_Adult compile_Minor compile_Pensioner compile_listAsDLL compile_dynamicAuditorium compile_matrix compile_AuditoriumModeller compile_AuditoriumList compile_fixedSizeMatrix compile_fixedAuditorium compile_AuditoriumDeveloper compile_Auditorium compile_Store
 	@clear
 	@echo "Binding and linking . . ."
-	g++ src/NullObject.o src/Container.o src/Matrix.o src/FixedSizeMatrix.o src/Auditorium.o src/FixedAuditorium.o src/DynamicAuditorium.o src/AuditoriumModeller.o src/Seat.o src/Integer.o src/Person.o src/Minor.o src/Adult.o src/Pensioner.o src/NullPerson.o src/List.o src/ListAsDynamicArray.o src/ListAsVector.o src/ListAsSLL.o src/ListAsDLL.o  src/AuditoriumList.o src/Store.o src/main.cpp -ggdb -o src/a.out -Wall
+	g++ src/NullObject.o src/Container.o src/Matrix.o src/FixedSizeMatrix.o src/Auditorium.o src/FixedAuditorium.o src/DynamicAuditorium.o src/AuditoriumModeller.o src/Seat.o src/Integer.o src/Person.o src/Minor.o src/Adult.o src/Pensioner.o src/NullPerson.o src/List.o src/ListAsDynamicArray.o src/ListAsVector.o src/ListAsSLL.o src/ListAsDLL.o  src/AuditoriumList.o src/AuditoriumDeveloper.o src/Store.o src/main.cpp -ggdb -o src/a.out -Wall
 	@echo "\n"
 	@echo "Finished!"
 
@@ -65,6 +65,8 @@ compile_Pensioner:src/Pensioner.cpp src/Pensioner.h
 compile_Minor:src/Minor.cpp src/Minor.h
 	g++ -c src/Minor.cpp -o src/Minor.o ${FLAGS}
 
+compile_AuditoriumDeveloper:src/AuditoriumDeveloper.cpp src/AuditoriumDeveloper.h
+	g++ -c src/AuditoriumDeveloper.cpp -o src/AuditoriumDeveloper.o ${FLAGS}
 
 compile_NullPerson:src/NullPerson.cpp src/NullPerson.h
 	g++ -c src/NullPerson.cpp -o src/NullPerson.o ${FLAGS}
