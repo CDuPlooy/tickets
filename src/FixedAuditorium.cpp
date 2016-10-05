@@ -160,3 +160,17 @@ void FixedAuditorium::dumpFile(std::string filename){
 	fs << dumpRaw();
 	fs.close();
 }
+short FixedAuditorium::getState( size_t row, size_t column){
+	if(!checkBoundry(row, column))
+		return SEAT_VOID;
+	else
+		return fa->getValue(row,column)->getState();
+}
+
+
+Seat *FixedAuditorium::getSeat( size_t row, size_t column){
+		if(!checkBoundry(row, column))
+			return NULL;
+		else
+			return fa->getValue(row, column);
+		}

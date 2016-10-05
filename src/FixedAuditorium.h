@@ -29,6 +29,9 @@ public:
       void setState( size_t , size_t , short );
       std::string dumpRaw();
       void dumpFile(std::string filename);
+      short getState( size_t row, size_t column);
+      Seat *getSeat( size_t row, size_t column);
+
 
 
 private:

@@ -53,7 +53,6 @@ bool AuditoriumModeller::loadFromFile(std::string filename){
 			}
 			else if(buffer.at(i) == '0'){
 				auditorium->setState(row, column, SEAT_EMPTY);
-
 				column++;
 			}
 			else if(buffer.at(i) == 'V'){

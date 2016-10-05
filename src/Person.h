@@ -24,9 +24,16 @@ public:
       size_t getRow();/**< Returns the row that the person booked a seat in.*/
       void setColumn(size_t column); /**< Sets the column that the person booked a seat in.*/
       size_t getColunn();/**< Returns the column that the person booked a seat in.*/
-      void setAge(unsigned short age);/**< Sets a person's age.*/ 
+      void setAge(unsigned short age);/**< Sets a person's age.*/
       float getFee();/**< Gets the fee that a person has to pay.*/
       void setFee(float fee); /**< Sets the fee that a person has to pay.*/
+      std::string getName(){
+          return name;
+      }
+
+      void setName(std::string name){
+          this->name = name;
+      }
 private:
       std::string name;
       unsigned short age;

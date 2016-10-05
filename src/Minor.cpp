@@ -4,7 +4,7 @@ Minor::~Minor(){
 }
 
 Minor::Minor(){
-
+	setFee(21.5);
 }
 
 //Overloaded Functions

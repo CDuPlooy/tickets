@@ -141,6 +141,12 @@ bool DynamicAuditorium::bookAdv(size_t size){
 		}
 	return spaceFound;
 }
+short DynamicAuditorium::getState( size_t row, size_t column){
+	if(!checkBoundry(row, column))
+		return SEAT_VOID;
+	else
+		return fa->getValue(row,column)->getState();
+}
 
 
 std::string DynamicAuditorium::dumpRaw(){
@@ -163,4 +169,11 @@ void DynamicAuditorium::dumpFile(std::string filename){
 	std::ofstream fs(filename.c_str());
 	fs << dumpRaw();
 	fs.close();
+}
+
+Seat *DynamicAuditorium::getSeat( size_t row, size_t column){
+		if(!checkBoundry(row, column))
+			return NULL;
+		else
+			return fa->getValue(row, column);
 }

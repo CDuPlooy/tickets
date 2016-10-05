@@ -20,6 +20,10 @@ u16169532
 #include "AuditoriumDeveloper.h"
 #include "AuditoriumList.h"
 #include "cColours.h"
+#include "Minor.h"
+#include "Adult.h"
+#include "Pensioner.h"
+#include "TicketPrinter.h"
 #include "Seat.h"
 #include "Store.h"
 #include "Debug.h"
@@ -27,12 +31,27 @@ u16169532
 using namespace std;
 
 int main(){
+      cout << "Testing ticket printer!" << endl;
+      TicketPrinter tp;
+      FixedAuditorium faA(5,5);
+      faA.setName("Brooklyn");
+      Minor personA;
+      Seat seatA(&personA);
+      personA.setName("Billy");
+      faA.book(0, 0);
+      faA.getSeat(0, 0)->bind(&personA);
+      cout << tp.printAuditorium(&faA,0,0,true) << endl;
+      cout << "_____________DONE______________" << endl;
+
+
+
       cout << "Testing AuditoriumList!" << endl;
       AuditoriumList al;
       FixedAuditorium brooklyn(5,5);
       brooklyn.setName("Brooklyn");
       DynamicAuditorium irene(5,5);
       irene.setName("Irene");
+
       al.push_back(&brooklyn);
       al.push_back(&irene);
       for(size_t i = 0 ; i < al.getSize() ; i++)

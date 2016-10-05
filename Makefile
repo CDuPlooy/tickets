@@ -2,86 +2,90 @@
 # u16169532
 
 FLAGS = -Wall -Werror -ggdb -pedantic-errors
-RFLAGS = -O3
-DFLAGS = -ggdb
+COMPILER = clang++
 
 .PHONY: documentation
 
-compile_bind_all: compile_nullObject compile_integer compile_list compile_listAsVector compile_listAsDynamicArray compile_NullPerson compile_container compile_Seat compile_listAsSLL compile_Person compile_Adult compile_Minor compile_Pensioner compile_listAsDLL compile_dynamicAuditorium compile_matrix compile_AuditoriumModeller compile_AuditoriumList compile_fixedSizeMatrix compile_fixedAuditorium compile_AuditoriumDeveloper compile_Auditorium compile_Store
+compile_bind_all: compile_nullObject compile_integer compile_list compile_listAsVector compile_listAsDynamicArray compile_NullPerson compile_container compile_Seat compile_listAsSLL compile_Person compile_Adult compile_Minor compile_Pensioner compile_listAsDLL compile_dynamicAuditorium compile_matrix compile_AuditoriumModeller compile_AuditoriumList compile_fixedSizeMatrix compile_fixedAuditorium compile_AuditoriumDeveloper compile_ticketPrinter compile_Auditorium compile_Store
 	@clear
 	@echo "Binding and linking . . ."
-	g++ src/NullObject.o src/Container.o src/Matrix.o src/FixedSizeMatrix.o src/Auditorium.o src/FixedAuditorium.o src/DynamicAuditorium.o src/AuditoriumModeller.o src/Seat.o src/Integer.o src/Person.o src/Minor.o src/Adult.o src/Pensioner.o src/NullPerson.o src/List.o src/ListAsDynamicArray.o src/ListAsVector.o src/ListAsSLL.o src/ListAsDLL.o  src/AuditoriumList.o src/AuditoriumDeveloper.o src/Store.o src/main.cpp -ggdb -o src/a.out -Wall
+	${COMPILER} src/NullObject.o src/Container.o src/Matrix.o src/FixedSizeMatrix.o src/Auditorium.o src/FixedAuditorium.o src/DynamicAuditorium.o src/AuditoriumModeller.o src/Seat.o src/Integer.o src/Person.o src/Minor.o src/Adult.o src/Pensioner.o src/NullPerson.o src/List.o src/ListAsDynamicArray.o src/ListAsVector.o src/ListAsSLL.o src/ListAsDLL.o  src/AuditoriumList.o src/AuditoriumDeveloper.o src/Store.o src/TicketPrinter.o src/main.cpp -ggdb -o src/a.out -Wall
 	@echo "\n"
 	@echo "Finished!"
 
 compile_container: src/Container.cpp src/Container.h
-	g++ -c src/Container.cpp -o src/Container.o ${FLAGS}
+	${COMPILER} -c src/Container.cpp -o src/Container.o ${FLAGS}
 
 compile_matrix: src/Matrix.cpp src/Matrix.h
-	g++ -c src/Matrix.cpp -o src/Matrix.o ${FLAGS}
+	${COMPILER} -c src/Matrix.cpp -o src/Matrix.o ${FLAGS}
 
 compile_fixedSizeMatrix: src/FixedSizeMatrix.cpp src/FixedSizeMatrix.h
-	g++ -c src/FixedSizeMatrix.cpp -o src/FixedSizeMatrix.o ${FLAGS}
+	${COMPILER} -c src/FixedSizeMatrix.cpp -o src/FixedSizeMatrix.o ${FLAGS}
 
 compile_list:src/List.cpp src/List.h
-	g++ -c src/List.cpp -o src/List.o ${FLAGS}
+	${COMPILER} -c src/List.cpp -o src/List.o ${FLAGS}
 
 compile_listAsVector:src/ListAsVector.cpp src/ListAsVector.h
-	g++ -c src/ListAsVector.cpp -o src/ListAsVector.o ${FLAGS}
+	${COMPILER} -c src/ListAsVector.cpp -o src/ListAsVector.o ${FLAGS}
 
 compile_listAsSLL:src/ListAsSLL.cpp src/ListAsSLL.h
-	g++ -c src/ListAsSLL.cpp -o src/ListAsSLL.o ${FLAGS}
+	${COMPILER} -c src/ListAsSLL.cpp -o src/ListAsSLL.o ${FLAGS}
 
 compile_listAsDLL:src/ListAsDLL.cpp src/ListAsDLL.h
-	g++ -c src/ListAsDLL.cpp -o src/ListAsDLL.o ${FLAGS}
+	${COMPILER} -c src/ListAsDLL.cpp -o src/ListAsDLL.o ${FLAGS}
 
 compile_listAsDynamicArray: src/ListAsDynamicArray.cpp src/ListAsDynamicArray.h
-	g++ -c src/ListAsDynamicArray.cpp -o src/ListAsDynamicArray.o ${FLAGS}
+	${COMPILER} -c src/ListAsDynamicArray.cpp -o src/ListAsDynamicArray.o ${FLAGS}
 
 compile_fixedAuditorium: src/FixedAuditorium.cpp src/FixedAuditorium.h
-	g++ -c src/FixedAuditorium.cpp -o src/FixedAuditorium.o ${FLAGS}
+	${COMPILER} -c src/FixedAuditorium.cpp -o src/FixedAuditorium.o ${FLAGS}
 
 compile_dynamicAuditorium:src/DynamicAuditorium.cpp src/DynamicAuditorium.h
-	g++ -c src/DynamicAuditorium.cpp -o src/DynamicAuditorium.o ${FLAGS}
+	${COMPILER} -c src/DynamicAuditorium.cpp -o src/DynamicAuditorium.o ${FLAGS}
 
 compile_Auditorium:src/Auditorium.cpp src/Auditorium.h
-	g++ -c src/Auditorium.cpp -o src/Auditorium.o ${FLAGS}
+	${COMPILER} -c src/Auditorium.cpp -o src/Auditorium.o ${FLAGS}
 
 compile_AuditoriumList: src/AuditoriumList.cpp src/AuditoriumList.h
-	g++ -c src/AuditoriumList.cpp -o src/AuditoriumList.o ${FLAGS}
+	${COMPILER} -c src/AuditoriumList.cpp -o src/AuditoriumList.o ${FLAGS}
 
 compile_AuditoriumModeller:src/AuditoriumModeller.cpp src/AuditoriumModeller.h
-	g++ -c src/AuditoriumModeller.cpp -o src/AuditoriumModeller.o ${FLAGS}
+	${COMPILER} -c src/AuditoriumModeller.cpp -o src/AuditoriumModeller.o ${FLAGS}
 
 compile_Person:src/Person.cpp src/Person.h
-	g++ -c src/Person.cpp -o src/Person.o ${FLAGS}
+	${COMPILER} -c src/Person.cpp -o src/Person.o ${FLAGS}
 
 compile_Adult:src/Adult.cpp src/Adult.h
-	g++ -c src/Adult.cpp -o src/Adult.o ${FLAGS}
+	${COMPILER} -c src/Adult.cpp -o src/Adult.o ${FLAGS}
 
 compile_Pensioner:src/Pensioner.cpp src/Pensioner.h
-	g++ -c src/Pensioner.cpp -o src/Pensioner.o ${FLAGS}
+	${COMPILER} -c src/Pensioner.cpp -o src/Pensioner.o ${FLAGS}
 
 compile_Minor:src/Minor.cpp src/Minor.h
-	g++ -c src/Minor.cpp -o src/Minor.o ${FLAGS}
+	${COMPILER} -c src/Minor.cpp -o src/Minor.o ${FLAGS}
 
 compile_AuditoriumDeveloper:src/AuditoriumDeveloper.cpp src/AuditoriumDeveloper.h
-	g++ -c src/AuditoriumDeveloper.cpp -o src/AuditoriumDeveloper.o ${FLAGS}
+	${COMPILER} -c src/AuditoriumDeveloper.cpp -o src/AuditoriumDeveloper.o ${FLAGS}
 
 compile_NullPerson:src/NullPerson.cpp src/NullPerson.h
-	g++ -c src/NullPerson.cpp -o src/NullPerson.o ${FLAGS}
+	${COMPILER} -c src/NullPerson.cpp -o src/NullPerson.o ${FLAGS}
 
 compile_Seat:src/Seat.cpp src/Seat.h
-	g++ -c src/Seat.cpp -o src/Seat.o ${FLAGS}
+	${COMPILER} -c src/Seat.cpp -o src/Seat.o ${FLAGS}
 
 compile_integer:src/Integer.cpp src/Integer.h
-	g++ -c src/Integer.cpp -o src/Integer.o ${FLAGS}
+	${COMPILER} -c src/Integer.cpp -o src/Integer.o ${FLAGS}
 
 compile_nullObject:src/NullObject.cpp src/NullObject.h
-	g++ -c src/NullObject.cpp -o src/NullObject.o ${FLAGS}
+	${COMPILER} -c src/NullObject.cpp -o src/NullObject.o ${FLAGS}
 
 compile_Store:src/Store.cpp src/Store.h
-	g++ -c src/Store.cpp -o src/Store.o ${FLAGS}
+	${COMPILER} -c src/Store.cpp -o src/Store.o ${FLAGS}
+
+compile_ticketPrinter:src/TicketPrinter.cpp src/TicketPrinter.h
+	${COMPILER} -c src/TicketPrinter.cpp -o src/TicketPrinter.o ${FLAGS}
+
+
 
 clean:
 	@rm src/*.o

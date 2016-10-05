@@ -3,20 +3,21 @@
 #define TICKETPRINTER_H
 #include "Object.h"
 #include "Auditorium.h"
+#include "Seat.h"
 class TicketPrinter : public Object{
 protected:
       int compareTo(Object const &) const;
 public:
       //Constructors
       ~TicketPrinter();
-      TicketPrinter( Auditorium *auditorium );
+      TicketPrinter();
       //Overloaded Functions
       bool isNull(void) const;
       int compare(Object const &) const;
       void print(std::ostream & = std::cout) const;
       std::string getId() const;
       //Unique Functions
-private:
-      Auditorium *auditorium;
+      std::string printSeat(Seat *seat , bool printRaw);
+      std::string printAuditorium(Auditorium *auditorium , size_t x , size_t y , bool printRaw);
 };
 #endif
