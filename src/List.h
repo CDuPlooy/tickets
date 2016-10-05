@@ -29,10 +29,7 @@ public:
       virtual void setCurrent(Object *object) = 0;
       virtual Object *getCurrent() = 0;
       virtual bool isAtEnd() = 0; /**<Returns true when the end of the Container has been reached. */
-      
+
       //Unique Functions (To List)
 };
 #endif
-
-
-//TODO: Notice how everything inhereting from list is one dimensional and everything from matrix is two dimensional.
