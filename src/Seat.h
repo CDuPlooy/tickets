@@ -1,3 +1,8 @@
+//!  A class representing a seat.
+/*!
+     Internally seats are represented using shorts.
+*/
+
 #ifndef SEAT_H
 #define SEAT_H
 #include "Object.h"
@@ -25,7 +30,7 @@ public:
       void setState(short state); /**< Sets the seat state.*/
       short getState(); /**< Returns the seat state..*/
       void bind(Person *aPerson); /**< Binds a person to a seat.*/
-      Person *getPerson();
+      Person *getPerson(); /**< Returns the person associated with the seat.*/
 private:
       short state;
       Person *person;

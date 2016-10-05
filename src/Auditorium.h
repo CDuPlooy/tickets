@@ -28,7 +28,7 @@ public:
       virtual bool bookAdv(size_t n) = 0; /**< Checks if n seats are free and books them. */
       virtual void setState( size_t row, size_t column, short value ) = 0; /**< Sets row <-> column to value. */
       virtual std::string dumpRaw() = 0; /**< Dumps the data table without additional colour codes*/
-      virtual void dumpFile(std::string filename) = 0;
+      virtual void dumpFile(std::string filename) = 0; /**< Dumps the auditorium to a file.*/
 };
 #endif
 

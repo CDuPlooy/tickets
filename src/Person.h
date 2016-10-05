@@ -20,13 +20,13 @@ public:
       void print(std::ostream & = std::cout) const;
       std::string getId() const;
       //Unique Functions
-      void setRow(size_t row);
-      size_t getRow();
-      void setColumn(size_t column);
-      size_t getColunn();
-      void setAge(unsigned short age);
-      float getFee();
-      void setFee(float fee);
+      void setRow(size_t row);/**< Sets the row that the person booked a seat in.*/
+      size_t getRow();/**< Returns the row that the person booked a seat in.*/
+      void setColumn(size_t column); /**< Sets the column that the person booked a seat in.*/
+      size_t getColunn();/**< Returns the column that the person booked a seat in.*/
+      void setAge(unsigned short age);/**< Sets a person's age.*/ 
+      float getFee();/**< Gets the fee that a person has to pay.*/
+      void setFee(float fee); /**< Sets the fee that a person has to pay.*/
 private:
       std::string name;
       unsigned short age;

@@ -5,13 +5,13 @@
 #include "Node.h"
 class NodeDouble : public Node{
 public:
-	NodeDouble *getPrev(){
+	NodeDouble *getPrev(){/**< Returns the previous pointer of the node.*/
 		return prev;
 	}
 	NodeDouble *getNext(){
 		return next;
 	}
-	void setPrev(NodeDouble *node){
+	void setPrev(NodeDouble *node){/**< Sets the previous pointer of the node.*/
 		prev = node;
 	}
 	void setNext(NodeDouble *node){

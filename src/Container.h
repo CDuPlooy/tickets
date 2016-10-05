@@ -13,7 +13,7 @@ protected:
 public:
       Container();
       ~Container();
-      virtual Object *getCurrent() = 0;
+      virtual Object *getCurrent() = 0;/**< Returns the current object pointer or cursor if you will.*/
 
       virtual void add(Object *object) = 0; /**< Adds an object to the container */
       virtual void next() = 0; /**< Iterates to the next instance of Object in Container*/

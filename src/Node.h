@@ -20,16 +20,16 @@ public:
 	~Node(){
 
 	}
-	Node *getNext(){
+	Node *getNext(){/**< Returns the next node in the list.*/
 		return next;
 	}
-	void setNext(Node *node){
+	void setNext(Node *node){/**< Sets the next node in the list.*/
 		next = node;
 	}
-	void set( Object *value ){
+	void set( Object *value ){/**< Sets the data pointer of the node.*/
 		data = value;
 	}
-	Object *get(){
+	Object *get(){/**< Returns the data pointer of the node.*/
 		return data;
 	}
 	//So it can inheret from Object.

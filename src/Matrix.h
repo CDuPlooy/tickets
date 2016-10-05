@@ -24,6 +24,6 @@ public:
       virtual void setCurrent(Object *object) = 0;
       virtual bool isAtEnd() = 0; /**<Returns true when the end of the Container has been reached. */
       
-      virtual Object *getCurrent() = 0;
+      virtual Object *getCurrent() = 0;/**< Returns the current object pointer (or cursor if you will).*/
 };
 #endif

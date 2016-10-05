@@ -22,8 +22,7 @@ public:
       std::string getId() const;/**< */
       //Unique Functions
       bool loadFromFile(std::string);/**< Loads an auditorium from a text file.*/
-      void unbind();
-
+      void unbind(); /**< Releases the Auditorium pointer bound to the private member auditorium by setting it to NULL */
       //Unique functions
       Auditorium *getAuditorium();/**< Returns an auditorium instance. Please note that this function depends on loadFromFile.*/
 
