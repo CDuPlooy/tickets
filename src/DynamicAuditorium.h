@@ -20,7 +20,7 @@ public:
       void print(std::ostream & = std::cout) const;
       std::string getId() const;
       //Unique Functions
-      bool book(size_t , size_t);/**<Books a seat in the current auditorium. */
+      bool book(Person *person , size_t , size_t);/**<Books a seat in the current auditorium. */
       void cancelBooking(size_t , size_t ); /**< Cancels a booking in the current auditorium. */
       bool findFree(size_t &, size_t &); /**< Finds the next free space in the auditorium.*/
       bool checkBoundry( size_t , size_t ); /**< Checks the boundry of rows and columns to given values.*/
@@ -31,7 +31,7 @@ public:
       void dumpFile(std::string filename);
       short getState( size_t row, size_t column);
       Seat *getSeat( size_t row, size_t column);
-      
+
 
 
 private:

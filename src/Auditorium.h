@@ -2,11 +2,11 @@
 /*!
   An abstract class which provides an interface to the different types of auditoriums.
 */
-
 #ifndef AUDITORIUM_H
 #define AUDITORIUM_H
 #include "Object.h"
 #include "Seat.h"
+#include "Person.h"
 //Class
 class Auditorium : public Object{
 protected:
@@ -30,7 +30,7 @@ public:
           this->name = name;
       }
       //Pure Virtual Functions
-      virtual bool book(size_t row, size_t column) = 0;    /**< Creates a booking at row <-> column. */
+      virtual bool book(Person *person , size_t row, size_t column) = 0;    /**< Creates a booking at row <-> column. */
       virtual void cancelBooking(size_t row, size_t column) = 0; /**< Cancels a booking at row <-> column.  */
       virtual bool findFree(size_t &row, size_t &column) = 0; /**< Finds a free space at row <-> column or forwards.*/
       virtual bool checkBoundry( size_t row, size_t column) = 0; /**< Checks if row <-> column is inside the boundries of the class. */

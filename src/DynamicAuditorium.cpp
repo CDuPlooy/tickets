@@ -42,7 +42,7 @@ std::string DynamicAuditorium::getId() const{
 	return "DynamicAuditorium";
 }
 //Unique Functions
-bool DynamicAuditorium::book( size_t r , size_t c ){
+bool DynamicAuditorium::book(Person *person ,  size_t r , size_t c ){
 	if(!checkBoundry(r, c))
 		return false;
 
@@ -50,6 +50,7 @@ bool DynamicAuditorium::book( size_t r , size_t c ){
 		return false;
 	else{
 		fa->getValue(r, c)->setState(SEAT_TAKEN);
+		fa->getValue(r, c)->bind(person);
 		seats++;
 	}
 	return true;
@@ -137,7 +138,7 @@ bool DynamicAuditorium::bookAdv(size_t size){
 
 	if(spaceFound)
 		for(size_t c = 0  ; c  < size ; c++){
-			book(i,j-c);
+			book(NULL,i,j-c);
 		}
 	return spaceFound;
 }

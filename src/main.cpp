@@ -32,18 +32,18 @@ using namespace std;
 
 int main(){
       cout << "Testing ticket printer!" << endl;
-      TicketPrinter tp;
-      FixedAuditorium faA(5,5);
-      faA.setName("Brooklyn");
-      Minor personA;
-      Seat seatA(&personA);
-      personA.setName("Billy");
-      faA.book(0, 0);
-      faA.getSeat(0, 0)->bind(&personA);
-      cout << tp.printAuditorium(&faA,0,0,true) << endl;
+      TicketPrinter *tp = new TicketPrinter();
+      FixedAuditorium *faA = new FixedAuditorium(2,2);
+      faA->setName("Brooklyn");
+      Minor *personA = new Minor();
+      faA->book(personA,0, 0);
+
+      cout << tp->printAuditorium(faA,0,0,false) << endl;
+
       cout << "_____________DONE______________" << endl;
-
-
+      delete faA;
+      delete tp;
+      delete personA;
 
       cout << "Testing AuditoriumList!" << endl;
       AuditoriumList al;
@@ -116,7 +116,7 @@ int main(){
       cout << "Testing the fixed auditorium!" << endl;
       DynamicAuditorium *fixedaudit = new DynamicAuditorium(5,5);
       fixedaudit->bookAdv(5);
-      fixedaudit->book(1, 1);
+      fixedaudit->book(NULL,1, 1);
       fixedaudit->setVoid(0, 0, 3, false);
       fixedaudit->print(cout);
       std::cout << fixedaudit->dumpRaw() << std::endl;

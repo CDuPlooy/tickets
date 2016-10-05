@@ -20,7 +20,7 @@ public:
       void print(std::ostream & = std::cout) const;
       std::string getId() const;
       //Unique Functions
-      bool book(size_t , size_t);
+      bool book(Person *person , size_t , size_t);
       void cancelBooking(size_t , size_t );
       bool findFree(size_t &, size_t &);
       bool checkBoundry( size_t , size_t );

@@ -1,6 +1,7 @@
 //!  A class which is used to print tickets
-#include "sstream"
+#include <sstream>
 #include "cColours.h"
+#include "Debug.h"
 #include "TicketPrinter.h"
 int TicketPrinter::compareTo(Object const &) const{
 	return false;
@@ -31,7 +32,8 @@ std::string TicketPrinter::getId() const{
 }
 
 std::string TicketPrinter::printSeat(Seat *seat , bool printRaw){
-	std::stringstream buffer;
+	std::stringstream buffer("");
+	buffer.clear();
 	if(!seat->getPerson())
 		return "";
 	if(printRaw){
@@ -42,13 +44,13 @@ std::string TicketPrinter::printSeat(Seat *seat , bool printRaw){
 		buffer << "Name: \t" RED << seat->getPerson()->getName() << RESET "\n";
 		buffer << "Price: " RED  << "\tR" << seat->getPerson()->getFee() << RESET "\n";
 	}
-	return buffer.str();
+	return  buffer.str();
 }
 
 std::string TicketPrinter::printAuditorium(Auditorium *auditorium , size_t x , size_t y , bool printRaw){
 	if (auditorium->getState(x, y) == SEAT_VOID)
 		return "";
-	std::stringstream buffer;
+	std::stringstream buffer("");
 	if(printRaw){
 		buffer << auditorium->getName() << " Ticket\n";
 		buffer << printSeat(auditorium->getSeat(x,y), printRaw);

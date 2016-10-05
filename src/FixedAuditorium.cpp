@@ -37,7 +37,7 @@ void FixedAuditorium::setState( size_t r, size_t c, short s){
 	fa->getValue(r , c)->setState(s);
 }
 
-bool FixedAuditorium::book(size_t r, size_t c){
+bool FixedAuditorium::book(Person *person , size_t r, size_t c){
 	if(!fa->checkBoundry(r, c))
 		return false;
 
@@ -45,6 +45,8 @@ bool FixedAuditorium::book(size_t r, size_t c){
 		return false;
 	else{
 		fa->getValue(r , c)->setState(SEAT_TAKEN);
+		fa->getValue(r, c)->bind(person);
+
 		seats++;
 	}
 	return true;
@@ -130,7 +132,7 @@ bool FixedAuditorium::bookAdv(size_t size){
 
 	if(spaceFound)
 		for(size_t c = 0  ; c  < size ; c++){
-			book(i,j-c);
+			book(NULL,i,j-c);
 
 		}
 
