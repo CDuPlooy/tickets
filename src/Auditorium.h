@@ -8,6 +8,7 @@
 #include "Seat.h"
 #include "Group.h"
 #include "Person.h"
+#include "AuditoriumMemento.h"
 //Class
 class Auditorium : public Object{
 protected:
@@ -42,7 +43,13 @@ public:
       virtual Seat *getSeat( size_t row, size_t column) = 0; /**<Returns the seat at x,y.*/
       virtual std::string dumpRaw() = 0; /**< Dumps the data table without additional colour codes*/
       virtual void dumpFile(std::string filename) = 0; /**< Dumps the auditorium to a file.*/
+	//Part of the memento implementation.
+	void enableMemento(bool value); /**< Disable or enables memento.*/
+	void createMemento();  /**< Creates a memento.*/
+	void deleteMemento();  /**< Destroys a memento.*/
+	AuditoriumMemento *getMemento();  /**< Returns a memento.*/
     private:
+	AuditoriumMemento *memento;
       std::string name;
 };
 #endif

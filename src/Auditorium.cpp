@@ -37,3 +37,25 @@ int Auditorium::compareTo(Object const &) const{
 void Auditorium::setState( size_t , size_t , short ){
 	return; //empty declaration
 }
+
+void Auditorium::enableMemento(bool value){
+	if(value){
+		deleteMemento();
+		createMemento();
+	}
+	else
+		deleteMemento();
+}
+
+void Auditorium::createMemento(){
+	memento = new AuditoriumMemento();
+	memento->bind(this);
+}
+
+void Auditorium::deleteMemento(){
+	delete memento;
+}
+
+AuditoriumMemento *Auditorium::getMemento(){
+	return memento;
+}
