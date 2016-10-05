@@ -25,12 +25,33 @@ u16169532
 #include "Pensioner.h"
 #include "TicketPrinter.h"
 #include "Seat.h"
+#include "Group.h"
 #include "Store.h"
 #include "Debug.h"
 
 using namespace std;
 
 int main(){
+	cout << "Testing groups!" << endl;
+	Minor *Billy = new Minor();
+	Billy->setName("Billy");
+	Adult *Timmy = new Adult();
+	Timmy->setName("Timmy");
+	Adult *Sally = new Adult();
+	Sally->setName("Sally");
+	Group *group = new Group();
+	group->push_back(Billy);
+	group->push_back(Timmy);
+	group->push_back(Sally);
+
+
+	FixedAuditorium *Brooklyn = new FixedAuditorium(5,5);
+	Brooklyn->bookAdv(*group);
+	Brooklyn->print(cout);
+
+	cout << "_____________DONE______________" << endl;
+
+
       cout << "Testing ticket printer!" << endl;
       TicketPrinter *tp = new TicketPrinter();
       FixedAuditorium *faA = new FixedAuditorium(2,2);
@@ -113,15 +134,6 @@ int main(){
       delete fa;
       cout << "_____________DONE______________" << endl;
 
-      cout << "Testing the fixed auditorium!" << endl;
-      DynamicAuditorium *fixedaudit = new DynamicAuditorium(5,5);
-      fixedaudit->bookAdv(5);
-      fixedaudit->book(NULL,1, 1);
-      fixedaudit->setVoid(0, 0, 3, false);
-      fixedaudit->print(cout);
-      std::cout << fixedaudit->dumpRaw() << std::endl;
-      delete fixedaudit;
-      cout << "_____________DONE______________" << endl;
 
 
       cout << "Testing the auditorium modeller!" << endl;

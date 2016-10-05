@@ -109,8 +109,9 @@ void DynamicAuditorium::setState( size_t r, size_t c, short s){
 	fa->getValue(r, c)->setState(s);
 }
 
-bool DynamicAuditorium::bookAdv(size_t size){
+bool DynamicAuditorium::bookAdv(Group &group){
 	size_t spaces = 0;
+	size_t counter = 0;
 
 	bool spaceFound = false;
 	size_t j;
@@ -126,7 +127,7 @@ bool DynamicAuditorium::bookAdv(size_t size){
 				continue;
 			}
 
-			if(spaces == size){
+			if(spaces == group.getSize()){
 				spaceFound = true;
 				break;
 			}
@@ -137,8 +138,8 @@ bool DynamicAuditorium::bookAdv(size_t size){
 	}
 
 	if(spaceFound)
-		for(size_t c = 0  ; c  < size ; c++){
-			book(NULL,i,j-c);
+		for(size_t c = 0  ; c  < group.getSize() ; c++){
+			book(group.at(counter++),i,j-c);
 		}
 	return spaceFound;
 }

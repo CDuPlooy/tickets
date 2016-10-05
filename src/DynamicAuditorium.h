@@ -25,15 +25,12 @@ public:
       bool findFree(size_t &, size_t &); /**< Finds the next free space in the auditorium.*/
       bool checkBoundry( size_t , size_t ); /**< Checks the boundry of rows and columns to given values.*/
       bool setVoid(size_t , size_t , size_t , bool );/**< Sets seats from one point to another to empty , can work horizontally or vertically.*/
-      bool  bookAdv(size_t size);/**< Books the first n open spaces.*/
+      bool bookAdv(Group &group); /**< Books the first n open spaces.*/
       void setState( size_t , size_t , short );/**< Sets the state of a particular seat.*/
       std::string dumpRaw();
       void dumpFile(std::string filename);
       short getState( size_t row, size_t column);
       Seat *getSeat( size_t row, size_t column);
-
-
-
 private:
       FixedSizeMatrix *fa;
       size_t seats;

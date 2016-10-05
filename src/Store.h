@@ -1,4 +1,7 @@
-//!  A class used as part of the adapter/iterator patterns.
+//!  Works as an iterator for all the containers.
+/*!
+      Binds People to a ListAsVector implementation.
+*/
 #ifndef STORE_H
 #define STORE_H
 #include "Object.h"

@@ -1,6 +1,8 @@
 #include <iostream>
 #include <fstream>
+
 #include "cColours.h"
+#include "Debug.h"
 #include "FixedAuditorium.h"
 #include "Seat.h"
 FixedAuditorium::FixedAuditorium(size_t _rows , size_t _columns){
@@ -102,8 +104,8 @@ bool FixedAuditorium::checkBoundry( size_t r, size_t c){
 	return fa->checkBoundry(r , c);
 }
 
-bool FixedAuditorium::bookAdv(size_t size){
-
+bool FixedAuditorium::bookAdv(Group &group){
+	size_t Counter = 0;
 	size_t spaces = 0;
 
 	bool spaceFound = false;
@@ -120,7 +122,7 @@ bool FixedAuditorium::bookAdv(size_t size){
 				continue;
 			}
 
-			if(spaces == size){
+			if(spaces  == group.getSize()){
 				spaceFound = true;
 				break;
 			}
@@ -131,9 +133,8 @@ bool FixedAuditorium::bookAdv(size_t size){
 	}
 
 	if(spaceFound)
-		for(size_t c = 0  ; c  < size ; c++){
-			book(NULL,i,j-c);
-
+		for(size_t c = 0  ; c  < group.getSize() ; c++){
+			book(group.at(Counter++),i,j-c);
 		}
 
 

@@ -25,7 +25,7 @@ public:
       bool findFree(size_t &, size_t &);
       bool checkBoundry( size_t , size_t );
       bool setVoid(size_t , size_t , size_t , bool );
-      bool bookAdv(size_t);
+      bool bookAdv(Group &group);
       void setState( size_t , size_t , short );
       std::string dumpRaw();
       void dumpFile(std::string filename);

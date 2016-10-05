@@ -1,3 +1,7 @@
+//!  Can model complexes.
+/*!
+      Creates groups of auditoriums.
+*/
 #ifndef AUDITORIUM_LIST_H
 #define AUDITORIUM_LIST_H
 #include "Object.h"
