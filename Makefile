@@ -7,10 +7,10 @@ DFLAGS = -ggdb
 
 .PHONY: documentation
 
-compile_bind_all: compile_nullObject compile_integer compile_list compile_listAsVector compile_listAsDynamicArray compile_NullPerson compile_container compile_Seat compile_listAsSLL compile_Person compile_Adult compile_Minor compile_Pensioner compile_listAsDLL compile_dynamicAuditorium compile_matrix compile_AuditoriumModeller compile_fixedSizeMatrix compile_fixedAuditorium compile_Auditorium compile_Store
+compile_bind_all: compile_nullObject compile_integer compile_list compile_listAsVector compile_listAsDynamicArray compile_NullPerson compile_container compile_Seat compile_listAsSLL compile_Person compile_Adult compile_Minor compile_Pensioner compile_listAsDLL compile_dynamicAuditorium compile_matrix compile_AuditoriumModeller compile_AuditoriumList compile_fixedSizeMatrix compile_fixedAuditorium compile_Auditorium compile_Store
 	@clear
 	@echo "Binding and linking . . ."
-	g++ src/NullObject.o src/Container.o src/Matrix.o src/FixedSizeMatrix.o src/Auditorium.o src/FixedAuditorium.o src/DynamicAuditorium.o src/AuditoriumModeller.o src/Seat.o src/Integer.o src/Person.o src/Minor.o src/Adult.o src/Pensioner.o src/NullPerson.o src/List.o src/ListAsDynamicArray.o src/ListAsVector.o src/ListAsSLL.o src/ListAsDLL.o  src/Store.o src/main.cpp -ggdb -o src/a.out -Wall
+	g++ src/NullObject.o src/Container.o src/Matrix.o src/FixedSizeMatrix.o src/Auditorium.o src/FixedAuditorium.o src/DynamicAuditorium.o src/AuditoriumModeller.o src/Seat.o src/Integer.o src/Person.o src/Minor.o src/Adult.o src/Pensioner.o src/NullPerson.o src/List.o src/ListAsDynamicArray.o src/ListAsVector.o src/ListAsSLL.o src/ListAsDLL.o  src/AuditoriumList.o src/Store.o src/main.cpp -ggdb -o src/a.out -Wall
 	@echo "\n"
 	@echo "Finished!"
 
@@ -46,6 +46,9 @@ compile_dynamicAuditorium:src/DynamicAuditorium.cpp src/DynamicAuditorium.h
 
 compile_Auditorium:src/Auditorium.cpp src/Auditorium.h
 	g++ -c src/Auditorium.cpp -o src/Auditorium.o ${FLAGS}
+
+compile_AuditoriumList: src/AuditoriumList.cpp src/AuditoriumList.h
+	g++ -c src/AuditoriumList.cpp -o src/AuditoriumList.o ${FLAGS}
 
 compile_AuditoriumModeller:src/AuditoriumModeller.cpp src/AuditoriumModeller.h
 	g++ -c src/AuditoriumModeller.cpp -o src/AuditoriumModeller.o ${FLAGS}
