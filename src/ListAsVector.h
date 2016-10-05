@@ -28,6 +28,7 @@ public:
       void next(); /**< Iterates to the next instance of Object in Container*/
       void previous();
       bool isAtEnd();
+      size_t getSize();
 
       //Unique Variables
 private:

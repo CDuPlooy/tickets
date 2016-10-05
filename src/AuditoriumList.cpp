@@ -12,3 +12,15 @@ void AuditoriumList::pop_back(){
 Auditorium *AuditoriumList::at(size_t i){
 	return (Auditorium *)complex.at(i);
 }
+
+AuditoriumList::~AuditoriumList(){
+
+}
+
+AuditoriumList::AuditoriumList(){
+
+}
+
+size_t AuditoriumList::getSize(){
+	return complex.getSize();
+}

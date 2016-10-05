@@ -17,6 +17,8 @@ u16169532
 #include "FixedAuditorium.h"
 #include "Container.h"
 #include "AuditoriumModeller.h"
+#include "AuditoriumDeveloper.h"
+#include "AuditoriumList.h"
 #include "cColours.h"
 #include "Seat.h"
 #include "Store.h"
@@ -25,6 +27,19 @@ u16169532
 using namespace std;
 
 int main(){
+      cout << "Testing AuditoriumList!" << endl;
+      AuditoriumList al;
+      FixedAuditorium brooklyn(5,5);
+      brooklyn.setName("Brooklyn");
+      DynamicAuditorium irene(5,5);
+      irene.setName("Irene");
+      al.push_back(&brooklyn);
+      al.push_back(&irene);
+      for(size_t i = 0 ; i < al.getSize() ; i++)
+            cout << al.at(i)->getName() << endl;
+      cout << "_____________DONE______________" << endl;
+
+
       cout << "Testing iterator ! " << endl;
       Store *itStore = new Store(CDLL);
       Person *Bob = new Person();
@@ -45,8 +60,7 @@ int main(){
       delete Bob;
       delete BobSeat;
       delete fixedaud;
-      D_PAUSE("Press any key to continue");
-      return 0;
+
 
       cout << "Testing the Store!" << endl;
       Store *store = new Store(CVECTOR);
@@ -57,8 +71,8 @@ int main(){
       store->push_back(b);
       store->next();
       cout  << "Seat should expand to" << "==>" << store->getCurrent()->getId() << std::endl;
-      store->pop_back();
       store->previous();
+      store->pop_back();
       cout << "Person should expand to" << "==>" << store->getCurrent()->getId() << std::endl;
 
       delete b;

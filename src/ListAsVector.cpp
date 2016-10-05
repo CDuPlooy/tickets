@@ -60,6 +60,11 @@ void ListAsVector::next(){
       current = objectVector->at(nCurrent++);
 }
 
+size_t ListAsVector::getSize(){
+      return objectVector->size();
+}
+
+
 void ListAsVector::previous(){
       current = objectVector->at(nCurrent--);
 }
