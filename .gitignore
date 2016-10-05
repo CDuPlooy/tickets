@@ -2,3 +2,7 @@
 a.out
 documentation/html
 documentation/latex
+Raw.txt
+motivations/*.aux
+motivations/*.log
+motivations/*.syntex.gz
