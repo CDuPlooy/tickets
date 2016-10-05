@@ -45,9 +45,13 @@ public:
       virtual void dumpFile(std::string filename) = 0; /**< Dumps the auditorium to a file.*/
 	//Part of the memento implementation.
 	void enableMemento(bool value); /**< Disable or enables memento.*/
+	bool mementoLinked();
 	void createMemento();  /**< Creates a memento.*/
 	void deleteMemento();  /**< Destroys a memento.*/
 	AuditoriumMemento *getMemento();  /**< Returns a memento.*/
+	void add_command(std::string); /**< Adds a command to the list.*/
+	void undo(); /**< Removes the command at the top of the list and executes it.*/
+
     private:
 	AuditoriumMemento *memento;
       std::string name;

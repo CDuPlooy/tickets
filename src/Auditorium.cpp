@@ -6,11 +6,12 @@
 
 #include "Auditorium.h"
 Auditorium::~Auditorium(){
-
+	if(memento)
+		deleteMemento();
 }
 
 Auditorium::Auditorium(){
-
+	memento = NULL;
 }
 
 //Overloaded Functions
@@ -51,11 +52,29 @@ void Auditorium::createMemento(){
 	memento = new AuditoriumMemento();
 	memento->bind(this);
 }
+bool Auditorium::mementoLinked(){
+	return memento;
+}
 
 void Auditorium::deleteMemento(){
-	delete memento;
+	if(memento)
+		delete memento;
 }
 
 AuditoriumMemento *Auditorium::getMemento(){
 	return memento;
+}
+
+
+
+void Auditorium::add_command(std::string command){
+	if(!memento)
+		return;
+	memento->add_command(command);
+}
+
+void Auditorium::undo(){
+	if(!memento)
+		return;
+	memento->undo();
 }

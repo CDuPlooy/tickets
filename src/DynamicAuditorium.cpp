@@ -52,6 +52,9 @@ bool DynamicAuditorium::book(Person *person ,  size_t r , size_t c ){
 		fa->getValue(r, c)->setState(SEAT_TAKEN);
 		fa->getValue(r, c)->bind(person);
 		seats++;
+		if(mementoLinked()){
+			add_command("book");
+		}
 	}
 	return true;
 }
@@ -73,7 +76,9 @@ void DynamicAuditorium::cancelBooking(size_t r , size_t c ){
 		return;
 	fa->getValue(r , c )->setState(SEAT_EMPTY);
 	fa->getValue(r , c )->bind(NULL);
-
+	if(mementoLinked()){
+		add_command("cancel");
+	}
 }
 
 bool DynamicAuditorium::checkBoundry( size_t r, size_t c){

@@ -50,6 +50,9 @@ bool FixedAuditorium::book(Person *person , size_t r, size_t c){
 		fa->getValue(r, c)->bind(person);
 
 		seats++;
+		if(mementoLinked()){
+			add_command("book");
+		}
 	}
 	return true;
 }
@@ -99,6 +102,9 @@ void FixedAuditorium::cancelBooking(size_t r , size_t c ){
 		return;
 	fa->getValue(r , c )->setState(SEAT_EMPTY);
 	fa->getValue(r , c )->bind(NULL);
+	if(mementoLinked()){
+		add_command("cancel");
+	}
 }
 
 bool FixedAuditorium::checkBoundry( size_t r, size_t c){

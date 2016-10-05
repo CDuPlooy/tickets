@@ -24,7 +24,9 @@ int AuditoriumMemento::compare(Object const &) const{
 }
 
 void AuditoriumMemento::print(std::ostream &out) const{
-	out << "AuditoriumMemento";
+	out << "Auditorium Memento Commands : " << std::endl;
+	for(size_t i = 0 ; i < commands.size() ; i++)
+		out <<  i+1  << ".) "<< commands.at(i) << std::endl;
 }
 
 std::string AuditoriumMemento::getId() const{
@@ -33,4 +35,19 @@ std::string AuditoriumMemento::getId() const{
 
 void AuditoriumMemento::bind(Auditorium *auditorium){
 	this->auditorium = auditorium;
+}
+
+void AuditoriumMemento::add_command(std::string command){
+	commands.push_back(command);
+}
+void AuditoriumMemento::undo(){
+	if(commands.size() == 0)
+		return;
+	std::string command = commands.at(commands.size());
+	commands.pop_back();
+	exec(command);
+}
+
+void AuditoriumMemento::exec(std::string command){
+//TODO: Implement the interpreter.
 }

@@ -32,6 +32,17 @@ u16169532
 using namespace std;
 
 int main(){
+	cout << "Testing memento!" << endl;
+	FixedAuditorium *memAud = new FixedAuditorium(5,5);
+	memAud->enableMemento(true);
+	memAud->book(NULL, 0, 0);
+	memAud->cancelBooking(0, 0);
+	memAud->enableMemento(true);
+	memAud->getMemento()->print(cout);
+	cout << "_____________DONE______________" << endl;
+	delete memAud;
+
+
 	cout << "Testing groups!" << endl;
 	Minor *Billy = new Minor();
 	Billy->setName("Billy");
@@ -50,7 +61,11 @@ int main(){
 	Brooklyn->print(cout);
 
 	cout << "_____________DONE______________" << endl;
-
+	delete Billy;
+	delete Timmy;
+	delete Sally;
+	delete group;
+	delete Brooklyn;
 
       cout << "Testing ticket printer!" << endl;
       TicketPrinter *tp = new TicketPrinter();
