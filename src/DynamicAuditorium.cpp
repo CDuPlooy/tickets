@@ -60,7 +60,7 @@ bool DynamicAuditorium::book(Person *person ,  size_t r , size_t c ){
 bool DynamicAuditorium::findFree(size_t &r, size_t &c){
 	for(size_t i = 0 ; i < fa->getRows() ; i++)
 		for(size_t j = 0 ; j < fa->getColumns() ; j++)
-			if(fa->getValue(i,j) == SEAT_EMPTY){
+			if(fa->getValue(i,j)->getState() == SEAT_EMPTY){
 				r = i;
 				c =j;
 				return true;
@@ -71,7 +71,9 @@ bool DynamicAuditorium::findFree(size_t &r, size_t &c){
 void DynamicAuditorium::cancelBooking(size_t r , size_t c ){
 	if(!checkBoundry(r, c))
 		return;
-	fa->setValue(r,c,SEAT_EMPTY);
+	fa->getValue(r , c )->setState(SEAT_EMPTY);
+	fa->getValue(r , c )->bind(NULL);
+
 }
 
 bool DynamicAuditorium::checkBoundry( size_t r, size_t c){

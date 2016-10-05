@@ -98,6 +98,7 @@ void FixedAuditorium::cancelBooking(size_t r , size_t c ){
 	if(!checkBoundry(r, c))
 		return;
 	fa->getValue(r , c )->setState(SEAT_EMPTY);
+	fa->getValue(r , c )->bind(NULL);
 }
 
 bool FixedAuditorium::checkBoundry( size_t r, size_t c){
