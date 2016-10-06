@@ -20,9 +20,18 @@ public:
 	void add_command(std::string); /**< Adds a command to the list.*/
 	void undo(); /**< Removes the command at the top of the list and executes it.*/
 	void exec(std::string command);/**< Executes a command.*/
+	void Unlock(){
+		spinLock = false;
+	}
+	void Lock(){
+		spinLock = true;
+	}
+	bool isLocked(){
+		return spinLock;
+	}
 private:
 	 std::string extract(std::string buffer , std::string begin , std::string end);/**< Extracts a substring.*/
-
+	 bool spinLock;
 	Auditorium *auditorium;
 	std::vector<std::string> commands;
 };

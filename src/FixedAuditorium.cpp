@@ -57,7 +57,7 @@ bool FixedAuditorium::book(Person *person , size_t r, size_t c){
 			buffer.append(person->toString());
 			buffer.append(fa->getValue(r , c)->toString());
 			buffer.append("Matrix{");
-			ss << "row:" << r << " column:" << c << " Matrix}";
+			ss << "Row:" << r << " Column:" << c << " Matrix}";
 			buffer.append(ss.str());
 			add_command(buffer);
 		}
@@ -117,7 +117,8 @@ void FixedAuditorium::cancelBooking(size_t r , size_t c ){
 		buffer.append(fa->getValue(r , c )->getPerson()->toString());
 		buffer.append(fa->getValue(r , c)->toString());
 		buffer.append("Matrix{");
-		ss << "row:" << r << " column:" << c << " Matrix}";
+		ss << "Row:" << r << " Column:" << c << " Matrix}";
+		//book Person{Type:Minor Name:Billy Age:0 Fee:21.5 Person}Seat{State:1 Seat}Matrix{row:0 column:2 Matrix}
 		buffer.append(ss.str());
 		add_command(buffer);
 	}

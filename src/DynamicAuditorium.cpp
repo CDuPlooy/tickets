@@ -59,7 +59,7 @@ bool DynamicAuditorium::book(Person *person ,  size_t r , size_t c ){
 			buffer.append(person->toString());
 			buffer.append(fa->getValue(r , c)->toString());
 			buffer.append("Matrix{");
-			ss << "row:" << r << " column:" << c << " Matrix}";
+			ss << "Row:" << r << " Column:" << c << " Matrix}";
 			buffer.append(ss.str());
 			add_command(buffer);
 		}
@@ -91,7 +91,7 @@ void DynamicAuditorium::cancelBooking(size_t r , size_t c ){
 		buffer.append(fa->getValue(r , c )->getPerson()->toString());
 		buffer.append(fa->getValue(r , c)->toString());
 		buffer.append("Matrix{");
-		ss << "row:" << r << " column:" << c << " Matrix}";
+		ss << "Row:" << r << " Column:" << c << " Matrix}";
 		buffer.append(ss.str());
 		add_command(buffer);
 	}

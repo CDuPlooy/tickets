@@ -32,28 +32,13 @@ u16169532
 using namespace std;
 
 int main(){
-	cout << "Testing memento!" << endl;
-	FixedAuditorium *memAud = new FixedAuditorium(5,5);
-	memAud->enableMemento(true);
-	Minor *Kathy = new Minor();
-	Kathy->setName("Kathy");
-	memAud->book(Kathy, 0, 0);
-	cout << "Making a booking." << endl;
-	memAud->getMemento()->print(cout);
-	memAud->print(cout);
-	cout << "Undo the booking." << endl;
-	memAud->undo();
-
-	memAud->print(cout);
-	cout << "_____________DONE______________" << endl;
-	delete memAud;
 
 	cout << "Testing groups!" << endl;
 	Minor *Billy = new Minor();
 	Billy->setName("Billy");
-	Adult *Timmy = new Adult();
+	Minor *Timmy = new Minor();
 	Timmy->setName("Timmy");
-	Adult *Sally = new Adult();
+	Minor *Sally = new Minor();
 	Sally->setName("Sally");
 	Group *group = new Group();
 	group->push_back(Billy);
@@ -62,7 +47,16 @@ int main(){
 
 
 	FixedAuditorium *Brooklyn = new FixedAuditorium(5,5);
+	Brooklyn->enableMemento(true);
 	Brooklyn->bookAdv(*group);
+	Brooklyn->getMemento()->print(cout);
+
+	Brooklyn->undo();
+	Brooklyn->getMemento()->print(cout);
+	Brooklyn->undo();
+	Brooklyn->getMemento()->print(cout);
+
+
 	Brooklyn->print(cout);
 
 	cout << "_____________DONE______________" << endl;
@@ -71,6 +65,27 @@ int main(){
 	delete Sally;
 	delete group;
 	delete Brooklyn;
+
+	cout << "Testing memento!" << endl;
+	FixedAuditorium *memAud = new FixedAuditorium(5,5);
+	memAud->enableMemento(true);
+	Minor *Kathy = new Minor();
+	Kathy->setName("Kathy");
+	memAud->getMemento()->print(cout);
+	memAud->book(Kathy, 0, 0);
+	cout << "Making a booking." << endl;
+	memAud->getMemento()->print(cout);
+	memAud->print(cout);
+	cout << "Undo the booking." << endl;
+	memAud->undo();
+	memAud->undo();
+	memAud->getMemento()->print(cout);
+
+	memAud->print(cout);
+	cout << "_____________DONE______________" << endl;
+	delete memAud;
+
+
 
       cout << "Testing ticket printer!" << endl;
       TicketPrinter *tp = new TicketPrinter();
