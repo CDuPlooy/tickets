@@ -17,7 +17,7 @@ public:
       void print(std::ostream & = std::cout) const;
       std::string getId() const;
       //Unique Functions
-
+	std::string toString();
 private:
 
 };

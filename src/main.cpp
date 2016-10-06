@@ -37,7 +37,6 @@ int main(){
 	memAud->enableMemento(true);
 	memAud->book(NULL, 0, 0);
 	memAud->cancelBooking(0, 0);
-	memAud->enableMemento(true);
 	memAud->getMemento()->print(cout);
 	cout << "_____________DONE______________" << endl;
 	delete memAud;
@@ -97,7 +96,7 @@ int main(){
 
       cout << "Testing iterator ! " << endl;
       Store *itStore = new Store(CDLL);
-      Person *Bob = new Person();
+      Minor *Bob = new Minor();
       Seat *BobSeat = new Seat(Bob);
       FixedAuditorium *fixedaud = new FixedAuditorium(5,5);
       itStore->push_back(Bob);
@@ -119,7 +118,7 @@ int main(){
 
       cout << "Testing the Store!" << endl;
       Store *store = new Store(CVECTOR);
-      Person *a = new Person();
+      Person *a = new Minor();
       Seat *b = new Seat(a);
       store->push_back(a);
       cout << "Person should expand to" << "==>" << store->getCurrent()->getId() << std::endl;
@@ -138,7 +137,7 @@ int main(){
 
       cout << "Testing the fixed size matrix!" << endl;
       FixedSizeMatrix *fa = new FixedSizeMatrix(5,5);
-      Person person;
+      Minor person;
       Seat *seat = new Seat(&person);
       seat->bind(&person);
       cout << "\tTesting pushback" << endl;

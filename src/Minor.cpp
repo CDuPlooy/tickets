@@ -1,4 +1,6 @@
 #include "Minor.h"
+#include <sstream>
+
 Minor::~Minor(){
 
 }
@@ -26,4 +28,10 @@ std::string Minor::getId() const{
 
 int Minor::compareTo(Object const &) const{
 	return 1;
+}
+
+std::string Minor::toString(){
+	std::stringstream buffer;
+	buffer <<  "Name:" << getName() << " Age:" << getAge() << " Fee:" << getFee();
+	return buffer.str();
 }

@@ -25,16 +25,19 @@ public:
       void setColumn(size_t column); /**< Sets the column that the person booked a seat in.*/
       size_t getColunn();/**< Returns the column that the person booked a seat in.*/
       void setAge(unsigned short age);/**< Sets a person's age.*/
+	unsigned short getAge(){/**< Returns a person's age.*/
+		return age;
+	}
       float getFee();/**< Gets the fee that a person has to pay.*/
       void setFee(float fee); /**< Sets the fee that a person has to pay.*/
       std::string getName(){
           return name;
       }
-
-
       void setName(std::string name){
           this->name = name;
       }
+	virtual std::string toString() = 0;
+
 private:
       std::string name;
       unsigned short age;

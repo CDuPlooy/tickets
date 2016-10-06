@@ -1,4 +1,5 @@
 #include "Pensioner.h"
+#include <sstream>
 Pensioner::~Pensioner(){
 
 }
@@ -26,4 +27,10 @@ std::string Pensioner::getId() const{
 
 int Pensioner::compareTo(Object const &) const{
 	return 1;
+}
+
+std::string Pensioner::toString(){
+	std::stringstream buffer;
+	buffer <<  "Name:" << getName() << " Age:" << getAge() << " Fee:" << getFee();
+	return buffer.str();
 }

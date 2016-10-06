@@ -1,4 +1,5 @@
 #include "Adult.h"
+#include <sstream>
 Adult::~Adult(){
 
 }
@@ -27,4 +28,10 @@ std::string Adult::getId() const{
 
 int Adult::compareTo(Object const &) const{
 	return 1;
+}
+
+std::string Adult::toString(){
+	std::stringstream buffer;
+	buffer <<  "Name:" << getName() << " Age:" << getAge() << " Fee:" << getFee();
+	return buffer.str();
 }
