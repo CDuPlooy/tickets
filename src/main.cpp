@@ -35,7 +35,9 @@ int main(){
 	cout << "Testing memento!" << endl;
 	FixedAuditorium *memAud = new FixedAuditorium(5,5);
 	memAud->enableMemento(true);
-	memAud->book(NULL, 0, 0);
+	Minor *Kathy = new Minor();
+	Kathy->setName("Kathy");
+	memAud->book(Kathy, 0, 0);
 	memAud->cancelBooking(0, 0);
 	memAud->getMemento()->print(cout);
 	cout << "_____________DONE______________" << endl;

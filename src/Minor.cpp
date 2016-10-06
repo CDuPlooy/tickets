@@ -32,6 +32,6 @@ int Minor::compareTo(Object const &) const{
 
 std::string Minor::toString(){
 	std::stringstream buffer;
-	buffer <<  "Name:" << getName() << " Age:" << getAge() << " Fee:" << getFee();
+	buffer <<  "Person{Name:" << getName() << " Age:" << getAge() << " Fee:" << getFee() << '}';
 	return buffer.str();
 }

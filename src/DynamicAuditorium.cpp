@@ -1,4 +1,5 @@
 #include <fstream>
+#include <sstream>
 #include "DynamicAuditorium.h"
 #include "cColours.h"
 #include "Seat.h"
@@ -53,7 +54,14 @@ bool DynamicAuditorium::book(Person *person ,  size_t r , size_t c ){
 		fa->getValue(r, c)->bind(person);
 		seats++;
 		if(mementoLinked()){
-			add_command("book");
+			std::string buffer("book ");
+			std::stringstream ss;
+			buffer.append(person->toString());
+			buffer.append(fa->getValue(r , c)->toString());
+			buffer.append("Matrix{");
+			ss << "row:" << r << " column:" << c << '}';
+			buffer.append(ss.str());
+			add_command(buffer);
 		}
 	}
 	return true;
@@ -75,10 +83,19 @@ void DynamicAuditorium::cancelBooking(size_t r , size_t c ){
 	if(!checkBoundry(r, c))
 		return;
 	fa->getValue(r , c )->setState(SEAT_EMPTY);
-	fa->getValue(r , c )->bind(NULL);
+
 	if(mementoLinked()){
-		add_command("cancel");
+		std::string buffer;
+		std::stringstream ss;
+		buffer.append("cancel ");
+		buffer.append(fa->getValue(r , c )->getPerson()->toString());
+		buffer.append(fa->getValue(r , c)->toString());
+		buffer.append("Matrix{");
+		ss << "row:" << r << " column:" << c << '}';
+		buffer.append(ss.str());
+		add_command(buffer);
 	}
+	fa->getValue(r , c )->bind(NULL);
 }
 
 bool DynamicAuditorium::checkBoundry( size_t r, size_t c){

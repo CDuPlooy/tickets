@@ -1,3 +1,4 @@
+#include <sstream>
 #include "Seat.h"
 #include "Debug.h"
 int Seat::compareTo(Object const &seat) const{
@@ -45,4 +46,10 @@ short Seat::getState(){
 void Seat::bind(Person *aPerson){
 	person = aPerson;
 	setState(SEAT_TAKEN);
+}
+
+std::string Seat::toString(){
+	std::stringstream buffer("");
+	buffer << "Seat{" << "State:" << getState() << '}';
+	return buffer.str();
 }

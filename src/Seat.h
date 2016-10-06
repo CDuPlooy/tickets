@@ -31,6 +31,7 @@ public:
       short getState(); /**< Returns the seat state..*/
       void bind(Person *aPerson); /**< Binds a person to a seat.*/
       Person *getPerson(); /**< Returns the person associated with the seat.*/
+	std::string toString();
 private:
       short state;
       Person *person;
