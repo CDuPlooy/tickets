@@ -40,6 +40,8 @@ int main(){
 	memAud->book(Kathy, 0, 0);
 	memAud->cancelBooking(0, 0);
 	memAud->getMemento()->print(cout);
+	memAud->getMemento()->undo();
+	memAud->getMemento()->print(cout);
 	cout << "_____________DONE______________" << endl;
 	delete memAud;
 

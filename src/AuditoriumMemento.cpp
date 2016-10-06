@@ -1,4 +1,5 @@
 #include "AuditoriumMemento.h"
+#include "Debug.h"
 
 int AuditoriumMemento::compareTo(Object const &) const{
 	return 1;
@@ -43,7 +44,7 @@ void AuditoriumMemento::add_command(std::string command){
 void AuditoriumMemento::undo(){
 	if(commands.size() == 0)
 		return;
-	std::string command = commands.at(commands.size());
+	std::string command = commands.at(commands.size()-1);
 	commands.pop_back();
 	exec(command);
 }
