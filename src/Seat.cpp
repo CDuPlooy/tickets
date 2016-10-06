@@ -50,6 +50,6 @@ void Seat::bind(Person *aPerson){
 
 std::string Seat::toString(){
 	std::stringstream buffer("");
-	buffer << "Seat{" << "State:" << getState() << '}';
+	buffer << "Seat{" << "State:" << getState() << " Seat}";
 	return buffer.str();
 }

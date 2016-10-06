@@ -31,6 +31,7 @@ int Pensioner::compareTo(Object const &) const{
 
 std::string Pensioner::toString(){
 	std::stringstream buffer;
-	buffer <<  "Name:" << getName() << " Age:" << getAge() << " Fee:" << getFee();
+	buffer <<  "Person{Type:" << getId() << " Name:" << getName() << " Age:" << getAge() << " Fee:" << getFee()<<" Person}";
+
 	return buffer.str();
 }

@@ -21,6 +21,8 @@ public:
 	void undo(); /**< Removes the command at the top of the list and executes it.*/
 	void exec(std::string command);/**< Executes a command.*/
 private:
+	 std::string extract(std::string buffer , std::string begin , std::string end);/**< Extracts a substring.*/
+
 	Auditorium *auditorium;
 	std::vector<std::string> commands;
 };

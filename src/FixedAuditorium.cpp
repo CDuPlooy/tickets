@@ -57,7 +57,7 @@ bool FixedAuditorium::book(Person *person , size_t r, size_t c){
 			buffer.append(person->toString());
 			buffer.append(fa->getValue(r , c)->toString());
 			buffer.append("Matrix{");
-			ss << "row:" << r << " column:" << c << '}';
+			ss << "row:" << r << " column:" << c << " Matrix}";
 			buffer.append(ss.str());
 			add_command(buffer);
 		}
@@ -117,11 +117,13 @@ void FixedAuditorium::cancelBooking(size_t r , size_t c ){
 		buffer.append(fa->getValue(r , c )->getPerson()->toString());
 		buffer.append(fa->getValue(r , c)->toString());
 		buffer.append("Matrix{");
-		ss << "row:" << r << " column:" << c << '}';
+		ss << "row:" << r << " column:" << c << " Matrix}";
 		buffer.append(ss.str());
 		add_command(buffer);
 	}
 	fa->getValue(r , c )->bind(NULL);
+	fa->getValue(r , c )->setState(SEAT_EMPTY);
+
 }
 
 bool FixedAuditorium::checkBoundry( size_t r, size_t c){

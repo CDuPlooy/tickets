@@ -38,13 +38,15 @@ int main(){
 	Minor *Kathy = new Minor();
 	Kathy->setName("Kathy");
 	memAud->book(Kathy, 0, 0);
-	memAud->cancelBooking(0, 0);
+	cout << "Making a booking." << endl;
 	memAud->getMemento()->print(cout);
-	memAud->getMemento()->undo();
-	memAud->getMemento()->print(cout);
+	memAud->print(cout);
+	cout << "Undo the booking." << endl;
+	memAud->undo();
+
+	memAud->print(cout);
 	cout << "_____________DONE______________" << endl;
 	delete memAud;
-
 
 	cout << "Testing groups!" << endl;
 	Minor *Billy = new Minor();

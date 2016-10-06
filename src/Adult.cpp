@@ -32,6 +32,6 @@ int Adult::compareTo(Object const &) const{
 
 std::string Adult::toString(){
 	std::stringstream buffer;
-	buffer <<  "Person{Name:" << getName() << " Age:" << getAge() << " Fee:" << getFee()<<'}';
+	buffer <<  "Person{Type:" << getId() << " Name:" << getName() << " Age:" << getAge() << " Fee:" << getFee()<<" Person}";
 	return buffer.str();
 }
