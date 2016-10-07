@@ -54,6 +54,8 @@ int main(){
 	Brooklyn->undo();
 	Brooklyn->getMemento()->print(cout);
 	Brooklyn->undo();
+	Brooklyn->undo();
+	
 	Brooklyn->getMemento()->print(cout);
 
 

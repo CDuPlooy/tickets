@@ -58,4 +58,4 @@ public:
 };
 #endif
 
-//TODO: Add functionality to save seat states.
+//Auditoriums dump to files not to save people , but  rather to save a template of itself.

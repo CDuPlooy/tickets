@@ -58,10 +58,6 @@ void AuditoriumMemento::undo(){
 }
 
 void AuditoriumMemento::exec(std::string command){
-	//TODO: Implement the interpreter.
-	//Person{Name:Kathy Age:0 Fee:21.5}Seat{State:0}Matrix{row:0 column:0}
-	//If command == book
-	//	cancelBooking
 	std::string com("");
 	size_t i = 0;
 	for( ; i < command.size() ; i++)
@@ -108,7 +104,7 @@ void AuditoriumMemento::exec(std::string command){
 }
 
 std::string AuditoriumMemento::extract(std::string buffer , std::string begin , std::string end){
-		//TODO: if start is greater than end , parse ahead in buffer and find end again
+
 		std::string retbuffer;
 		size_t startPos = buffer.find(begin);
 		if( startPos == -1)
@@ -131,4 +127,3 @@ std::string AuditoriumMemento::extract(std::string buffer , std::string begin , 
 			retbuffer.push_back(buffer[i]);
 		return retbuffer;
 }
-//TODO: Have a spinlock so that when memento calls add or cancel it does not add itself to the command list.
