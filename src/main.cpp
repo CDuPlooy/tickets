@@ -30,8 +30,15 @@ u16169532
 #include "Debug.h"
 
 using namespace std;
+bool guiMode;
 
-int main(){
+int main( int argc , char **argv ){
+	if(argc <= 1)
+		guiMode = 0;
+	else
+		guiMode = 1;
+
+	cout << RED "tickets - COS121 ;\nGui: " << guiMode << RESET << endl;
 
 	cout << "Testing groups!" << endl;
 	Minor *Billy = new Minor();
@@ -55,7 +62,7 @@ int main(){
 	Brooklyn->getMemento()->print(cout);
 	Brooklyn->undo();
 	Brooklyn->undo();
-	
+
 	Brooklyn->getMemento()->print(cout);
 
 
@@ -94,6 +101,7 @@ int main(){
       FixedAuditorium *faA = new FixedAuditorium(2,2);
       faA->setName("Brooklyn");
       Minor *personA = new Minor();
+	personA->setName("Flappy");
       faA->book(personA,0, 0);
 
       cout << tp->printAuditorium(faA,0,0,false) << endl;
@@ -128,7 +136,7 @@ int main(){
       Object *object = itStore->getCurrent();
 
       while( itStore->isAtEnd() == false ){
-            D_MSG(object->getId());
+      cout << object->getId() << endl;
             itStore->next();
             object = itStore->getCurrent();
       }
@@ -144,13 +152,13 @@ int main(){
       Person *a = new Minor();
       Seat *b = new Seat(a);
       store->push_back(a);
-      cout << "Person should expand to" << "==>" << store->getCurrent()->getId() << std::endl;
+      cout << "Minor should expand to" << "==>" << store->getCurrent()->getId() << std::endl;
       store->push_back(b);
       store->next();
       cout  << "Seat should expand to" << "==>" << store->getCurrent()->getId() << std::endl;
       store->previous();
       store->pop_back();
-      cout << "Person should expand to" << "==>" << store->getCurrent()->getId() << std::endl;
+      cout << "Minor should expand to" << "==>" << store->getCurrent()->getId() << std::endl;
 
       delete b;
       delete store;
