@@ -57,5 +57,5 @@ void MainWindow::on_btnAdd_clicked()
 
 void MainWindow::on_btnBook_clicked()
 {
-
+    FixedAuditorium fa(5,5);
 }

@@ -48,9 +48,63 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../tickets/main.cpp \
+SOURCES       = ../../src/Adult.cpp \
+		../../src/Auditorium.cpp \
+		../../src/AuditoriumDeveloper.cpp \
+		../../src/AuditoriumList.cpp \
+		../../src/AuditoriumMemento.cpp \
+		../../src/AuditoriumModeller.cpp \
+		../../src/Container.cpp \
+		../../src/DynamicAuditorium.cpp \
+		../../src/FixedAuditorium.cpp \
+		../../src/FixedSizeMatrix.cpp \
+		../../src/Group.cpp \
+		../../src/Integer.cpp \
+		../../src/List.cpp \
+		../../src/ListAsDLL.cpp \
+		../../src/ListAsDynamicArray.cpp \
+		../../src/ListAsSLL.cpp \
+		../../src/ListAsVector.cpp \
+		../../src/main.cpp \
+		../../src/Matrix.cpp \
+		../../src/Minor.cpp \
+		../../src/NullObject.cpp \
+		../../src/NullPerson.cpp \
+		../../src/Pensioner.cpp \
+		../../src/Person.cpp \
+		../../src/Seat.cpp \
+		../../src/Store.cpp \
+		../../src/TicketPrinter.cpp \
+		../tickets/main.cpp \
 		../tickets/mainwindow.cpp moc_mainwindow.cpp
-OBJECTS       = main.o \
+OBJECTS       = Adult.o \
+		Auditorium.o \
+		AuditoriumDeveloper.o \
+		AuditoriumList.o \
+		AuditoriumMemento.o \
+		AuditoriumModeller.o \
+		Container.o \
+		DynamicAuditorium.o \
+		FixedAuditorium.o \
+		FixedSizeMatrix.o \
+		Group.o \
+		Integer.o \
+		List.o \
+		ListAsDLL.o \
+		ListAsDynamicArray.o \
+		ListAsSLL.o \
+		ListAsVector.o \
+		main.o \
+		Matrix.o \
+		Minor.o \
+		NullObject.o \
+		NullPerson.o \
+		Pensioner.o \
+		Person.o \
+		Seat.o \
+		Store.o \
+		TicketPrinter.o \
+		main.o \
 		mainwindow.o \
 		moc_mainwindow.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
@@ -108,7 +162,66 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exceptions.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
-		../tickets/tickets.pro ../tickets/mainwindow.h ../tickets/main.cpp \
+		../tickets/tickets.pro ../../src/Adult.h \
+		../../src/Auditorium.h \
+		../../src/AuditoriumDeveloper.h \
+		../../src/AuditoriumList.h \
+		../../src/AuditoriumMemento.h \
+		../../src/AuditoriumModeller.h \
+		../../src/cColours.h \
+		../../src/Container.h \
+		../../src/Debug.h \
+		../../src/DynamicAuditorium.h \
+		../../src/FixedAuditorium.h \
+		../../src/FixedSizeMatrix.h \
+		../../src/Group.h \
+		../../src/Integer.h \
+		../../src/List.h \
+		../../src/ListAsDLL.h \
+		../../src/ListAsDynamicArray.h \
+		../../src/ListAsSLL.h \
+		../../src/ListAsVector.h \
+		../../src/Matrix.h \
+		../../src/Minor.h \
+		../../src/Node.h \
+		../../src/NodeDouble.h \
+		../../src/NullObject.h \
+		../../src/NullPerson.h \
+		../../src/Object.h \
+		../../src/Pensioner.h \
+		../../src/Person.h \
+		../../src/Seat.h \
+		../../src/Store.h \
+		../../src/TicketPrinter.h \
+		../../src/tickets_includes.h \
+		../tickets/mainwindow.h ../../src/Adult.cpp \
+		../../src/Auditorium.cpp \
+		../../src/AuditoriumDeveloper.cpp \
+		../../src/AuditoriumList.cpp \
+		../../src/AuditoriumMemento.cpp \
+		../../src/AuditoriumModeller.cpp \
+		../../src/Container.cpp \
+		../../src/DynamicAuditorium.cpp \
+		../../src/FixedAuditorium.cpp \
+		../../src/FixedSizeMatrix.cpp \
+		../../src/Group.cpp \
+		../../src/Integer.cpp \
+		../../src/List.cpp \
+		../../src/ListAsDLL.cpp \
+		../../src/ListAsDynamicArray.cpp \
+		../../src/ListAsSLL.cpp \
+		../../src/ListAsVector.cpp \
+		../../src/main.cpp \
+		../../src/Matrix.cpp \
+		../../src/Minor.cpp \
+		../../src/NullObject.cpp \
+		../../src/NullPerson.cpp \
+		../../src/Pensioner.cpp \
+		../../src/Person.cpp \
+		../../src/Seat.cpp \
+		../../src/Store.cpp \
+		../../src/TicketPrinter.cpp \
+		../tickets/main.cpp \
 		../tickets/mainwindow.cpp
 QMAKE_TARGET  = tickets
 DESTDIR       = #avoid trailing-slash linebreak
@@ -273,8 +386,8 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents ../tickets/mainwindow.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../tickets/main.cpp ../tickets/mainwindow.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../../src/Adult.h ../../src/Auditorium.h ../../src/AuditoriumDeveloper.h ../../src/AuditoriumList.h ../../src/AuditoriumMemento.h ../../src/AuditoriumModeller.h ../../src/cColours.h ../../src/Container.h ../../src/Debug.h ../../src/DynamicAuditorium.h ../../src/FixedAuditorium.h ../../src/FixedSizeMatrix.h ../../src/Group.h ../../src/Integer.h ../../src/List.h ../../src/ListAsDLL.h ../../src/ListAsDynamicArray.h ../../src/ListAsSLL.h ../../src/ListAsVector.h ../../src/Matrix.h ../../src/Minor.h ../../src/Node.h ../../src/NodeDouble.h ../../src/NullObject.h ../../src/NullPerson.h ../../src/Object.h ../../src/Pensioner.h ../../src/Person.h ../../src/Seat.h ../../src/Store.h ../../src/TicketPrinter.h ../../src/tickets_includes.h ../tickets/mainwindow.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../../src/Adult.cpp ../../src/Auditorium.cpp ../../src/AuditoriumDeveloper.cpp ../../src/AuditoriumList.cpp ../../src/AuditoriumMemento.cpp ../../src/AuditoriumModeller.cpp ../../src/Container.cpp ../../src/DynamicAuditorium.cpp ../../src/FixedAuditorium.cpp ../../src/FixedSizeMatrix.cpp ../../src/Group.cpp ../../src/Integer.cpp ../../src/List.cpp ../../src/ListAsDLL.cpp ../../src/ListAsDynamicArray.cpp ../../src/ListAsSLL.cpp ../../src/ListAsVector.cpp ../../src/main.cpp ../../src/Matrix.cpp ../../src/Minor.cpp ../../src/NullObject.cpp ../../src/NullPerson.cpp ../../src/Pensioner.cpp ../../src/Person.cpp ../../src/Seat.cpp ../../src/Store.cpp ../../src/TicketPrinter.cpp ../tickets/main.cpp ../tickets/mainwindow.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../tickets/mainwindow.ui $(DISTDIR)/
 
 
@@ -301,7 +414,17 @@ compiler_rcc_clean:
 compiler_moc_header_make_all: moc_mainwindow.cpp
 compiler_moc_header_clean:
 	-$(DEL_FILE) moc_mainwindow.cpp
-moc_mainwindow.cpp: ../tickets/mainwindow.h
+moc_mainwindow.cpp: ../../src/FixedAuditorium.h \
+		../../src/Object.h \
+		../../src/Auditorium.h \
+		../../src/Seat.h \
+		../../src/Person.h \
+		../../src/Group.h \
+		../../src/AuditoriumMemento.h \
+		../../src/FixedSizeMatrix.h \
+		../../src/Matrix.h \
+		../../src/Container.h \
+		../tickets/mainwindow.h
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-clang -I/home/grim/Documents/Programming/University/COS121/tickets/Qt/tickets -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../tickets/mainwindow.h -o moc_mainwindow.cpp
 
 compiler_moc_source_make_all:
@@ -322,11 +445,287 @@ compiler_clean: compiler_moc_header_clean compiler_uic_clean
 
 ####### Compile
 
-main.o: ../tickets/main.cpp ../tickets/mainwindow.h
+Adult.o: ../../src/Adult.cpp ../../src/Adult.h \
+		../../src/Person.h \
+		../../src/Object.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Adult.o ../../src/Adult.cpp
+
+Auditorium.o: ../../src/Auditorium.cpp ../../src/Auditorium.h \
+		../../src/Object.h \
+		../../src/Seat.h \
+		../../src/Person.h \
+		../../src/Group.h \
+		../../src/AuditoriumMemento.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Auditorium.o ../../src/Auditorium.cpp
+
+AuditoriumDeveloper.o: ../../src/AuditoriumDeveloper.cpp ../../src/AuditoriumDeveloper.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o AuditoriumDeveloper.o ../../src/AuditoriumDeveloper.cpp
+
+AuditoriumList.o: ../../src/AuditoriumList.cpp ../../src/Auditorium.h \
+		../../src/Object.h \
+		../../src/Seat.h \
+		../../src/Person.h \
+		../../src/Group.h \
+		../../src/AuditoriumMemento.h \
+		../../src/AuditoriumList.h \
+		../../src/ListAsVector.h \
+		../../src/List.h \
+		../../src/Container.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o AuditoriumList.o ../../src/AuditoriumList.cpp
+
+AuditoriumMemento.o: ../../src/AuditoriumMemento.cpp ../../src/AuditoriumMemento.h \
+		../../src/Object.h \
+		../../src/Auditorium.h \
+		../../src/Seat.h \
+		../../src/Person.h \
+		../../src/Group.h \
+		../../src/Minor.h \
+		../../src/Adult.h \
+		../../src/Pensioner.h \
+		../../src/Debug.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o AuditoriumMemento.o ../../src/AuditoriumMemento.cpp
+
+AuditoriumModeller.o: ../../src/AuditoriumModeller.cpp ../../src/AuditoriumModeller.h \
+		../../src/Object.h \
+		../../src/Auditorium.h \
+		../../src/Seat.h \
+		../../src/Person.h \
+		../../src/Group.h \
+		../../src/AuditoriumMemento.h \
+		../../src/DynamicAuditorium.h \
+		../../src/FixedSizeMatrix.h \
+		../../src/Matrix.h \
+		../../src/Container.h \
+		../../src/FixedAuditorium.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o AuditoriumModeller.o ../../src/AuditoriumModeller.cpp
+
+Container.o: ../../src/Container.cpp ../../src/Container.h \
+		../../src/Object.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Container.o ../../src/Container.cpp
+
+DynamicAuditorium.o: ../../src/DynamicAuditorium.cpp ../../src/DynamicAuditorium.h \
+		../../src/Object.h \
+		../../src/Auditorium.h \
+		../../src/Seat.h \
+		../../src/Person.h \
+		../../src/Group.h \
+		../../src/AuditoriumMemento.h \
+		../../src/FixedSizeMatrix.h \
+		../../src/Matrix.h \
+		../../src/Container.h \
+		../../src/cColours.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o DynamicAuditorium.o ../../src/DynamicAuditorium.cpp
+
+FixedAuditorium.o: ../../src/FixedAuditorium.cpp ../../src/cColours.h \
+		../../src/Debug.h \
+		../../src/FixedAuditorium.h \
+		../../src/Object.h \
+		../../src/Auditorium.h \
+		../../src/Seat.h \
+		../../src/Person.h \
+		../../src/Group.h \
+		../../src/AuditoriumMemento.h \
+		../../src/FixedSizeMatrix.h \
+		../../src/Matrix.h \
+		../../src/Container.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o FixedAuditorium.o ../../src/FixedAuditorium.cpp
+
+FixedSizeMatrix.o: ../../src/FixedSizeMatrix.cpp ../../src/Matrix.h \
+		../../src/Object.h \
+		../../src/Container.h \
+		../../src/Seat.h \
+		../../src/Person.h \
+		../../src/FixedSizeMatrix.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o FixedSizeMatrix.o ../../src/FixedSizeMatrix.cpp
+
+Group.o: ../../src/Group.cpp ../../src/Group.h \
+		../../src/Object.h \
+		../../src/Person.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Group.o ../../src/Group.cpp
+
+Integer.o: ../../src/Integer.cpp ../../src/Integer.h \
+		../../src/Object.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Integer.o ../../src/Integer.cpp
+
+List.o: ../../src/List.cpp ../../src/List.h \
+		../../src/Object.h \
+		../../src/Container.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o List.o ../../src/List.cpp
+
+ListAsDLL.o: ../../src/ListAsDLL.cpp ../../src/Debug.h \
+		../../src/Object.h \
+		../../src/ListAsDLL.h \
+		../../src/ListAsSLL.h \
+		../../src/List.h \
+		../../src/Container.h \
+		../../src/Node.h \
+		../../src/NodeDouble.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ListAsDLL.o ../../src/ListAsDLL.cpp
+
+ListAsDynamicArray.o: ../../src/ListAsDynamicArray.cpp ../../src/ListAsDynamicArray.h \
+		../../src/List.h \
+		../../src/Object.h \
+		../../src/Container.h \
+		../../src/FixedSizeMatrix.h \
+		../../src/Matrix.h \
+		../../src/Seat.h \
+		../../src/Person.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ListAsDynamicArray.o ../../src/ListAsDynamicArray.cpp
+
+ListAsSLL.o: ../../src/ListAsSLL.cpp ../../src/Object.h \
+		../../src/ListAsSLL.h \
+		../../src/List.h \
+		../../src/Container.h \
+		../../src/Node.h \
+		../../src/Debug.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ListAsSLL.o ../../src/ListAsSLL.cpp
+
+ListAsVector.o: ../../src/ListAsVector.cpp ../../src/ListAsVector.h \
+		../../src/List.h \
+		../../src/Object.h \
+		../../src/Container.h \
+		../../src/Debug.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ListAsVector.o ../../src/ListAsVector.cpp
+
+main.o: ../../src/main.cpp ../../src/Object.h \
+		../../src/NullObject.h \
+		../../src/Integer.h \
+		../../src/List.h \
+		../../src/Container.h \
+		../../src/ListAsVector.h \
+		../../src/ListAsDynamicArray.h \
+		../../src/ListAsDLL.h \
+		../../src/ListAsSLL.h \
+		../../src/Node.h \
+		../../src/NodeDouble.h \
+		../../src/FixedSizeMatrix.h \
+		../../src/Matrix.h \
+		../../src/Seat.h \
+		../../src/Person.h \
+		../../src/DynamicAuditorium.h \
+		../../src/Auditorium.h \
+		../../src/Group.h \
+		../../src/AuditoriumMemento.h \
+		../../src/FixedAuditorium.h \
+		../../src/AuditoriumModeller.h \
+		../../src/AuditoriumDeveloper.h \
+		../../src/AuditoriumList.h \
+		../../src/cColours.h \
+		../../src/Minor.h \
+		../../src/Adult.h \
+		../../src/Pensioner.h \
+		../../src/TicketPrinter.h \
+		../../src/Store.h \
+		../../src/Debug.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../../src/main.cpp
+
+Matrix.o: ../../src/Matrix.cpp ../../src/Matrix.h \
+		../../src/Object.h \
+		../../src/Container.h \
+		../../src/Seat.h \
+		../../src/Person.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Matrix.o ../../src/Matrix.cpp
+
+Minor.o: ../../src/Minor.cpp ../../src/Minor.h \
+		../../src/Person.h \
+		../../src/Object.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Minor.o ../../src/Minor.cpp
+
+NullObject.o: ../../src/NullObject.cpp ../../src/NullObject.h \
+		../../src/Object.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o NullObject.o ../../src/NullObject.cpp
+
+NullPerson.o: ../../src/NullPerson.cpp ../../src/NullPerson.h \
+		../../src/NullObject.h \
+		../../src/Object.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o NullPerson.o ../../src/NullPerson.cpp
+
+Pensioner.o: ../../src/Pensioner.cpp ../../src/Pensioner.h \
+		../../src/Person.h \
+		../../src/Object.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Pensioner.o ../../src/Pensioner.cpp
+
+Person.o: ../../src/Person.cpp ../../src/Person.h \
+		../../src/Object.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Person.o ../../src/Person.cpp
+
+Seat.o: ../../src/Seat.cpp ../../src/Seat.h \
+		../../src/Object.h \
+		../../src/Person.h \
+		../../src/Debug.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Seat.o ../../src/Seat.cpp
+
+Store.o: ../../src/Store.cpp ../../src/Store.h \
+		../../src/Object.h \
+		../../src/Container.h \
+		../../src/Debug.h \
+		../../src/ListAsSLL.h \
+		../../src/List.h \
+		../../src/Node.h \
+		../../src/ListAsDLL.h \
+		../../src/NodeDouble.h \
+		../../src/ListAsVector.h \
+		../../src/ListAsDynamicArray.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Store.o ../../src/Store.cpp
+
+TicketPrinter.o: ../../src/TicketPrinter.cpp ../../src/cColours.h \
+		../../src/Debug.h \
+		../../src/TicketPrinter.h \
+		../../src/Object.h \
+		../../src/Auditorium.h \
+		../../src/Seat.h \
+		../../src/Person.h \
+		../../src/Group.h \
+		../../src/AuditoriumMemento.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o TicketPrinter.o ../../src/TicketPrinter.cpp
+
+main.o: ../tickets/main.cpp ../tickets/mainwindow.h \
+		../../src/FixedAuditorium.h \
+		../../src/Object.h \
+		../../src/Auditorium.h \
+		../../src/Seat.h \
+		../../src/Person.h \
+		../../src/Group.h \
+		../../src/AuditoriumMemento.h \
+		../../src/FixedSizeMatrix.h \
+		../../src/Matrix.h \
+		../../src/Container.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../tickets/main.cpp
 
 mainwindow.o: ../tickets/mainwindow.cpp ../tickets/mainwindow.h \
-		ui_mainwindow.h
+		../../src/FixedAuditorium.h \
+		../../src/Object.h \
+		../../src/Auditorium.h \
+		../../src/Seat.h \
+		../../src/Person.h \
+		../../src/Group.h \
+		../../src/AuditoriumMemento.h \
+		../../src/FixedSizeMatrix.h \
+		../../src/Matrix.h \
+		../../src/Container.h \
+		ui_mainwindow.h \
+		../../src/tickets_includes.h \
+		../../src/Adult.h \
+		../../src/AuditoriumDeveloper.h \
+		../../src/AuditoriumList.h \
+		../../src/ListAsVector.h \
+		../../src/List.h \
+		../../src/AuditoriumModeller.h \
+		../../src/cColours.h \
+		../../src/Debug.h \
+		../../src/DynamicAuditorium.h \
+		../../src/Integer.h \
+		../../src/ListAsDLL.h \
+		../../src/ListAsSLL.h \
+		../../src/Node.h \
+		../../src/NodeDouble.h \
+		../../src/ListAsDynamicArray.h \
+		../../src/Minor.h \
+		../../src/NullObject.h \
+		../../src/NullPerson.h \
+		../../src/Pensioner.h \
+		../../src/Store.h \
+		../../src/TicketPrinter.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../tickets/mainwindow.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
