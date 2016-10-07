@@ -114,9 +114,6 @@ QMAKE_TARGET  = tickets
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = tickets
 
-newfirst:
-	$(MAKE) -C "../.."
-	$(MAKE) first
 first: all
 ####### Implicit rules
 

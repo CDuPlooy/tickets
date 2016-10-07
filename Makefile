@@ -12,6 +12,8 @@ compile_bind_all: compile_nullObject compile_integer compile_list compile_listAs
 	${COMPILER} src/NullObject.o src/Container.o src/Matrix.o src/FixedSizeMatrix.o src/Auditorium.o src/FixedAuditorium.o src/DynamicAuditorium.o src/AuditoriumModeller.o src/Seat.o src/Integer.o src/Person.o src/Minor.o src/Adult.o src/Pensioner.o src/NullPerson.o src/List.o src/ListAsDynamicArray.o src/ListAsVector.o src/ListAsSLL.o src/ListAsDLL.o  src/AuditoriumList.o src/AuditoriumDeveloper.o src/Group.o src/AuditoriumMemento.o src/Store.o src/TicketPrinter.o src/main.cpp -ggdb -o src/a.out -Wall
 	@echo "\n"
 	@echo "Finished!"
+	@echo "Compiling QT Application."
+	$(MAKE) -C "Qt/build-tickets-Desktop-Debug"
 
 compile_container: src/Container.cpp src/Container.h
 	${COMPILER} -c src/Container.cpp -o src/Container.o ${FLAGS}
