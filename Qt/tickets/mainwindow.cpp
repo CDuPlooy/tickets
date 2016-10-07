@@ -8,6 +8,25 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     fa = new FixedAuditorium(5,5);
+    fa->setName("Brooklyn");
+    ui->lblAuditorium->setText("Brooklyn");
+    ui->tableWidget->setRowCount(5);
+    ui->tableWidget->setColumnCount(5);
+
+    for(size_t i = 0 ; i < 25 ; i++){
+        ui->tableWidget->setRowHeight(i,17);
+        ui->tableWidget->setColumnWidth(i,34);
+    }
+    ui->tableWidget->setSortingEnabled(false);
+    ui->tableWidget->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
+    QPalette q;
+    q.setColor(QPalette::Base , Qt::green);
+    ui->tableWidget->setPalette(q);
+    for(size_t i = 0 ; i < 5 ; i++)
+        for(size_t j = 0 ; j < 5 ; j++){
+            QTableWidgetItem *qtw = new QTableWidgetItem;
+            ui->tableWidget->setItem(i,j,qtw);
+        }
 }
 
 MainWindow::~MainWindow()
@@ -35,6 +54,7 @@ void MainWindow::on_chkAdult_clicked()
 {
     uncheckAll();
      ui->chkAdult->setChecked(true);
+
 }
 
 void MainWindow::on_chkPensioner_clicked()
@@ -59,4 +79,9 @@ void MainWindow::on_btnAdd_clicked()
 void MainWindow::on_btnBook_clicked()
 {
 
+}
+
+void MainWindow::on_tableWidget_cellPressed(int row, int column)
+{
+    ui->tableWidget->item(row,column)->setBackgroundColor(Qt::red);
 }

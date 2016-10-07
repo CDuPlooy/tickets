@@ -23,7 +23,7 @@
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
-#include <QtWidgets/QTableView>
+#include <QtWidgets/QTableWidget>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
 
@@ -43,9 +43,9 @@ public:
     QLabel *label_2;
     QListWidget *lstGroup;
     QPushButton *btnAdd;
-    QTableView *tableView;
     QPushButton *btnUndo;
     QLabel *lblAuditorium;
+    QTableWidget *tableWidget;
     QMenuBar *menuBar;
     QMenu *menuSystem;
     QToolBar *mainToolBar;
@@ -55,7 +55,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(400, 326);
+        MainWindow->resize(374, 323);
         actionQuit = new QAction(MainWindow);
         actionQuit->setObjectName(QStringLiteral("actionQuit"));
         centralWidget = new QWidget(MainWindow);
@@ -88,19 +88,19 @@ public:
         btnAdd = new QPushButton(centralWidget);
         btnAdd->setObjectName(QStringLiteral("btnAdd"));
         btnAdd->setGeometry(QRect(10, 180, 151, 22));
-        tableView = new QTableView(centralWidget);
-        tableView->setObjectName(QStringLiteral("tableView"));
-        tableView->setGeometry(QRect(180, 20, 211, 241));
         btnUndo = new QPushButton(centralWidget);
         btnUndo->setObjectName(QStringLiteral("btnUndo"));
         btnUndo->setGeometry(QRect(10, 240, 151, 22));
         lblAuditorium = new QLabel(centralWidget);
         lblAuditorium->setObjectName(QStringLiteral("lblAuditorium"));
         lblAuditorium->setGeometry(QRect(180, 0, 59, 14));
+        tableWidget = new QTableWidget(centralWidget);
+        tableWidget->setObjectName(QStringLiteral("tableWidget"));
+        tableWidget->setGeometry(QRect(185, 21, 181, 121));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 400, 19));
+        menuBar->setGeometry(QRect(0, 0, 374, 19));
         menuSystem = new QMenu(menuBar);
         menuSystem->setObjectName(QStringLiteral("menuSystem"));
         MainWindow->setMenuBar(menuBar);
@@ -120,6 +120,7 @@ public:
         QObject::connect(chkAdult, SIGNAL(clicked()), MainWindow, SLOT(repaint()));
         QObject::connect(chkPensioner, SIGNAL(clicked()), MainWindow, SLOT(repaint()));
         QObject::connect(chkMinor, SIGNAL(clicked()), MainWindow, SLOT(repaint()));
+        QObject::connect(tableWidget, SIGNAL(cellPressed(int,int)), MainWindow, SLOT(repaint()));
 
         QMetaObject::connectSlotsByName(MainWindow);
     } // setupUi

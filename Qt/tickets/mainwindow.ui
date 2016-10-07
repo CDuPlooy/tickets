@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>326</height>
+    <width>374</width>
+    <height>323</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -128,16 +128,6 @@
      <string>Add</string>
     </property>
    </widget>
-   <widget class="QTableView" name="tableView">
-    <property name="geometry">
-     <rect>
-      <x>180</x>
-      <y>20</y>
-      <width>211</width>
-      <height>241</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QPushButton" name="btnUndo">
     <property name="geometry">
      <rect>
@@ -164,13 +154,23 @@
      <string>&lt;name&gt;</string>
     </property>
    </widget>
+   <widget class="QTableWidget" name="tableWidget">
+    <property name="geometry">
+     <rect>
+      <x>185</x>
+      <y>21</y>
+      <width>181</width>
+      <height>121</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>400</width>
+     <width>374</width>
      <height>19</height>
     </rect>
    </property>
@@ -277,6 +277,22 @@
     <hint type="destinationlabel">
      <x>199</x>
      <y>149</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tableWidget</sender>
+   <signal>cellPressed(int,int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>repaint()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>275</x>
+     <y>117</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>186</x>
+     <y>161</y>
     </hint>
    </hints>
   </connection>
