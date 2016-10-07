@@ -1,6 +1,33 @@
 #ifndef DEBUG_H
 #define DEBUG_H
-#include "assert.h"
-#define D_MSG(MSG) std::cout << __FILE__ << ":" << __LINE__ << "\t[ " << MSG << " ]" << std::endl; /**< Prints a message and then continues execution. */
-#define D_PAUSE(MSG)  std::cout << __FILE__ << ":" << __LINE__ << "\t[ " << MSG << " ]" << std::endl; char abcd;std::cin>>abcd; /**< Prints a message and pauses execution.*/
+#include <iostream>
+#include <cstdlib>
+class Debug{
+public:
+	Debug(){
+		supOut = false;
+	}
+	~Debug(){
+
+	}
+	void debug_message(std::string msg){
+		if(!supOut)
+			std::cout << __FILE__ << ':' << __LINE__ << " RET @ " << __builtin_return_address(0) << " [ " << msg << " ]" <<std::endl;
+	}
+	void assert(bool expression , std::string msg , bool critical){
+		if(!expression){
+			debug_message(msg);
+
+			if(critical){
+				exit(1);
+			}
+		}
+}
+
+	void setSuppression(bool value){
+		supOut  = value;
+	}
+private:
+	bool supOut;
+};
 #endif
