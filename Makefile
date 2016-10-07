@@ -13,8 +13,9 @@ compile_bind_all: compile_nullObject compile_integer compile_list compile_listAs
 	@echo "\n"
 	@echo "Finished!"
 	@echo "Compiling QT Application."
-	$(MAKE) clean -C "Qt/build-tickets-Desktop-Debug"
-	$(MAKE) -C "Qt/build-tickets-Desktop-Debug"
+	@$(MAKE) clean -C "Qt/build-tickets-Desktop-Debug"
+	@$(MAKE) -C "Qt/build-tickets-Desktop-Debug"
+	@echo "Compilation Of Qt Application Finished."
 
 compile_container: src/Container.cpp src/Container.h
 	${COMPILER} -c src/Container.cpp -o src/Container.o ${FLAGS}

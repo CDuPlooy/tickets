@@ -32,6 +32,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    FixedAuditorium *fa;
 };
 
 #endif // MAINWINDOW_H

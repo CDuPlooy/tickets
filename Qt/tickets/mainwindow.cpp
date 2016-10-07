@@ -7,6 +7,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    fa = new FixedAuditorium(5,5);
 }
 
 MainWindow::~MainWindow()
@@ -57,5 +58,5 @@ void MainWindow::on_btnAdd_clicked()
 
 void MainWindow::on_btnBook_clicked()
 {
-    FixedAuditorium fa(5,5);
+
 }
