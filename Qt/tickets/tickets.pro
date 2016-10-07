@@ -10,7 +10,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = tickets
 TEMPLATE = app
-
+3
 #SOURCES += ../../src/*.cpp
 SOURCES += main.cpp\
         mainwindow.cpp

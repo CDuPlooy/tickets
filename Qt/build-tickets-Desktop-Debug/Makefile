@@ -36,9 +36,9 @@ DISTNAME      = tickets1.0.0
 DISTDIR = /home/grim/Documents/Programming/University/COS121/tickets/Qt/build-tickets-Desktop-Debug/.tmp/tickets1.0.0
 LINK          = clang++
 LFLAGS        = -ccc-gcc-name g++
-LIBS          = $(SUBLIBS) ../../src/*.o1 -lQt5Widgets -L/usr/X11R6/lib64 -lQt5Gui -lQt5Core -lGL -lpthread
+LIBS          = $(SUBLIBS) ../../src/*.o -lQt5Widgets -L/usr/X11R6/lib64 -lQt5Gui -lQt5Core -lGL -lpthread 
 AR            = ar cqs
-RANLIB        =
+RANLIB        = 
 SED           = sed
 STRIP         = strip
 
@@ -114,6 +114,7 @@ QMAKE_TARGET  = tickets
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = tickets
 
+
 first: all
 ####### Implicit rules
 
@@ -136,7 +137,7 @@ first: all
 
 ####### Build rules
 
-$(TARGET): ui_mainwindow.h $(OBJECTS)
+$(TARGET): ui_mainwindow.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: ../tickets/tickets.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-clang/qmake.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
@@ -277,13 +278,13 @@ distdir: FORCE
 	$(COPY_FILE) --parents ../tickets/mainwindow.ui $(DISTDIR)/
 
 
-clean: compiler_clean
+clean: compiler_clean 
 	-$(DEL_FILE) $(OBJECTS)
 	-$(DEL_FILE) *~ core *.core
 
 
-distclean: clean
-	-$(DEL_FILE) $(TARGET)
+distclean: clean 
+	-$(DEL_FILE) $(TARGET) 
 	-$(DEL_FILE) Makefile
 
 
@@ -327,7 +328,7 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_header_clean compiler_uic_clean
+compiler_clean: compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
 
@@ -380,7 +381,7 @@ mainwindow.o: ../tickets/mainwindow.cpp ../tickets/mainwindow.h \
 		../../src/TicketPrinter.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../tickets/mainwindow.cpp
 
-moc_mainwindow.o: moc_mainwindow.cpp
+moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
 
 ####### Install
@@ -390,3 +391,4 @@ install:  FORCE
 uninstall:  FORCE
 
 FORCE:
+
