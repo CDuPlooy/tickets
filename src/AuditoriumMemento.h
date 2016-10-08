@@ -20,19 +20,23 @@ public:
 	void add_command(std::string); /**< Adds a command to the list.*/
 	void undo(); /**< Removes the command at the top of the list and executes it.*/
 	void exec(std::string command);/**< Executes a command.*/
-	void Unlock(){
+	void callback(size_t *x , size_t *y , short *state); /**< Sets the callback variables for the memento.*/
+	void Unlock(){ /**< Unlocks the spinlock.*/
 		spinLock = false;
 	}
-	void Lock(){
+	void Lock(){ /**< Locks the spinlock.*/
 		spinLock = true;
 	}
-	bool isLocked(){
+	bool isLocked(){/**< Tests if the spinlock is locketd.*/
 		return spinLock;
 	}
+	size_t *_x , *_y;
+	short *_state;
 private:
 	 std::string extract(std::string buffer , std::string begin , std::string end);/**< Extracts a substring.*/
 	 bool spinLock;
 	Auditorium *auditorium;
 	std::vector<std::string> commands;
+
 };
 #endif

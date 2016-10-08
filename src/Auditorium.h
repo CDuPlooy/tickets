@@ -51,6 +51,7 @@ public:
 	AuditoriumMemento *getMemento();  /**< Returns a memento.*/
 	void add_command(std::string); /**< Adds a command to the list.*/
 	void undo(); /**< Removes the command at the top of the list and executes it.*/
+	
 
     private:
 	AuditoriumMemento *memento;

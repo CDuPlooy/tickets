@@ -20,6 +20,9 @@ AuditoriumMemento::~AuditoriumMemento(){
 
 AuditoriumMemento::AuditoriumMemento(){
 	auditorium = NULL;
+	_x = NULL;
+	_y = NULL;
+	_state = NULL;
 }
 
 //Overloaded Functions
@@ -91,12 +94,22 @@ void AuditoriumMemento::exec(std::string command){
 	std::string matrixRaw = extract(command  , "Matrix{","Matrix}");
 	size_t x = atoi(extract(matrixRaw, "Row:", " ").c_str());
 	size_t y = atoi(extract(matrixRaw, "Column:", " ").c_str());
+	if(_x)
+		*_x = x;
+	if(_y)
+		*_y = y;
+
 	if(com == "book"){
+		if(_state)
+			*_state = SEAT_EMPTY;
 		Lock();
 		auditorium->cancelBooking(x,y);
 		Unlock();
 	}
 	else if(com == "cancel"){
+		if(_state)
+			*_state = SEAT_VOID;
+
 		Lock();
 		auditorium->book(person, x, y);
 		Unlock();
@@ -126,4 +139,11 @@ std::string AuditoriumMemento::extract(std::string buffer , std::string begin , 
 		for(size_t i = startPos ; i < endPos ; i++)
 			retbuffer.push_back(buffer[i]);
 		return retbuffer;
+}
+
+
+void AuditoriumMemento::callback(size_t *x , size_t *y , short *state){
+	_x  = x;
+	_y = y;
+	_state = state;
 }

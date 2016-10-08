@@ -120,7 +120,7 @@ public:
         QObject::connect(chkAdult, SIGNAL(clicked()), MainWindow, SLOT(repaint()));
         QObject::connect(chkPensioner, SIGNAL(clicked()), MainWindow, SLOT(repaint()));
         QObject::connect(chkMinor, SIGNAL(clicked()), MainWindow, SLOT(repaint()));
-        QObject::connect(tableWidget, SIGNAL(cellPressed(int,int)), MainWindow, SLOT(repaint()));
+        QObject::connect(tableWidget, SIGNAL(itemDoubleClicked(QTableWidgetItem*)), MainWindow, SLOT(repaint()));
 
         QMetaObject::connectSlotsByName(MainWindow);
     } // setupUi
@@ -129,7 +129,7 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
         actionQuit->setText(QApplication::translate("MainWindow", "&Quit...", 0));
-        btnBook->setText(QApplication::translate("MainWindow", "Book", 0));
+        btnBook->setText(QApplication::translate("MainWindow", "Book Group", 0));
         chkPensioner->setText(QApplication::translate("MainWindow", "Pensioner", 0));
         chkMinor->setText(QApplication::translate("MainWindow", "Minor", 0));
         chkAdult->setText(QApplication::translate("MainWindow", "Adult", 0));

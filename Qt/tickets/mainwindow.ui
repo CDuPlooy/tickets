@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Book</string>
+     <string>Book Group</string>
     </property>
    </widget>
    <widget class="QCheckBox" name="chkPensioner">
@@ -282,7 +282,7 @@
   </connection>
   <connection>
    <sender>tableWidget</sender>
-   <signal>cellPressed(int,int)</signal>
+   <signal>itemDoubleClicked(QTableWidgetItem*)</signal>
    <receiver>MainWindow</receiver>
    <slot>repaint()</slot>
    <hints>
