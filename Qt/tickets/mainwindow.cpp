@@ -14,6 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
     fa->enableMemento(true);
     fa->setVoid(0,2,1,false);
     fa->getMemento()->callback(&backX , &backY , &backState);
+    fa->getMemento()->guiMode = true;
 
     ui->tableWidget->setRowCount(5);
     ui->tableWidget->setColumnCount(5);
@@ -197,12 +198,14 @@ void MainWindow::on_btnUndo_clicked()
     Debug();
      if(fa->mementoLinked()){
         fa->undo();
+
         if(backState == SEAT_EMPTY)
             ui->tableWidget->item(backX,backY)->setBackgroundColor(Qt::red);
         else
             ui->tableWidget->item(backX,backY)->setBackgroundColor(Qt::blue);
 
      }
+     repaintView();
 
 }
 

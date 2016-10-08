@@ -57,11 +57,14 @@ int main( int argc , char **argv ){
 	Brooklyn->enableMemento(true);
 	Brooklyn->bookAdv(*group);
 	Brooklyn->getMemento()->print(cout);
-
+		Brooklyn->print(cout);
 	Brooklyn->undo();
+		Brooklyn->print(cout);
 	Brooklyn->getMemento()->print(cout);
 	Brooklyn->undo();
+		Brooklyn->print(cout);
 	Brooklyn->undo();
+		Brooklyn->print(cout);
 
 	Brooklyn->getMemento()->print(cout);
 

@@ -23,6 +23,7 @@ AuditoriumMemento::AuditoriumMemento(){
 	_x = NULL;
 	_y = NULL;
 	_state = NULL;
+	guiMode = false;
 }
 
 //Overloaded Functions
@@ -55,8 +56,17 @@ void AuditoriumMemento::add_command(std::string command){
 void AuditoriumMemento::undo(){
 	if(commands.size() == 0)
 		return;
+
 	std::string command = commands.at(0);
-	commands.erase(commands.begin());
+	//remove from start
+	if(!guiMode){
+		std::string command = commands.at(0);	//This is what I want
+		commands.erase(commands.begin());
+	}else{
+		command = commands.at(commands.size()-1);
+		commands.pop_back();
+	}
+
 	exec(command);
 }
 

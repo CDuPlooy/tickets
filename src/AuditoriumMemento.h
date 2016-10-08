@@ -10,6 +10,7 @@ public:
       //Constructors
       ~AuditoriumMemento();
       AuditoriumMemento();
+
       //Overloaded Functions
       bool isNull(void) const;
       int compare(Object const &) const;
@@ -32,11 +33,13 @@ public:
 	}
 	size_t *_x , *_y;
 	short *_state;
+	bool guiMode;
 private:
 	 std::string extract(std::string buffer , std::string begin , std::string end);/**< Extracts a substring.*/
 	 bool spinLock;
 	Auditorium *auditorium;
 	std::vector<std::string> commands;
+
 
 };
 #endif
