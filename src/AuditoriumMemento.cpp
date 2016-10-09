@@ -1,3 +1,4 @@
+
 #include<cstdlib>
 #include "AuditoriumMemento.h"
 #include "Auditorium.h"

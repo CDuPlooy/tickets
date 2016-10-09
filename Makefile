@@ -6,10 +6,10 @@ COMPILER = clang++
 
 .PHONY: documentation
 
-compile_bind_all: compile_nullObject compile_integer compile_list compile_listAsVector compile_listAsDynamicArray compile_NullPerson compile_container compile_Seat compile_listAsSLL compile_Person compile_Adult compile_Minor compile_Pensioner compile_listAsDLL compile_dynamicAuditorium compile_matrix compile_AuditoriumModeller compile_AuditoriumList compile_fixedSizeMatrix compile_Group compile_fixedAuditorium compile_AuditoriumDeveloper compile_ticketPrinter compile_Auditorium compile_Store compile_AuditoriumMemento
+compile_bind_all: compile_nullObject compile_integer compile_list compile_listAsVector compile_listAsDynamicArray compile_NullPerson compile_container compile_Seat compile_listAsSLL compile_Person compile_Adult compile_Minor compile_Pensioner compile_listAsDLL compile_dynamicAuditorium compile_dynamicSizeMatrix compile_matrix compile_AuditoriumModeller compile_AuditoriumList compile_fixedSizeMatrix compile_Group compile_fixedAuditorium compile_AuditoriumDeveloper compile_ticketPrinter compile_Auditorium compile_Store compile_AuditoriumMemento
 	@clear
 	@echo "Binding and linking . . ."
-	${COMPILER} src/NullObject.o src/Container.o src/Matrix.o src/FixedSizeMatrix.o src/Auditorium.o src/FixedAuditorium.o src/DynamicAuditorium.o src/AuditoriumModeller.o src/Seat.o src/Integer.o src/Person.o src/Minor.o src/Adult.o src/Pensioner.o src/NullPerson.o src/List.o src/ListAsDynamicArray.o src/ListAsVector.o src/ListAsSLL.o src/ListAsDLL.o  src/AuditoriumList.o src/AuditoriumDeveloper.o src/Group.o src/AuditoriumMemento.o src/Store.o src/TicketPrinter.o src/main.cpp -ggdb -o src/a.out -Wall
+	${COMPILER} src/NullObject.o src/Container.o src/Matrix.o src/DynamicSizeMatrix.o src/FixedSizeMatrix.o src/Auditorium.o src/FixedAuditorium.o src/DynamicAuditorium.o src/AuditoriumModeller.o src/Seat.o src/Integer.o src/Person.o src/Minor.o src/Adult.o src/Pensioner.o src/NullPerson.o src/List.o src/ListAsDynamicArray.o src/ListAsVector.o src/ListAsSLL.o src/ListAsDLL.o  src/AuditoriumList.o src/AuditoriumDeveloper.o src/Group.o src/AuditoriumMemento.o src/Store.o src/TicketPrinter.o src/main.cpp -ggdb -o src/a.out -Wall
 	@echo "\n"
 	@echo "Finished!"
 	@echo "Compiling QT Application."
@@ -26,8 +26,12 @@ compile_matrix: src/Matrix.cpp src/Matrix.h
 compile_fixedSizeMatrix: src/FixedSizeMatrix.cpp src/FixedSizeMatrix.h
 	${COMPILER} -c src/FixedSizeMatrix.cpp -o src/FixedSizeMatrix.o ${FLAGS}
 
+compile_dynamicSizeMatrix: src/DynamicSizeMatrix.cpp src/DynamicSizeMatrix.h
+	${COMPILER} -c src/DynamicSizeMatrix.cpp -o src/DynamicSizeMatrix.o ${FLAGS}
+
+
 compile_list:src/List.cpp src/List.h
-	${COMPILER} -c src/List.cpp -o src/List.o ${FLAGS}
+	${COMPILER} -c src/List.cpp -o src/List.o ${FLAGS}``
 
 compile_listAsVector:src/ListAsVector.cpp src/ListAsVector.h
 	${COMPILER} -c src/ListAsVector.cpp -o src/ListAsVector.o ${FLAGS}
