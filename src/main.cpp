@@ -26,6 +26,7 @@ u16169532
 #include "TicketPrinter.h"
 #include "Seat.h"
 #include "Group.h"
+#include "FlexiAuditorium.h"
 #include "Store.h"
 #include "Debug.h"
 
@@ -38,7 +39,19 @@ int main( int argc , char **argv ){
 	else
 		guiMode = 1;
 
-
+	cout << "Testing the flexi matrix" << endl;
+	FlexiAuditorium *flex = new FlexiAuditorium(3,3);
+	// flex->fillRand();
+	// flex->print(cout);
+	// cout << "Can iterate bot : " << flex->iterateBot(0,1) << endl;
+	// cout << "Can iterate top : " << flex->iterateTop(0,1) << endl;
+	//
+	// cout << "Can iterate left : " << flex->iterateLeft(0,1) << endl;
+	// cout << "Can iterate right : " << flex->iterateRight(0,1) << endl;
+	//
+	// cout << "_____________DONE______________" << endl;
+	delete flex;
+	return 0;
 
 	cout << "Testing the dynamicAuditorium" << endl;
 	DynamicAuditorium *dynAud = new DynamicAuditorium(5,5);
@@ -56,7 +69,6 @@ int main( int argc , char **argv ){
 	delete dynAud;
 	delete Darky;
 	cout << "_____________DONE______________" << endl;
-	return 0;
 	cout << RED "tickets - COS121 ;\nGui: " << guiMode << RESET << endl;
 
 	cout << "Testing groups!" << endl;
