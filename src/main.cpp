@@ -38,6 +38,25 @@ int main( int argc , char **argv ){
 	else
 		guiMode = 1;
 
+
+
+	cout << "Testing the dynamicAuditorium" << endl;
+	DynamicAuditorium *dynAud = new DynamicAuditorium(5,5);
+	Minor *Darky = new Minor();
+	dynAud->enableMemento(true);
+	// dynAud->getMemento()->guiMode = false;
+	dynAud->book(Darky, 0, 0);
+	dynAud->print(cout);
+
+	dynAud->undo();
+	dynAud->print(cout);
+	dynAud->getDsm()->print(cout);
+
+
+	delete dynAud;
+	delete Darky;
+	cout << "_____________DONE______________" << endl;
+	return 0;
 	cout << RED "tickets - COS121 ;\nGui: " << guiMode << RESET << endl;
 
 	cout << "Testing groups!" << endl;

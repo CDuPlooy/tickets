@@ -21,6 +21,7 @@
 #include "List.h"
 #include "Matrix.h"
 #include "Minor.h"
+#include "DynamicSizeMatrix.h"
 #include "NodeDouble.h"
 #include "Node.h"
 #include "NullObject.h"

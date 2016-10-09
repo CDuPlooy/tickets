@@ -45,7 +45,8 @@ short Seat::getState(){
 
 void Seat::bind(Person *aPerson){
 	person = aPerson;
-	setState(SEAT_TAKEN);
+	if(person)
+		setState(SEAT_TAKEN);
 }
 
 std::string Seat::toString(){

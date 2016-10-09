@@ -6,7 +6,7 @@
 #define DynamicAuditorium_H
 #include "Object.h"
 #include "Auditorium.h"
-#include "FixedSizeMatrix.h"
+#include "DynamicSizeMatrix.h"
 class DynamicAuditorium : public Auditorium{
 protected:
       int compareTo(Object const &) const;
@@ -31,8 +31,11 @@ public:
       void dumpFile(std::string filename);
       short getState( size_t row, size_t column);
       Seat *getSeat( size_t row, size_t column);
+	DynamicSizeMatrix *getDsm(){
+		return fa;
+	}
 private:
-      FixedSizeMatrix *fa;
+      DynamicSizeMatrix *fa;
       size_t seats;
 };
 #endif

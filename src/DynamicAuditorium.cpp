@@ -1,8 +1,10 @@
 #include <fstream>
 #include <sstream>
+#include "Debug.h"
 #include "DynamicAuditorium.h"
 #include "cColours.h"
 #include "Seat.h"
+
 
 int DynamicAuditorium::compareTo(Object const &) const{
 	return 1; //Marker:Unsure
@@ -10,8 +12,9 @@ int DynamicAuditorium::compareTo(Object const &) const{
 //Constructors
 DynamicAuditorium::DynamicAuditorium(size_t _rows , size_t _columns){
 	seats = 0;
-	fa = new FixedSizeMatrix( _rows , _columns );
+	fa = new DynamicSizeMatrix( _rows , _columns );
 }
+
 
 DynamicAuditorium::~DynamicAuditorium(){
 	delete fa;
@@ -68,21 +71,12 @@ bool DynamicAuditorium::book(Person *person ,  size_t r , size_t c ){
 }
 
 
-bool DynamicAuditorium::findFree(size_t &r, size_t &c){
-	for(size_t i = 0 ; i < fa->getRows() ; i++)
-		for(size_t j = 0 ; j < fa->getColumns() ; j++)
-			if(fa->getValue(i,j)->getState() == SEAT_EMPTY){
-				r = i;
-				c =j;
-				return true;
-			}
-		return false;
-}
-
 void DynamicAuditorium::cancelBooking(size_t r , size_t c ){
 	if(!checkBoundry(r, c))
 		return;
-	fa->getValue(r , c )->setState(SEAT_EMPTY);
+	// std::cout << r << " " << c << std::endl;
+	static_cast<Seat *>(fa->at( r , c ))->setState(SEAT_EMPTY);
+
 
 	if(mementoLinked()){
 		std::string buffer;
@@ -96,6 +90,20 @@ void DynamicAuditorium::cancelBooking(size_t r , size_t c ){
 		add_command(buffer);
 	}
 	fa->getValue(r , c )->bind(NULL);
+
+}
+
+
+
+bool DynamicAuditorium::findFree(size_t &r, size_t &c){
+	for(size_t i = 0 ; i < fa->getRows() ; i++)
+		for(size_t j = 0 ; j < fa->getColumns() ; j++)
+			if(fa->getValue(i,j)->getState() == SEAT_EMPTY){
+				r = i;
+				c =j;
+				return true;
+			}
+		return false;
 }
 
 bool DynamicAuditorium::checkBoundry( size_t r, size_t c){
