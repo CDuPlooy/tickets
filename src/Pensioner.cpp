@@ -5,7 +5,7 @@ Pensioner::~Pensioner(){
 }
 
 Pensioner::Pensioner(){
-
+	setFee(10);
 }
 
 //Overloaded Functions

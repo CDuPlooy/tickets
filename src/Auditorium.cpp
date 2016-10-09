@@ -11,7 +11,9 @@ Auditorium::~Auditorium(){
 }
 
 Auditorium::Auditorium(){
+	printer = NULL;
 	memento = NULL;
+	guiMode = false;
 }
 
 //Overloaded Functions
@@ -77,4 +79,16 @@ void Auditorium::undo(){
 	if(!memento)
 		return;
 	memento->undo();
+}
+
+bool Auditorium::ticketPrinterLinked(){
+	return printer;
+}
+
+void Auditorium::enablePrinter(bool val){
+	if(!val)
+		return;
+	if(printer)
+		delete printer;
+	printer = new TicketPrinter();
 }

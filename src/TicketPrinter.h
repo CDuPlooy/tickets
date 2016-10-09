@@ -2,7 +2,6 @@
 #ifndef TICKETPRINTER_H
 #define TICKETPRINTER_H
 #include "Object.h"
-#include "Auditorium.h"
 #include "Seat.h"
 class TicketPrinter : public Object{
 protected:
@@ -17,7 +16,7 @@ public:
       void print(std::ostream & = std::cout) const;
       std::string getId() const;
       //Unique Functions
-      std::string printSeat(Seat *seat , bool printRaw);
-      std::string printAuditorium(Auditorium *auditorium , size_t x , size_t y , bool printRaw);
+      void printSeat(Seat *seat , bool printRaw);
+      // std::string printAuditorium(Auditorium *auditorium , size_t x , size_t y , bool printRaw);
 };
 #endif

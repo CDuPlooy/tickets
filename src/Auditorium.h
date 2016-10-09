@@ -8,6 +8,7 @@
 #include "Seat.h"
 #include "Group.h"
 #include "Person.h"
+#include "TicketPrinter.h"
 #include "AuditoriumMemento.h"
 //Class
 class Auditorium : public Object{
@@ -51,10 +52,18 @@ public:
 	AuditoriumMemento *getMemento();  /**< Returns a memento.*/
 	void add_command(std::string); /**< Adds a command to the list.*/
 	void undo(); /**< Removes the command at the top of the list and executes it.*/
-	
-
+	bool ticketPrinterLinked(); /**< Checks if a printer is linked to the auditorium.*/
+	void enablePrinter(bool val); /**< Enables a ticket printer.*/
+	void printSeat(Seat *seat , bool printRaw){
+		if(ticketPrinterLinked() && !guiMode){
+			std::cout << "Auditorium:" << getName() << std::endl;
+			printer->printSeat(seat, false);
+		}
+	}
+	bool guiMode;
     private:
 	AuditoriumMemento *memento;
+	TicketPrinter *printer;
       std::string name;
 };
 #endif

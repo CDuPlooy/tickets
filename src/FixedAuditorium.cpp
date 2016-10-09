@@ -62,6 +62,7 @@ bool FixedAuditorium::book(Person *person , size_t r, size_t c){
 			add_command(buffer);
 		}
 	}
+	printSeat(fa->getValue(r , c), false);
 	return true;
 }
 

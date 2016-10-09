@@ -31,11 +31,11 @@ std::string TicketPrinter::getId() const{
 	return "TicketPrinter";
 }
 
-std::string TicketPrinter::printSeat(Seat *seat , bool printRaw){
+void TicketPrinter::printSeat(Seat *seat , bool printRaw){
 	std::stringstream buffer("");
 	buffer.clear();
 	if(!seat->getPerson())
-		return "";
+		return;
 	if(printRaw){
 		buffer << "Name: \t" << seat->getPerson()->getName() <<  "\n";
 		buffer << "Price: \tR" << seat->getPerson()->getFee() << "\n";
@@ -44,20 +44,20 @@ std::string TicketPrinter::printSeat(Seat *seat , bool printRaw){
 		buffer << "Name: \t" RED << seat->getPerson()->getName() << RESET "\n";
 		buffer << "Price: " RED  << "\tR" << seat->getPerson()->getFee() << RESET "\n";
 	}
-	return  buffer.str();
+	std::cout << buffer.str() << std::endl;
 }
-
-std::string TicketPrinter::printAuditorium(Auditorium *auditorium , size_t x , size_t y , bool printRaw){
-	if (auditorium->getState(x, y) == SEAT_VOID)
-		return "";
-	std::stringstream buffer("");
-	if(printRaw){
-		buffer << auditorium->getName() << " Ticket\n";
-		buffer << printSeat(auditorium->getSeat(x,y), printRaw);
-	}
-	else{
-		buffer << RED << auditorium->getName() << RESET << " Ticket\n";
-		buffer << printSeat(auditorium->getSeat(x,y), printRaw);
-	}
-	return buffer.str();
-}
+//
+// std::string TicketPrinter::printAuditorium(Auditorium *auditorium , size_t x , size_t y , bool printRaw){
+// 	if (auditorium->getState(x, y) == SEAT_VOID)
+// 		return "";
+// 	std::stringstream buffer("");
+// 	if(printRaw){
+// 		buffer << auditorium->getName() << " Ticket\n";
+// 		buffer << printSeat(auditorium->getSeat(x,y), printRaw);
+// 	}
+// 	else{
+// 		buffer << RED << auditorium->getName() << RESET << " Ticket\n";
+// 		buffer << printSeat(auditorium->getSeat(x,y), printRaw);
+// 	}
+// 	return buffer.str();
+// }

@@ -39,19 +39,32 @@ int main( int argc , char **argv ){
 	else
 		guiMode = 1;
 
-	cout << "Testing the flexi matrix" << endl;
-	FlexiAuditorium *flex = new FlexiAuditorium(3,3);
-	// flex->fillRand();
-	// flex->print(cout);
-	// cout << "Can iterate bot : " << flex->iterateBot(0,1) << endl;
-	// cout << "Can iterate top : " << flex->iterateTop(0,1) << endl;
+		cout << "Testing ticket printer!" << endl;
+	      FixedAuditorium *faA = new FixedAuditorium(2,2);
+		faA->enablePrinter(true);
+	      faA->setName("Brooklyn");
+	      Minor *personA = new Minor();
+		personA->setName("Flappy");
+	      faA->book(personA,0, 0);
+
+	      cout << "_____________DONE______________" << endl;
+	      delete faA;
+	      delete personA;
+
 	//
-	// cout << "Can iterate left : " << flex->iterateLeft(0,1) << endl;
-	// cout << "Can iterate right : " << flex->iterateRight(0,1) << endl;
-	//
-	// cout << "_____________DONE______________" << endl;
-	delete flex;
-	return 0;
+	// cout << "Testing the flexi matrix" << endl;
+	// FlexiAuditorium *flex = new FlexiAuditorium(3,3);
+	// // flex->fillRand();
+	// // flex->print(cout);
+	// // cout << "Can iterate bot : " << flex->iterateBot(0,1) << endl;
+	// // cout << "Can iterate top : " << flex->iterateTop(0,1) << endl;
+	// //
+	// // cout << "Can iterate left : " << flex->iterateLeft(0,1) << endl;
+	// // cout << "Can iterate right : " << flex->iterateRight(0,1) << endl;
+	// //
+	// // cout << "_____________DONE______________" << endl;
+	// delete flex;
+	// return 0;
 
 	cout << "Testing the dynamicAuditorium" << endl;
 	DynamicAuditorium *dynAud = new DynamicAuditorium(5,5);
@@ -130,20 +143,7 @@ int main( int argc , char **argv ){
 
 
 
-      cout << "Testing ticket printer!" << endl;
-      TicketPrinter *tp = new TicketPrinter();
-      FixedAuditorium *faA = new FixedAuditorium(2,2);
-      faA->setName("Brooklyn");
-      Minor *personA = new Minor();
-	personA->setName("Flappy");
-      faA->book(personA,0, 0);
 
-      cout << tp->printAuditorium(faA,0,0,false) << endl;
-
-      cout << "_____________DONE______________" << endl;
-      delete faA;
-      delete tp;
-      delete personA;
 
       cout << "Testing AuditoriumList!" << endl;
       AuditoriumList al;
@@ -236,3 +236,7 @@ int main( int argc , char **argv ){
 
       return 0;
 }
+
+
+//TODO: Implement a demo with the given code.
+//TODO: Add vector<size_t> to the memento so undo can work on undo adv.
