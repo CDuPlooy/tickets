@@ -1,3 +1,4 @@
+//!  Models flexi auditoriums.
 #include <fstream>
 #include <sstream>
 #include "Debug.h"

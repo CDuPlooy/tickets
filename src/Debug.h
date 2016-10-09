@@ -1,3 +1,9 @@
+/**
+ * \class Debug
+
+ * \brief A class used simply for debugging.
+
+ */
 #ifndef DEBUG_H
 #define DEBUG_H
 #include <iostream>

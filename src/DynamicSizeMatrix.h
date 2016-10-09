@@ -1,3 +1,9 @@
+/**
+ * \class DynamicSizeMatrix
+
+ * \brief A matrix which is dynamically sized using STL vectors.
+
+ */
 #ifndef DYNAMICSIZEMATRIX_H
 #define DYNAMICSIZEMATRIX_H
 #include "Object.h"

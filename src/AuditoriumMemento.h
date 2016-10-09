@@ -1,5 +1,11 @@
-#ifndef AUDITORIUM_MEMENTO_H
-#define AUDITORIUM_MEMENTO_H
+/**
+ * \class AuditoriumMemento
+
+ * \brief Aggregate of auditorium and it's subclasses , can undo any operation performed on auditorium.
+
+ */
+#ifndef AUDITORIUMMEMENTO_H
+#define AUDITORIUMMEMENTO_H
 #include <vector>
 #include "Object.h"
 class Auditorium;	// Makes an empty promise to the compiler.

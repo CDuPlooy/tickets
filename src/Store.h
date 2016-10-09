@@ -1,7 +1,9 @@
-//!  Works as an iterator for all the containers.
-/*!
-      Binds People to a ListAsVector implementation.
-*/
+/**
+ * \class Store
+
+ * \brief Stores and iterates over list objects.
+
+ */
 #ifndef STORE_H
 #define STORE_H
 #include "Object.h"
