@@ -7,6 +7,9 @@
 #include <string>
 #include "Object.h"
 #include "Auditorium.h"
+#define AUD_FIXED 1
+#define AUD_DYNAMIC 2
+#define AUD_FLEXI 3
 class AuditoriumModeller : public Object{
 protected:
       int compareTo(Object const &) const;
@@ -25,6 +28,7 @@ public:
       void unbind(); /**< Releases the Auditorium pointer bound to the private member auditorium by setting it to NULL */
       //Unique functions
       Auditorium *getAuditorium();/**< Returns an auditorium instance. Please note that this function depends on loadFromFile.*/
+	Auditorium *construct(short type,size_t x , size_t y);
 private:
       Auditorium *auditorium; /**! An internal auditorium instance returned by getAuditorium.*/
       bool  getRowSize(std::string filename , size_t &rows , size_t &columns ); /**! Parses a file to determine the auditorium size.*/

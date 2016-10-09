@@ -139,5 +139,3 @@ void FixedSizeMatrix::dump(){
 	}
 }
 //TODO: Implement the flexiAuditorium by using dynamic arrays , let it generate a random template. Copy dynamic size matrix to implement this.
-//TODO: Finish Auditorium Developer ( move code from modeller)
-//TODO: Implement Auditorium Modeller ( Auditorium constructors already do this.)

@@ -4,6 +4,7 @@
 #include "DynamicAuditorium.h"
 #include "Auditorium.h"
 #include "FixedAuditorium.h"
+#include "FlexiAuditorium.h"
 #include "Seat.h"
 
 AuditoriumModeller::AuditoriumModeller(){
@@ -110,4 +111,14 @@ Auditorium *AuditoriumModeller::getAuditorium(){
 
 int AuditoriumModeller::compareTo(Object const &) const{
 	return 1; //Marker:Unsure
+}
+
+
+Auditorium *AuditoriumModeller::construct(short type,size_t x , size_t y){
+	if( type == AUD_FIXED )
+	 	return new FixedAuditorium(x,y);
+	else if( type == AUD_DYNAMIC )
+	 	return new DynamicAuditorium(x,y);
+	else
+		return new FlexiAuditorium(x,y);
 }

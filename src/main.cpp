@@ -240,3 +240,4 @@ int main( int argc , char **argv ){
 
 //TODO: Implement a demo with the given code.
 //TODO: Add vector<size_t> to the memento so undo can work on undo adv.
+//TODO: Add strategies to bookAdv
