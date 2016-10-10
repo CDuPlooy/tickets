@@ -61,6 +61,8 @@ public:
 		}
 	}
 	bool guiMode;
+	virtual Auditorium *clone() = 0;
+
     private:
 	AuditoriumMemento *memento;
 	TicketPrinter *printer;

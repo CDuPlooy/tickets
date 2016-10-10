@@ -34,6 +34,7 @@ public:
 	DynamicSizeMatrix *getDsm(){
 		return fa;
 	}
+	Auditorium *clone();
 private:
       DynamicSizeMatrix *fa;
       size_t seats;

@@ -138,4 +138,3 @@ void FixedSizeMatrix::dump(){
 		std::cout << std::endl;
 	}
 }
-//TODO: Implement the flexiAuditorium by using dynamic arrays , let it generate a random template. Copy dynamic size matrix to implement this.

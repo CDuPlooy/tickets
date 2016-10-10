@@ -212,3 +212,13 @@ Seat *FlexiAuditorium::getSeat( size_t row, size_t column){
 		else
 			return fa->getValue(row, column);
 }
+
+
+Auditorium *FlexiAuditorium::clone(){
+	FlexiAuditorium *newA = new FlexiAuditorium(fa->getRows(),fa->getColumns());
+	for(size_t i = 0 ; i < fa->getRows() ; i++)
+		for(size_t j = 0 ; j < fa->getColumns() ; j++)
+			newA->fa->getValue( i , j )->setState(fa->getValue( i , j )->getState());
+	newA->seats = seats;
+	return newA;
+}
