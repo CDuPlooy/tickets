@@ -307,6 +307,7 @@ moc_mainwindow.cpp: ../../src/FixedAuditorium.h \
 		../../src/Seat.h \
 		../../src/Person.h \
 		../../src/Group.h \
+		../../src/TicketPrinter.h \
 		../../src/AuditoriumMemento.h \
 		../../src/FixedSizeMatrix.h \
 		../../src/Matrix.h \
@@ -339,6 +340,7 @@ main.o: ../tickets/main.cpp ../tickets/mainwindow.h \
 		../../src/Seat.h \
 		../../src/Person.h \
 		../../src/Group.h \
+		../../src/TicketPrinter.h \
 		../../src/AuditoriumMemento.h \
 		../../src/FixedSizeMatrix.h \
 		../../src/Matrix.h \
@@ -352,6 +354,7 @@ mainwindow.o: ../tickets/mainwindow.cpp ../tickets/mainwindow.h \
 		../../src/Seat.h \
 		../../src/Person.h \
 		../../src/Group.h \
+		../../src/TicketPrinter.h \
 		../../src/AuditoriumMemento.h \
 		../../src/FixedSizeMatrix.h \
 		../../src/Matrix.h \
@@ -367,18 +370,18 @@ mainwindow.o: ../tickets/mainwindow.cpp ../tickets/mainwindow.h \
 		../../src/cColours.h \
 		../../src/Debug.h \
 		../../src/DynamicAuditorium.h \
-		../../src/Integer.h \
-		../../src/ListAsDLL.h \
+		../../src/DynamicSizeMatrix.h \
 		../../src/ListAsSLL.h \
 		../../src/Node.h \
+		../../src/Integer.h \
+		../../src/ListAsDLL.h \
 		../../src/NodeDouble.h \
 		../../src/ListAsDynamicArray.h \
 		../../src/Minor.h \
 		../../src/NullObject.h \
 		../../src/NullPerson.h \
 		../../src/Pensioner.h \
-		../../src/Store.h \
-		../../src/TicketPrinter.h
+		../../src/Store.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../tickets/mainwindow.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 

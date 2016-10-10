@@ -12,7 +12,6 @@ AuditoriumDeveloper::AuditoriumDeveloper(){
 }
 
 AuditoriumDeveloper::~AuditoriumDeveloper(){
-	delete auditorium;
 }
 
 //Overloaded Functions
@@ -39,7 +38,6 @@ bool AuditoriumDeveloper::loadFromFile(std::string filename){
 	size_t row = 0 , column = 0;
 	if(!getRowSize(filename, rows , columns))
 		return false;
-	columns--;
 	auditorium = new FixedAuditorium(rows,columns);
 
 	if(!fs.is_open())
@@ -50,7 +48,6 @@ bool AuditoriumDeveloper::loadFromFile(std::string filename){
 		for(size_t i = 0 ; i < buffer.size() ; i++){
 			if(buffer.at(i) == 'X'){
 				auditorium->setState(row, column, SEAT_TAKEN);
-				column++;
 			}
 			else if(buffer.at(i) == '0'){
 				auditorium->setState(row, column, SEAT_EMPTY);
@@ -65,7 +62,6 @@ bool AuditoriumDeveloper::loadFromFile(std::string filename){
 		column = 0;
 	}
 	fs.close();
-
 	return true;
 }
 

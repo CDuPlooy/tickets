@@ -12,6 +12,7 @@
 #include "DynamicAuditorium.h"
 #include "FixedAuditorium.h"
 #include "FixedSizeMatrix.h"
+#include "FlexiAuditorium.h"
 #include "Group.h"
 #include "Integer.h"
 #include "ListAsDLL.h"

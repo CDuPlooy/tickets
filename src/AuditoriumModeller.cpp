@@ -12,7 +12,6 @@ AuditoriumModeller::AuditoriumModeller(){
 }
 
 AuditoriumModeller::~AuditoriumModeller(){
-	delete auditorium;
 }
 
 //Overloaded Functions
@@ -39,7 +38,7 @@ bool AuditoriumModeller::loadFromFile(std::string filename){
 	size_t row = 0 , column = 0;
 	if(!getRowSize(filename, rows , columns))
 		return false;
-	columns--;
+
 	auditorium = new FixedAuditorium(rows,columns);
 
 	if(!fs.is_open())
