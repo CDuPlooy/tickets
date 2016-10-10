@@ -1,7 +1,9 @@
-//!  Can model auditoriums.
-/*!
-      Creates auditoriums from text files.
-*/
+/**
+ * \class AuditoriumModeller
+
+ * \brief Models and constructs different kinds of auditoriums.
+
+ */
 #ifndef AUDITORIUM_MODELLER_H
 #define AUDITORIUM_MODELLER_H
 #include <string>

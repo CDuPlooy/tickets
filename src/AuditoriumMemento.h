@@ -46,6 +46,5 @@ private:
 	Auditorium *auditorium;
 	std::vector<std::string> commands;
 
-
 };
 #endif

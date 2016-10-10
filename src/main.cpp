@@ -211,7 +211,7 @@ void pause(){
 	cin >> a;
 	system("clear");
 }
-int main( int argc , char **argv ){
+void demo(){
 	//TEST 1
 	cout << "This is a demo of the tickets application!" << endl;
 	cout << "Day 1:" << endl;
@@ -235,11 +235,11 @@ int main( int argc , char **argv ){
 	AuditoriumDeveloper audDev;
 	if ( !audDev.loadFromFile("DynamicStandard.raw") ){
 		cout << "Couldn't load the auditorium!" << endl;
-		return 1;
+		return ;
 	}
 	aud = audDev.getAuditorium();
 	aud->enableMemento(true);
-	
+
 	aud->setName("Brooklyn");
 	cout << "Let's see if it loaded correctly!" << endl;
 	aud->print(cout);
@@ -251,15 +251,9 @@ int main( int argc , char **argv ){
 	cout << "Let's update the display!" << endl;
 	aud->print(cout);
 
-
-	pause();
-
-	//TEST 3
-	cout << "Randy is forgetful , he doesn't want to see a movie anymore! He cancels his ticket." << endl;;
 	aud->cancelBooking(0, 0);
 	aud->print(cout);
 	delete Randy;
-
 	cout << "A charming family wants to see a movie! They need 4 seats - and next to each other!" << endl;
 	Group *group = new Group;
 	Adult *Billy = new Adult();
@@ -288,7 +282,7 @@ int main( int argc , char **argv ){
 
 	Adult *Ben = new Adult;
 	Ben->setName("Ben");
-	cout << "The auditorium is getting full! People might want to cancel bookings. Enable memento to use this functionality." << endl;
+	cout << "The auditorium is getting full!" << endl;
 	cout << "People are having trouble finding their own open spaces , let's provide them with free seats!" << endl;
 	size_t x , y;
 	aud->findFree(x, y);
@@ -298,7 +292,14 @@ int main( int argc , char **argv ){
 	pause();
 
 	//TEST 5
-	std::cout << "A clerk messed up and needs to undo an operation! Let's call memento!" << std::endl;
+	delete aud;
+	cout << "Day 4: " << endl;
+	cout << "A clerk messed up and needs to undo an operation! Let's call memento!" << endl;
+	aud = new DynamicAuditorium(5,5);
+	aud->enableMemento(true);
+	aud->book(Ben,0,0);
+	aud->print(cout);
+	cout << "After the undo : " << endl;
 	aud->undo();
 	aud->print(cout);
 	delete group;
@@ -309,6 +310,9 @@ int main( int argc , char **argv ){
 	delete Tod;
 
 	delete aud;
+}
+int main( int argc , char **argv ){
+	demo();
 
 	cout << "This concludes the CLI demo of tickets , to run the debug tests press <d> , to exit press <e>" << endl;
 	char decision;
@@ -323,3 +327,4 @@ int main( int argc , char **argv ){
 //TODO: Add vector<size_t> to the memento so undo can work on undo adv.
 //TODO: Add strategies to bookAdv
 //TODO: Implement clone methods for auditoriums.
+//TODO: FIX MEMENTO

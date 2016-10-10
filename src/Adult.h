@@ -16,8 +16,13 @@ public:
       int compare(Object const &) const;
       void print(std::ostream & = std::cout) const;
       std::string getId() const;
-      //Unique Functions
+      //Unique Functions'
+
+	/*! Converts the class to a string.
+    \return A std::string representation of the class..  
+*/
 	std::string toString();
+
 
 private:
 
