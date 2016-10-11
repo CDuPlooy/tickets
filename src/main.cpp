@@ -292,8 +292,9 @@ void dayFour(){
 	cout << "Press continue to see the new functionality ( random bookings will be  made but a TicketPrinter will print beautiful tickets )" << endl;
 	pause();
 	dAud.enableMemento(true);
-	dAud.enablePrinter(false);
-	dAud.guiMode = true;
+	dAud.enablePrinter(true);
+	dAud.setName("Brooklyn");
+
 	Nia->setName("Nia");
 	dAud.book(Nia, 0, 0);
 	Nia->setName("Melly");
