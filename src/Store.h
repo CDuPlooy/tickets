@@ -28,12 +28,35 @@ public:
       std::string getId() const;
       //Unique Functions
       //Iterator Functions
-      Object *getCurrent();/**< Returns the current Object pointer or cursor if you will.*/
-      void next();/**< Moves the Object pointer to the next element.*/
-      void previous(); /**< Moves the Object pointer to the previous element.*/
-      void push_back(Object *obj);/**< Wrapper function to Container::push_back()*/
-      void pop_back();/**< Wrapper function to Container::pop_back()*/
-      bool isAtEnd();/**< Wrapper function to Container::isAtEnd()*/
+
+	/*! Gets the current object / cursor
+	\return An object pointer or a cursror.
+	*/
+	Object *getCurrent();
+
+	/*! Moves the cursor to the next object.
+	*/
+      void next();
+
+	/*! Moves the cursor to the previous object.
+	*/
+      void previous();
+
+	/*! Adds an object to the data structure.
+	\param object: A pointer to an Object.
+	*/
+      void push_back(Object *obj);
+
+	/*! Removes an object * from the top of the data structure.
+	*/
+      void pop_back();
+
+	/*! Determines whether the cursor is at the end of the data structure.
+	\return Returns true when the cursor is at the end of the data structure.
+	*/
+      bool isAtEnd();
+
+
 
 private:
       Container *container;

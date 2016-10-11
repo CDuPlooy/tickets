@@ -27,10 +27,30 @@ public:
       void print(std::ostream & = std::cout) const;
       std::string getId() const;
       //Unique Functions
-      void setState(short state); /**< Sets the seat state.*/
-      short getState(); /**< Returns the seat state..*/
-      void bind(Person *aPerson); /**< Binds a person to a seat.*/
-      Person *getPerson(); /**< Returns the person associated with the seat.*/
+
+	/*! Sets the state of the Seat.
+	\param state: The state to set to.
+	*/
+      void setState(short state);
+
+	/*! Gets the state of the Seat.
+	\return  A short representing the state of the Seat.
+	*/
+      short getState();
+
+	/*! Binds a Person to a Seat.
+	\param aPerson: The Person pointer to bind to.
+	*/
+      void bind(Person *aPerson);
+
+	/*! Gets the person associated with the seat.
+	\return NULL on error ; A Person pointer otherwise.
+	*/
+      Person *getPerson();
+
+	/*! Sums up the Seat class as a string
+	\return A string representation of Seat.
+	*/
 	std::string toString();
 private:
       short state;

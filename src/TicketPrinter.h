@@ -16,6 +16,10 @@ public:
       void print(std::ostream & = std::cout) const;
       std::string getId() const;
       //Unique Functions
+	/*! Prints a seat
+	\param seat: A Seat pointer to book.
+	\param printRaw: True/False to print without/with terminal colour codes.
+	*/
       void printSeat(Seat *seat , bool printRaw);
       // std::string printAuditorium(Auditorium *auditorium , size_t x , size_t y , bool printRaw);
 };
