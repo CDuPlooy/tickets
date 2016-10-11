@@ -19,8 +19,16 @@ public:
       void print(std::ostream & = std::cout) const;
       std::string getId() const;
       //Unique Functions
-      NullObject* getSingleton();/**< Returns the only instance of NullObject allowed.*/
-      void setSingleton(NullObject *singleton); /**< Sets the instance of the NullObject ; This is part of the singleton implementation*/
+
+	/*! Gets the singleton.
+	\return A NullObject pointer.
+	*/
+      NullObject* getSingleton();
+
+	/*! Sets the next node.
+	\param singleton: The value to set the NullObject to.
+	*/
+      void setSingleton(NullObject *singleton);
 private:
       static NullObject *_singleton;
 };
