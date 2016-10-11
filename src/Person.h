@@ -20,22 +20,65 @@ public:
       void print(std::ostream & = std::cout) const;
       std::string getId() const;
       //Unique Functions
-      void setRow(size_t row);/**< Sets the row that the person booked a seat in.*/
-      size_t getRow();/**< Returns the row that the person booked a seat in.*/
-      void setColumn(size_t column); /**< Sets the column that the person booked a seat in.*/
-      size_t getColunn();/**< Returns the column that the person booked a seat in.*/
-      void setAge(unsigned short age);/**< Sets a person's age.*/
-	unsigned short getAge(){/**< Returns a person's age.*/
+
+	/*! Sets the rows.
+	\param row: The number of rows.
+	*/
+      void setRow(size_t row);
+
+	/*! Gets the number of rows.
+	\return The number of rows.
+	*/
+      size_t getRow();
+
+	/*! Sets the column.
+	\param column: The number of columns.
+	*/
+      void setColumn(size_t column);
+
+	/*! Gets the number of columns.
+	\return The number of columns.
+	*/
+      size_t getColunn();
+
+	/*! Sets the age of the person.
+	\param age: The age to set to.
+	*/
+      void setAge(unsigned short age);
+
+	/*! Gets the age of the person.
+	\return The age of the person.
+	*/
+	unsigned short getAge(){
 		return age;
 	}
-      float getFee();/**< Gets the fee that a person has to pay.*/
-      void setFee(float fee); /**< Sets the fee that a person has to pay.*/
+
+	/*! Gets the fee of the person.
+	\return The fee of the person.
+	*/
+      float getFee();
+
+	/*! Sets the fee of the person.
+	\param fee: The fee to set to.
+	*/
+      void setFee(float fee);
+
+	/*! Gets the name of the person.
+	\return The name of the person.
+	*/
       std::string getName(){
           return name;
       }
+	/*! Sets the name of the person.
+	\param name: The name to set to.
+	*/
       void setName(std::string name){
           this->name = name;
       }
+
+	/*! Sums up the person class as a string
+	\return A string representation of Person.
+	*/
 	virtual std::string toString() = 0;
 
 private:
