@@ -20,15 +20,30 @@ public:
 	~Node(){
 
 	}
-	Node *getNext(){/**< Returns the next node in the list.*/
+	/*! Gets the next node.
+	\return A node pointer.
+	*/
+	Node *getNext(){
 		return next;
 	}
-	void setNext(Node *node){/**< Sets the next node in the list.*/
+
+	/*! Sets the next node.
+	\param node: The node to set next to.
+	*/
+	void setNext(Node *node){
 		next = node;
 	}
+
+	/*! Sets the data pointer of  node.
+	\param node: The node to set next to.
+	*/
 	void set( Object *value ){/**< Sets the data pointer of the node.*/
 		data = value;
 	}
+	
+	/*! Gets the data pointer of  node.
+	\return An object pointer.
+	*/
 	Object *get(){/**< Returns the data pointer of the node.*/
 		return data;
 	}

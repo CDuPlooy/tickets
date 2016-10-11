@@ -5,15 +5,30 @@
 #include "Node.h"
 class NodeDouble : public Node{
 public:
-	NodeDouble *getPrev(){/**< Returns the previous pointer of the node.*/
+	/*! Gets the previous node.
+	\return A node pointer.
+	*/
+	NodeDouble *getPrev(){
 		return prev;
 	}
+
+	/*! Gets the next node.
+	\return A node pointer.
+	*/
 	NodeDouble *getNext(){
 		return next;
 	}
-	void setPrev(NodeDouble *node){/**< Sets the previous pointer of the node.*/
+
+	/*! Sets the previous node.
+	\param node: The node to set previous to.
+	*/
+	void setPrev(NodeDouble *node){
 		prev = node;
 	}
+
+	/*! Sets the next node.
+	\param node: The node to set next to.
+	*/
 	void setNext(NodeDouble *node){
 		next = node;
 	}
