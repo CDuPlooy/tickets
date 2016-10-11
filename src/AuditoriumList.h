@@ -25,8 +25,9 @@ public:
 
 	/*! Returns the auditorium at positition at i.
 	\param i: size_t representing position in the vector.
+	\return An auditorium instance.
 	*/
-      Auditorium *at(size_t i);/**< Returns the auditorium at i.*/
+      Auditorium *at(size_t i);
 
 	/*! Returns the size of the list.
 		\return Thee size of the list.

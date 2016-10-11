@@ -11,10 +11,26 @@ class Group{
 public:
 	Group();
 	~Group();
-	void push_back(Person *person);/**< Adds a person to the group.*/
-	void pop_back();/**< Removes a person from the group.*/
-	Person *at(size_t i);/**Returns a person at position i inside the group.*/
-	size_t getSize();/**< Returns the size of the group.*/
+
+	/*! Adds a person to the goup.
+	\param person: A person pointer.
+	*/
+	void push_back(Person *person);
+
+	/*! Removes a person from the goup.
+	*/
+	void pop_back();
+
+	/*! Returns the person at i.
+	\param i: A size_t representing the position in the vector.
+	\return A person instance.
+	*/
+	Person *at(size_t i);
+
+	/*! Returns the size of the group.
+	\return The size of the group.
+	*/
+	size_t getSize();
 private:
 	std::vector<Person *> _group;
 };
