@@ -47,14 +47,12 @@ std::string DynamicAuditorium::getId() const{
 }
 //Unique Functions
 bool DynamicAuditorium::book(Person *person ,  size_t r , size_t c ){
-	if(!checkBoundry(r, c))
-		return false;
-
-	if( fa->getValue(r,c)->getState() == SEAT_TAKEN )
+	if(fa->getValue(r,c)->getState() == SEAT_TAKEN)
 		return false;
 	else{
-		fa->getValue(r, c)->setState(SEAT_TAKEN);
+		fa->getValue(r , c)->setState(SEAT_TAKEN);
 		fa->getValue(r, c)->bind(person);
+
 		seats++;
 		if(mementoLinked()){
 			std::string buffer("book ");
@@ -67,6 +65,7 @@ bool DynamicAuditorium::book(Person *person ,  size_t r , size_t c ){
 			add_command(buffer);
 		}
 	}
+	printSeat(fa->getValue(r , c), false);
 	return true;
 }
 
@@ -74,9 +73,7 @@ bool DynamicAuditorium::book(Person *person ,  size_t r , size_t c ){
 void DynamicAuditorium::cancelBooking(size_t r , size_t c ){
 	if(!checkBoundry(r, c))
 		return;
-	// std::cout << r << " " << c << std::endl;
-	static_cast<Seat *>(fa->at( r , c ))->setState(SEAT_EMPTY);
-
+	fa->getValue(r , c )->setState(SEAT_EMPTY);
 
 	if(mementoLinked()){
 		std::string buffer;
@@ -86,11 +83,12 @@ void DynamicAuditorium::cancelBooking(size_t r , size_t c ){
 		buffer.append(fa->getValue(r , c)->toString());
 		buffer.append("Matrix{");
 		ss << "Row:" << r << " Column:" << c << " Matrix}";
+		//book Person{Type:Minor Name:Billy Age:0 Fee:21.5 Person}Seat{State:1 Seat}Matrix{row:0 column:2 Matrix}
 		buffer.append(ss.str());
 		add_command(buffer);
 	}
 	fa->getValue(r , c )->bind(NULL);
-
+	fa->getValue(r , c )->setState(SEAT_EMPTY);
 }
 
 

@@ -37,7 +37,7 @@ void testCases(){
 		// return 0;
 
 		cout << "Testing the dynamicAuditorium" << endl;
-		DynamicAuditorium *dynAud = new DynamicAuditorium(5,5);
+		FixedAuditorium *dynAud = new FixedAuditorium(5,5);
 		Minor *Darky = new Minor();
 		dynAud->enableMemento(true);
 		// dynAud->getMemento()->guiMode = false;
@@ -46,7 +46,7 @@ void testCases(){
 
 		dynAud->undo();
 		dynAud->print(cout);
-		dynAud->getDsm()->print(cout);
+		dynAud->print(cout);
 
 
 		delete dynAud;
@@ -211,107 +211,140 @@ void pause(){
 	cin >> a;
 	system("clear");
 }
-void demo(){
-	//TEST 1
-	cout << "This is a demo of the tickets application!" << endl;
-	cout << "Day 1:" << endl;
 
-	cout << "SterKinekor has different kinds of auditoriums and would like to save templates for these auditoriums." << endl;
-	cout << "The first template is a 5x5 auditorium." << endl;
-	cout << "The system uses a Modeller to build a 5x5 auditorium." << endl;
-	AuditoriumModeller audMod;
-
-	Auditorium *aud = audMod.construct(AUD_DYNAMIC, 5, 5);
-	aud->print(cout);
-
-	aud->dumpFile("DynamicStandard.raw");
-	cout << endl  << "Unfortunately , SterKinekor will not be receiving any customers today , let's save the auditorium as a template!" << endl << endl;
-	pause();
-	//TEST 2
-	cout << "Day 2:" << endl;
-	cout << "Look , some customers are arriving! We should load a template auditorium using the auditorium developer :D " << endl;
-	delete aud;
-
+void dayOne(){
+	cout << "DAY 1: " << endl;
+	cout << "SterKinekor wants to develop a new 5x5 auditorium , let's use the auditorium developer to create and save one."  << endl;
 	AuditoriumDeveloper audDev;
-	if ( !audDev.loadFromFile("DynamicStandard.raw") ){
-		cout << "Couldn't load the auditorium!" << endl;
-		return ;
+	Auditorium *aud = audDev.construct(AUD_FIXED, 5	, 5);
+	aud->print(cout);
+	aud->dumpFile("DynamicStandard.raw");
+	cout << "Perfect ! The auditorium has been saved for another day." << endl;
+	pause();
+	delete aud;
+	cout << "* * * * Time passes . . . * * * * " << endl << endl;
+}
+
+void dayTwo(){
+	cout << "DAY 2: " << endl;
+	cout << "Management likes the new auditorium design , they want you to load it as an active template! Let's try the auditorium modeller" << endl;
+	AuditoriumModeller audMod;
+	if(!audMod.loadFromFile("DynamicStandard.raw")){
+		cout << "Unexpected error during demo ; What did you do? " << endl;
+		exit(1);
 	}
-	aud = audDev.getAuditorium();
-	aud->enableMemento(true);
-
-	aud->setName("Brooklyn");
-	cout << "Let's see if it loaded correctly!" << endl;
-	aud->print(cout);
-	cout << endl << "A Pensioner named Randy wants to book a ticket. We should enable the ticketPrinter to automate the printing as bookings are made!" << endl;
-	Pensioner *Randy = new Pensioner;
-	Randy->setName("Randy");
-	aud->enablePrinter(true);
-	aud->book(Randy, 0, 0);
-	cout << "Let's update the display!" << endl;
-	aud->print(cout);
-
-	aud->cancelBooking(0, 0);
-	aud->print(cout);
-	delete Randy;
-	cout << "A charming family wants to see a movie! They need 4 seats - and next to each other!" << endl;
-	Group *group = new Group;
-	Adult *Billy = new Adult();
-	Billy->setName("Billy");
+	Auditorium *aud = audMod.getAuditorium();
+	cout << "Look! A charming family would like to buy ticktes!" << endl;
+	Group group;
 	Adult *Mandy = new Adult();
-	Mandy->setName("Mandy");
-	Minor *Grimmy = new Minor();
-	Grimmy->setName("Grimmy");
-	Minor *Tod = new Minor();
-	Tod->setName("Tod");
+	Adult *Timmy = new Adult();
+	group.push_back(Mandy);
+	group.push_back(Timmy);
 
-
-	group->push_back(Billy);
-	group->push_back(Mandy);
-	group->push_back(Grimmy);
-	group->push_back(Tod);
-	aud->bookAdv(*group);
+	aud->bookAdv(group);
 	aud->print(cout);
 
-	//TEST 4
-	cout << "Another family wants to book! Fortunately they have the exact same names as the previous family. However , the second isle is now under maintenance!" << endl;
-	aud->guiMode = false;
-	aud->setVoid(1, 0, 5, true);
-	aud->bookAdv(*group);
+	pause();
+	cout << "Someone else wants to book a ticket at 3x3!" << endl;
+	aud->book(Timmy, 3, 3);
 	aud->print(cout);
-
-	Adult *Ben = new Adult;
-	Ben->setName("Ben");
-	cout << "The auditorium is getting full!" << endl;
-	cout << "People are having trouble finding their own open spaces , let's provide them with free seats!" << endl;
-	size_t x , y;
-	aud->findFree(x, y);
-	cout << "The system found a free spot at " << x << ' ' << y << endl;
-	aud->book(Ben, x, y);
+	cout << "Ah! Darn kids , alwats messing with the clerks , luckily we can cancel an operation!" << endl;
+	aud->cancelBooking(3,3);
 	aud->print(cout);
 	pause();
-
-	//TEST 5
-	delete aud;
-	cout << "Day 4: " << endl;
-	cout << "A clerk messed up and needs to undo an operation! Let's call memento!" << endl;
-	aud = new DynamicAuditorium(5,5);
-	aud->enableMemento(true);
-	aud->book(Ben,0,0);
-	aud->print(cout);
-	cout << "After the undo : " << endl;
-	aud->undo();
-	aud->print(cout);
-	delete group;
-	delete Billy;
 	delete Mandy;
-	delete Ben;
-	delete Grimmy;
-	delete Tod;
-
+	delete Timmy;
 	delete aud;
+	cout << "* * * * Time passes . . . * * * * " << endl << endl;
+
+}
+
+void dayThree(){
+	cout << "You come into the auditorium to find that someone has broken an entire row of seats!" << endl;
+	cout << "We'll need to disable row 3 of  the auditorium" << endl;
+	DynamicAuditorium dAud(5,5);
+	dAud.setVoid(3, 0, 5, true);
+	dAud.print(cout);
+	cout << endl << "Bookings are now more complicated, let's have the system assign free spaces to people!" << endl;
+	Pensioner *Nia = new Pensioner;
+	size_t x;
+	size_t y;
+	dAud.findFree(x, y);
+	cout << "The system found an empty seat at " << x << ":" << y << endl;
+	dAud.book(Nia, x, y);
+	dAud.findFree(x, y);
+	dAud.print(cout);
+	cout << "Another customer wants to book!" << endl;
+	cout << "The system found an empty seat at " << x << ":" << y << endl;
+	dAud.book(Nia, x, y);
+	dAud.print(cout);
+	pause();
+	delete Nia;
+	cout << "* * * * Time passes . . . * * * * " << endl << endl;
+
+}
+
+void dayFour(){
+	cout << "DAY 4: " << endl;
+	cout << "Management has requested the system support a sort of plugin. Luckily we used the decorator pattern!" << endl;
+	FixedAuditorium dAud(5,5);
+	Pensioner *Nia = new Pensioner;
+	cout << "Press continue to see the new functionality ( random bookings will be  made but a TicketPrinter will print beautiful tickets )" << endl;
+	pause();
+	dAud.enableMemento(true);
+	dAud.enablePrinter(false);
+	dAud.guiMode = true;
+	Nia->setName("Nia");
+	dAud.book(Nia, 0, 0);
+	Nia->setName("Melly");
+
+	dAud.book(Nia, 1, 0);
+	Nia->setName("Billy");
+
+	dAud.book(Nia, 0, 3);
+	Nia->setName("Timmy");
+
+	dAud.book(Nia, 4, 0);
+	Nia->setName("Chris");
+
+	dAud.book(Nia, 0, 2);
+	Nia->setName("Stephan");
+
+	dAud.print(cout);
+	cout << "We can now even undo bookings!" << endl;
+	dAud.undo();
+	dAud.print(cout);
+
+
+	pause();
+	delete Nia;
+
+	pause();		//TODO: Double check memento implementation , specifically undo order.
+	cout << "* * * * Time passes . . . * * * * " << endl << endl;
+}
+void demo(){
+	dayOne();
+	dayTwo();
+	dayThree();
+	dayFour();
+	//TODO: dayFive , show off AuditoriumLists.
+}
+
+void testMemento(){
+	FlexiAuditorium fa(3,3);
+	fa.enableMemento(true);
+	Minor *billy = new Minor();
+	fa.book(billy, 0, 0);
+	fa.print(cout);
+	fa.getMemento()->print(cout);
+	fa.undo();
+	fa.print(cout);
+	fa.getMemento()->print(cout);
+	delete billy;
 }
 int main( int argc , char **argv ){
+	// testMemento();
+
 	demo();
 
 	cout << "This concludes the CLI demo of tickets , to run the debug tests press <d> , to exit press <e>" << endl;
@@ -327,4 +360,4 @@ int main( int argc , char **argv ){
 //TODO: Add vector<size_t> to the memento so undo can work on undo adv.
 //TODO: Add strategies to bookAdv
 //TODO: Implement clone methods for auditoriums.
-//TODO: FIX MEMENTO
+//TODO: FIX MEMENTO2
