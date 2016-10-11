@@ -9,13 +9,26 @@
 #include "Seat.h"
 class FixedSizeMatrix : public Matrix{
 public:
+	/*! Constructs a fixed size matrix.
+	\param rows: The number of rows.
+	\param columns: The number of columns.
+	\return A fixed size matrix.
+	*/
       FixedSizeMatrix(size_t rows , size_t columns);  //A variable which determines what kind of list to use.
       virtual ~FixedSizeMatrix();
       bool setValue(size_t row , size_t column , short value);
       Seat *getValue(size_t row , size_t column);
-      size_t getRows();  /**< Returns the amount of rows in the current FixedSizeMatrix.*/
-      size_t getColumns();  /**< Returns the amount of columns in the current FixedSizeMatrix.*/
-      bool checkBoundry( size_t row, size_t column);
+
+	/*! Returns the number of rows in the structure.
+	\return The number of rows,
+	*/
+	size_t getRows();
+	/*! Returns the number of columns in the structure.
+	\return The number of columns,
+	*/
+	size_t getColumns();
+
+	bool checkBoundry( size_t row, size_t column);
       //Implemented from list
        void add(Object *object);
        void next();
@@ -24,9 +37,9 @@ public:
        void pop_back();
        void setCurrent(Object *object);
        Object *getCurrent();
-       Object *at(size_t row, size_t column); /**< Returns the object at i.*/
-       bool isAtEnd(); /**<Returns true when the end of the Container has been reached. */
-	 
+       Object *at(size_t row, size_t column);
+       bool isAtEnd();
+
        //Debug
        void dump();
 private:

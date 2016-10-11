@@ -16,6 +16,11 @@ protected:
       int compareTo(Object const &) const;
 public:
       //Constructors
+	/*! Constructs a dynamic size matrix.
+	\param rows: The number of rows.
+	\param columns: The number of columns.
+	\return A dynamic size matrix.
+	*/
       DynamicSizeMatrix(size_t rows , size_t columns);
       ~DynamicSizeMatrix();
       //Overloaded Functions
@@ -26,6 +31,9 @@ public:
       //Unique Functions
 	size_t getRows();
 	size_t getColumns();
+	/*! Sets the number of columns.
+	\param _columns: The number of columns.
+	*/
 	void setColumns(size_t _columns);
 	void add(Object *object);
 	void next();
@@ -34,11 +42,10 @@ public:
 	void pop_back();
 	void setCurrent(Object *object);
 	Object *getCurrent();
-	Object *at(size_t row, size_t column); /**< Returns the object at i.*/
-	bool isAtEnd(); /**<Returns true when the end of the Container has been reached. */
+	Object *at(size_t row, size_t column);
+	bool isAtEnd();
 	Seat *getValue(size_t row , size_t column);
-	bool setValue(size_t row , size_t column ,short s); /**< Sets the value located at row <-> column to value.*/
-
+	bool setValue(size_t row , size_t column ,short s);
 private:
 	std::vector< std::vector<Seat *> > data;
 	Object *currentl;

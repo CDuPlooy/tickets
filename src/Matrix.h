@@ -12,18 +12,64 @@ class Matrix : public Container{
 public:
       Matrix();
       ~Matrix();
-      virtual void add(Object *object) = 0; /**< Adds an Object to the matrix.*/
-      virtual bool setValue(size_t row , size_t column ,short s) = 0; /**< Sets the value located at row <-> column to value.*/
-      virtual Seat *getValue(size_t row , size_t column) = 0; /**< Compares two instances of Object.*/
+
+	/*! Adds an object to the data structure.
+	\param object: An object pointer.
+	*/
+      virtual void add(Object *object) = 0;
+
+	/*! Sets the value at a particular position
+	\param row: A value representing the row.
+	\param column: A value representing the column.
+	\param s: The state to set the value to.
+	\return true/false whether the function executed correctly.
+	*/
+      virtual bool setValue(size_t row , size_t column ,short s) = 0;
+
+	/*! gets the value at a particular position
+	\param row: A value representing the row.
+	\param column: A value representing the column.
+	\return A Seat pointer.
+	*/
+      virtual Seat *getValue(size_t row , size_t column) = 0;
       //Virtual Functions
-      virtual Object *at(size_t row, size_t column) = 0; /**< Returns the object at i.*/
-      virtual void next() = 0; /**< Iterates to the next instance of Object in Container*/
-      virtual void previous() = 0; /**<Iterates to the previous instance of Object in Container*/
-      virtual void push_back(Object *object) = 0; /**< Adds an Object to the list.*/
-      virtual void pop_back() = 0; /**< Removes an Object from the list.*/
+
+	/*! Gets the  object at position i.
+	\param i: The position of the object in the data structure.
+	\return An object pointer.
+	*/
+      virtual Object *at(size_t row, size_t column) = 0;
+
+	/*! Moves the cursor to the next object.
+	*/
+      virtual void next() = 0;
+
+	/*! Moves the cursor to the previous object.
+	*/
+      virtual void previous() = 0;
+
+	/*! Adds an object to the List.
+	\param object: A pointer to an Object.
+	*/
+	virtual void push_back(Object *object) = 0;
+
+	/*! Removes an object * from the top of the List.
+	*/
+	virtual void pop_back() = 0;
+
+	/*! Sets the cursor.
+	\param object: The object pointer to set the cursor to.
+	*/
       virtual void setCurrent(Object *object) = 0;
+
+	/*! Determines whether the cursor is at the end of the Container.
+	\return Returns true when the cursor is at the end of the Container.
+	*/
       virtual bool isAtEnd() = 0; /**<Returns true when the end of the Container has been reached. */
-      
+
+	/*! Gets the current object / cursor
+	\return An object pointer or a cursror.
+	*/
       virtual Object *getCurrent() = 0;/**< Returns the current object pointer (or cursor if you will).*/
 };
 #endif

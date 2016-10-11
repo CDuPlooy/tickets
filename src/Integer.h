@@ -16,15 +16,59 @@ public:
       void print(std::ostream & = std::cout) const;
       std::string getId() const;
       //Overloaded Operators
+	/*! Sets internal int to.
+	\param a: An int to set the internal int to.
+	*/
       Integer operator=(int a);
+
+	/*! Compares integers.
+	\param a: An int to set the internal int to.
+	\return true/false;
+	*/
       bool operator==(Integer &i);
+
+	/*! Compares integers.
+	\param i: An int to set the internal int to.
+	\return true/false;
+	*/
       bool operator<=(Integer &i);
+
+	/*! Compares integers.
+	\param i: An int to set the internal int to.
+	\return true/false;
+	*/
       bool operator>=(Integer &i);
+
+	/*! Compares integers.
+	\param i: An int to set the internal int to.
+	\return true/false;
+	*/
       bool operator!=(Integer &i);
+
+	/*! Compares integers.
+	\param i: An int to set the internal int to.
+	\return true/false;
+	*/
       bool operator==(int i);
+
+	/*! Compares integers.
+	\param i: An int to set the internal int to.
+	\return true/false;
+	*/
       bool operator<=(int i);
+
+	/*! Compares integers.
+	\param i: An int to set the internal int to.
+	\return true/false;
+	*/
       bool operator>=(int i);
+
+	/*! Compares integers.
+	\param i: An int to set the internal int to.
+	\return true/false;
+	*/
       bool operator!=(int i);
+
 
 private:
       int _internal;
