@@ -26,10 +26,28 @@ public:
       void print(std::ostream & = std::cout) const;/**< */
       std::string getId() const;/**< */
       //Unique Functions
-      bool loadFromFile(std::string);/**< Loads an auditorium from a text file.*/
-      void unbind(); /**< Releases the Auditorium pointer bound to the private member auditorium by setting it to NULL */
+
+	/*! Loads an auditorium from a file.
+	\param filename: A string representing the name of the file.
+	\returns true/false if the auditorium was loaded correctly.
+	*/
+      bool loadFromFile(std::string filename);
+
+	/*! Reduntant functiong ; Releases the internal auditorium pointer.
+	*/
+      void unbind();
       //Unique functions
-      Auditorium *getAuditorium();/**< Returns an auditorium instance. Please note that this function depends on loadFromFile.*/
+	/*! Gets the internal auditorium pointer loaded by AuditoriumDeveloper::loadFromFile.
+	\return An auditorium pointer.
+	*/
+      Auditorium *getAuditorium();
+
+	/*! Constructs any kind of auditorium.
+	\param type: AUD_FIXED , AUD_DYNAMIC , AUD_FLEXI ; Representing the kind of auditorium.
+	\param x: The number of rows.
+	\param y: The number of columns.
+	\return An auditorium pointer.
+	*/
 	Auditorium *construct(short type,size_t x , size_t y);
 private:
       Auditorium *auditorium; /**! An internal auditorium instance returned by getAuditorium.*/
