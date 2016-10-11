@@ -14,9 +14,23 @@ public:
       ~AuditoriumList();
       AuditoriumList();
 
-      void push_back(Auditorium *auditorium);/**< Adds an auditorium to the complex.*/
-      void pop_back();/**< Removes an auditorium from the complex.*/
+	/*! Adds an auditorium to the list.
+	\param auditorium: An auditorium pointer..
+	*/
+      void push_back(Auditorium *auditorium);
+
+	/*! Removes an auditorium from the list.
+	*/
+      void pop_back();
+
+	/*! Returns the auditorium at positition at i.
+	\param i: size_t representing position in the vector.
+	*/
       Auditorium *at(size_t i);/**< Returns the auditorium at i.*/
+
+	/*! Returns the size of the list.
+		\return Thee size of the list.
+	*/
       size_t getSize();
 private:
       ListAsVector complex;

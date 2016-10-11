@@ -138,8 +138,9 @@ public:
 	AuditoriumMemento *getMemento();
 
 	/*! Adds a command to the memento.
+	\param com: The command to add
 	*/
-	void add_command(std::string);
+	void add_command(std::string com);
 
 	/*! Invokes the memento undo function by deleting the command from the top of the STL vector.
 	*/
