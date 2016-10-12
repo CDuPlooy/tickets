@@ -5,6 +5,7 @@ Pensioner::~Pensioner(){
 }
 
 Pensioner::Pensioner(){
+	setAge(75);
 	setFee(10);
 }
 

@@ -13,6 +13,8 @@ FixedAuditorium::FixedAuditorium(size_t _rows , size_t _columns){
 
 FixedAuditorium::~FixedAuditorium(){
 	delete fa;
+	delete getMemento();
+	
 }
 //Overloaded Functions
 bool FixedAuditorium::isNull(void) const{

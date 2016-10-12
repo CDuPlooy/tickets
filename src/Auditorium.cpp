@@ -8,6 +8,8 @@
 Auditorium::~Auditorium(){
 	if(memento)
 		deleteMemento();
+	if(printer)
+		delete printer;
 }
 
 Auditorium::Auditorium(){
@@ -43,7 +45,6 @@ void Auditorium::setState( size_t , size_t , short ){
 
 void Auditorium::enableMemento(bool value){
 	if(value){
-		deleteMemento();
 		createMemento();
 	}
 	else
@@ -51,8 +52,14 @@ void Auditorium::enableMemento(bool value){
 }
 
 void Auditorium::createMemento(){
-	memento = new AuditoriumMemento();
-	memento->bind(this);
+	if(!memento){
+		memento = new AuditoriumMemento();
+		memento->bind(this);
+		return;
+	}
+
+	delete memento;
+	createMemento();
 }
 bool Auditorium::mementoLinked(){
 	return memento;

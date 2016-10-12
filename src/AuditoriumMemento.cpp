@@ -24,7 +24,9 @@ AuditoriumMemento::AuditoriumMemento(){
 	_x = NULL;
 	_y = NULL;
 	_state = NULL;
-	guiMode = false;
+	guiMode = true;
+	Unlock();
+
 }
 
 //Overloaded Functions
@@ -55,18 +57,14 @@ void AuditoriumMemento::add_command(std::string command){
 		commands.push_back(command);
 }
 void AuditoriumMemento::undo(){
-	if(commands.size() == 0)
+	if(commands.empty())
 		return;
 
-	std::string command = commands.at(0);
+
 	//remove from start
-	if(!guiMode){
-		std::string command = commands.at(0);	//This is what I want
-		commands.erase(commands.begin());
-	}else{
-		command = commands.at(commands.size()-1);
-		commands.pop_back();
-	}
+	std::string command = commands.at(commands.size()-1);
+	commands.pop_back();
+
 
 	exec(command);
 }
@@ -125,6 +123,8 @@ void AuditoriumMemento::exec(std::string command){
 		auditorium->book(person, x, y);
 		Unlock();
 	}
+	delete seat;
+	delete person;
 }
 
 std::string AuditoriumMemento::extract(std::string buffer , std::string begin , std::string end){

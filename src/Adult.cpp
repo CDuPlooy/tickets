@@ -6,6 +6,7 @@ Adult::~Adult(){
 
 Adult::Adult(){
 	setFee(25);
+	setAge(43);
 }
 
 //Overloaded Functions

@@ -262,22 +262,23 @@ void dayTwo(){
 void dayThree(){
 	cout << "You come into the auditorium to find that someone has broken an entire row of seats!" << endl;
 	cout << "We'll need to disable row 3 of  the auditorium" << endl;
-	DynamicAuditorium dAud(5,5);
-	dAud.setVoid(3, 0, 5, true);
-	dAud.print(cout);
+	DynamicAuditorium *dAud = new DynamicAuditorium(5,5);
+	dAud->setVoid(3, 0, 5, true);
+	dAud->print(cout);
 	cout << endl << "Bookings are now more complicated, let's have the system assign free spaces to people!" << endl;
 	Pensioner *Nia = new Pensioner;
 	size_t x;
 	size_t y;
-	dAud.findFree(x, y);
+	dAud->findFree(x, y);
 	cout << "The system found an empty seat at " << x << ":" << y << endl;
-	dAud.book(Nia, x, y);
-	dAud.findFree(x, y);
-	dAud.print(cout);
+	dAud->book(Nia, x, y);
+	dAud->findFree(x, y);
+	dAud->print(cout);
 	cout << "Another customer wants to book!" << endl;
 	cout << "The system found an empty seat at " << x << ":" << y << endl;
-	dAud.book(Nia, x, y);
-	dAud.print(cout);
+	dAud->book(Nia, x, y);
+	dAud->print(cout);
+	delete dAud;
 	pause();
 	delete Nia;
 	cout << "* * * * Time passes . . . * * * * " << endl << endl;
@@ -287,36 +288,36 @@ void dayThree(){
 void dayFour(){
 	cout << "DAY 4: " << endl;
 	cout << "Management has requested the system support a sort of plugin. Luckily we used the decorator pattern!" << endl;
-	FixedAuditorium dAud(5,5);
-	Pensioner *Nia = new Pensioner;
+	DynamicAuditorium *dAud = new DynamicAuditorium(5,5);
+	Pensioner *Nia = new Pensioner();
 	cout << "Press continue to see the new functionality ( random bookings will be  made but a TicketPrinter will print beautiful tickets )" << endl;
 	pause();
-	dAud.enableMemento(true);
-	dAud.enablePrinter(true);
-	dAud.setName("Brooklyn");
+	dAud->enableMemento(true);
+	dAud->enablePrinter(true);
+	dAud->setName("Brooklyn");
 
 	Nia->setName("Nia");
-	dAud.book(Nia, 0, 0);
+	dAud->book(Nia, 0, 0);
 	Nia->setName("Melly");
 
-	dAud.book(Nia, 1, 0);
+	dAud->book(Nia, 1, 0);
 	Nia->setName("Billy");
 
-	dAud.book(Nia, 0, 3);
+	dAud->book(Nia, 0, 3);
 	Nia->setName("Timmy");
 
-	dAud.book(Nia, 4, 0);
+	dAud->book(Nia, 4, 0);
 	Nia->setName("Chris");
 
-	dAud.book(Nia, 0, 2);
+	dAud->book(Nia, 0, 2);
 	Nia->setName("Stephan");
 
-	dAud.print(cout);
+	dAud->print(cout);
 	cout << "We can now even undo bookings!" << endl;
-	dAud.undo();
-	dAud.print(cout);
+	dAud->undo();
+	dAud->print(cout);
 
-
+	delete dAud;
 	pause();
 	delete Nia;
 

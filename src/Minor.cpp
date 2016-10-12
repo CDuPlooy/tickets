@@ -7,6 +7,7 @@ Minor::~Minor(){
 
 Minor::Minor(){
 	setFee(21.5);
+	setAge(3);
 }
 
 //Overloaded Functions
