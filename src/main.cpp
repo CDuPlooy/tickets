@@ -321,15 +321,40 @@ void dayFour(){
 	pause();
 	delete Nia;
 
-	pause();		//TODO: Double check memento implementation , specifically undo order.
+	pause();
 	cout << "* * * * Time passes . . . * * * * " << endl << endl;
+}
+
+void dayFive(){
+	cout << "DAY 5 : " << endl;
+	cout << "Miraculously , the franchise has gotten bigger!" << endl;
+	cout << "We should organise auditoriums in the same complexes together!" << endl;
+	AuditoriumList AudList;
+	FixedAuditorium fa(2,4);
+	fa.setName("Subgroup A");
+	FixedAuditorium faOne(14,14);
+	faOne.setName("Subgroup B");
+	FixedAuditorium faTwo(5,5);
+	faTwo.setName("Subgroup C");
+	AudList.push_back(&fa);
+	AudList.push_back(&faOne);
+	AudList.push_back(&faTwo);
+
+
+
+	for(size_t i = 0 ; i < AudList.getSize() ; i++){
+		cout << i + 1 << ".) " << AudList.at(i)->getName() << endl;
+		AudList.at(i)->print(cout);
+	}
+	pause();
+
 }
 void demo(){
 	dayOne();
 	dayTwo();
 	dayThree();
 	dayFour();
-	//TODO: dayFive , show off AuditoriumLists.
+	dayFive();
 }
 
 void testMemento(){
@@ -358,8 +383,5 @@ int main( int argc , char **argv ){
 }
 
 
-//TODO: Implement a demo with the given code.
-//TODO: Add vector<size_t> to the memento so undo can work on undo adv.
 //TODO: Add strategies to bookAdv
-//TODO: Implement clone methods for auditoriums.
-//TODO: FIX MEMENTO2
+//TODO: Create a minimal working CLI interface.
