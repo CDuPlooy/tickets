@@ -16,6 +16,7 @@ Auditorium::Auditorium(){
 	printer = NULL;
 	memento = NULL;
 	guiMode = false;
+	_mutex = false;
 }
 
 //Overloaded Functions

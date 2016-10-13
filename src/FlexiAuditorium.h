@@ -35,6 +35,7 @@ public:
 		return fa;
 	}
 	Auditorium *clone();
+	void clear();
 private:
       DynamicSizeMatrix *fa;
       size_t seats;

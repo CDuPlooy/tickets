@@ -14,7 +14,7 @@ FixedAuditorium::FixedAuditorium(size_t _rows , size_t _columns){
 FixedAuditorium::~FixedAuditorium(){
 	delete fa;
 	delete getMemento();
-	
+
 }
 //Overloaded Functions
 bool FixedAuditorium::isNull(void) const{
@@ -43,11 +43,16 @@ void FixedAuditorium::setState( size_t r, size_t c, short s){
 }
 
 bool FixedAuditorium::book(Person *person , size_t r, size_t c){
-	if(!fa->checkBoundry(r, c))
+	tryLock();
+	if(!fa->checkBoundry(r, c)){
+		unlock();
 		return false;
+	}
 
-	if(fa->getValue(r,c)->getState() == SEAT_TAKEN)
+	if(fa->getValue(r,c)->getState() == SEAT_TAKEN){
+		unlock();
 		return false;
+	}
 	else{
 		fa->getValue(r , c)->setState(SEAT_TAKEN);
 		fa->getValue(r, c)->bind(person);
@@ -65,6 +70,7 @@ bool FixedAuditorium::book(Person *person , size_t r, size_t c){
 		}
 	}
 	printSeat(fa->getValue(r , c), false);
+	unlock();
 	return true;
 }
 
@@ -109,8 +115,11 @@ bool FixedAuditorium::findFree(size_t &r, size_t &c){
 }
 
 void FixedAuditorium::cancelBooking(size_t r , size_t c ){
-	if(!checkBoundry(r, c))
+	tryLock();
+	if(!checkBoundry(r, c)){
+		unlock();
 		return;
+	}
 	fa->getValue(r , c )->setState(SEAT_EMPTY);
 
 	if(mementoLinked()){
@@ -127,6 +136,7 @@ void FixedAuditorium::cancelBooking(size_t r , size_t c ){
 	}
 	fa->getValue(r , c )->bind(NULL);
 	fa->getValue(r , c )->setState(SEAT_EMPTY);
+	unlock();
 
 }
 
@@ -215,4 +225,11 @@ Auditorium *FixedAuditorium::clone(){
 			newA->fa->getValue( i , j )->setState(fa->getValue( i , j )->getState());
 	newA->seats = seats;
 	return newA;
+}
+
+void FixedAuditorium::clear(){
+	for(size_t i = 0 ; i < fa->getRows() ; i++)
+		for(size_t j = 0 ; j < fa->getColumns() ; j++)
+			if(fa->getValue( i , j )->getState() == SEAT_TAKEN)
+				fa->getValue( i , j )->setState( SEAT_EMPTY );
 }

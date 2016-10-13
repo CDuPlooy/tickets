@@ -10,7 +10,14 @@
 #include "Person.h"
 #include "TicketPrinter.h"
 #include "AuditoriumMemento.h"
+#include <ctime>
+#include <pthread.h>
 //Class
+/*! Trampoline function for pthread_create.
+*/
+class Auditorium;
+
+
 class Auditorium : public Object{
 protected:
       int compareTo(Object const &) const;  /**< Compares two instances of Object.x*/
@@ -173,11 +180,62 @@ public:
 	*/
 	virtual Auditorium *clone() = 0;
 
+	/*! Determines whether the mutex is locked.
+	\return true/false for locked/unlocked.
+	*/
+	bool isLocked(){
+		return _mutex;
+	}
+
+	/*! Loops until the mutex can be locked
+	*/
+	void tryLock(){
+		while( _mutex == true ){}
+		_mutex = true;
+	}
+
+	/*! Unlocks the mutex.
+	*/
+	void unlock(){
+		_mutex = false;
+	}
+
+	/*! Clears the auditorium in n seconds.
+	\param seconds: The amount of seconds to wait.
+	\return true/false whether the thread was spawned.
+	*/
+	bool clearIn(size_t seconds){
+		pthread_t id;
+		_seconds = seconds;
+		pthread_create(&id, NULL, _clearIn, this);
+		// pthread_create(pthread_t *__restrict __newthread, const pthread_attr_t *__restrict __attr, void *(*__start_routine)(void *), void *__restrict __arg)
+
+		return true;
+	}
+
+	static void *_clearIn(void *Aud){
+		Auditorium *aud = (Auditorium *)Aud;	//DO NOT DELETE THIS POINTER.
+		time_t now = time(NULL);
+		while(time(NULL) - now != aud->_seconds){}
+		aud->tryLock();
+		aud->clear();
+		aud->unlock();
+		return NULL;
+	}
+
+
+	/*! Clears the auditorium in n seconds.
+	*/
+	virtual void clear() = 0;
     private:
+	bool _mutex;
 	AuditoriumMemento *memento;
 	TicketPrinter *printer;
       std::string name;
+	size_t _seconds;
 };
+
+
 #endif
 
 //Auditoriums dump to files not to save people , but  rather to save a template of itself.

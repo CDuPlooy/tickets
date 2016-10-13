@@ -205,7 +205,7 @@ void testCases(){
 	      cout << "_____________DONE______________" << endl;
 
 }
-void pause(){
+void pauseC(){
 	cout << "Press <e> followed by enter to continue the demo!" << endl;
 	char a;
 	cin >> a;
@@ -220,7 +220,7 @@ void dayOne(){
 	aud->print(cout);
 	aud->dumpFile("DynamicStandard.raw");
 	cout << "Perfect ! The auditorium has been saved for another day." << endl;
-	pause();
+	pauseC();
 	delete aud;
 	cout << "* * * * Time passes . . . * * * * " << endl << endl;
 }
@@ -244,14 +244,14 @@ void dayTwo(){
 	aud->bookAdv(group);
 	aud->print(cout);
 
-	pause();
+	pauseC();
 	cout << "Someone else wants to book a ticket at 3x3!" << endl;
 	aud->book(Timmy, 3, 3);
 	aud->print(cout);
 	cout << "Ah! Darn kids , alwats messing with the clerks , luckily we can cancel an operation!" << endl;
 	aud->cancelBooking(3,3);
 	aud->print(cout);
-	pause();
+	pauseC();
 	delete Mandy;
 	delete Timmy;
 	delete aud;
@@ -279,7 +279,7 @@ void dayThree(){
 	dAud->book(Nia, x, y);
 	dAud->print(cout);
 	delete dAud;
-	pause();
+	pauseC();
 	delete Nia;
 	cout << "* * * * Time passes . . . * * * * " << endl << endl;
 
@@ -291,7 +291,7 @@ void dayFour(){
 	DynamicAuditorium *dAud = new DynamicAuditorium(5,5);
 	Pensioner *Nia = new Pensioner();
 	cout << "Press continue to see the new functionality ( random bookings will be  made but a TicketPrinter will print beautiful tickets )" << endl;
-	pause();
+	pauseC();
 	dAud->enableMemento(true);
 	dAud->enablePrinter(true);
 	dAud->setName("Brooklyn");
@@ -318,10 +318,10 @@ void dayFour(){
 	dAud->print(cout);
 
 	delete dAud;
-	pause();
+	pauseC();
 	delete Nia;
 
-	pause();
+	pauseC();
 	cout << "* * * * Time passes . . . * * * * " << endl << endl;
 }
 
@@ -346,15 +346,33 @@ void dayFive(){
 		cout << i + 1 << ".) " << AudList.at(i)->getName() << endl;
 		AudList.at(i)->print(cout);
 	}
-	pause();
+	pauseC();
 
 }
+
+void daySix(){
+	cout << "DAY 6: " << endl;
+	cout << "Management wants auditoriums to be able to clear themselves after a specified amount of time!" << endl;
+	cout << "Luckily we linked to the pthread library!" << endl;
+	DynamicAuditorium *dAud = new DynamicAuditorium(5,5);
+	Pensioner *Nia = new Pensioner;
+	dAud->book(Nia, 0, 2);
+	dAud->print(cout);
+	dAud->clearIn(5);
+	cout << "The current movie is really short , the auditorium should be cleared in 5 seconds!" << endl;
+	sleep(6);
+	dAud->print(cout);
+	delete dAud;
+	delete Nia;
+}
+
 void demo(){
 	dayOne();
 	dayTwo();
 	dayThree();
 	dayFour();
 	dayFive();
+	daySix();
 }
 
 void testMemento(){

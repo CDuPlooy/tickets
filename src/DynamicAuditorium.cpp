@@ -47,8 +47,12 @@ std::string DynamicAuditorium::getId() const{
 }
 //Unique Functions
 bool DynamicAuditorium::book(Person *person ,  size_t r , size_t c ){
-	if(fa->getValue(r,c)->getState() == SEAT_TAKEN)
+	tryLock();
+
+	if(fa->getValue(r,c)->getState() == SEAT_TAKEN){
+		unlock();
 		return false;
+	}
 	else{
 		fa->getValue(r , c)->setState(SEAT_TAKEN);
 		fa->getValue(r, c)->bind(person);
@@ -66,13 +70,18 @@ bool DynamicAuditorium::book(Person *person ,  size_t r , size_t c ){
 		}
 	}
 	printSeat(fa->getValue(r , c), false);
+	unlock();
 	return true;
 }
 
 
 void DynamicAuditorium::cancelBooking(size_t r , size_t c ){
-	if(!checkBoundry(r, c))
+	tryLock();
+	if(!checkBoundry(r, c)){
+		unlock();
 		return;
+	}
+
 	fa->getValue(r , c )->setState(SEAT_EMPTY);
 
 	if(mementoLinked()){
@@ -89,18 +98,22 @@ void DynamicAuditorium::cancelBooking(size_t r , size_t c ){
 	}
 	fa->getValue(r , c )->bind(NULL);
 	fa->getValue(r , c )->setState(SEAT_EMPTY);
+	unlock();
 }
 
 
 
 bool DynamicAuditorium::findFree(size_t &r, size_t &c){
+	tryLock();
 	for(size_t i = 0 ; i < fa->getRows() ; i++)
 		for(size_t j = 0 ; j < fa->getColumns() ; j++)
 			if(fa->getValue(i,j)->getState() == SEAT_EMPTY){
 				r = i;
 				c =j;
+				unlock();
 				return true;
 			}
+		unlock();
 		return false;
 }
 
@@ -217,4 +230,12 @@ Auditorium *DynamicAuditorium::clone(){
 			newA->fa->getValue( i , j )->setState(fa->getValue( i , j )->getState());
 	newA->seats = seats;
 	return newA;
+}
+
+
+void DynamicAuditorium::clear(){
+	for(size_t i = 0 ; i < fa->getRows() ; i++)
+		for(size_t j = 0 ; j < fa->getColumns() ; j++)
+			if(fa->getValue( i , j )->getState() == SEAT_TAKEN)
+				fa->getValue( i , j )->setState( SEAT_EMPTY );
 }

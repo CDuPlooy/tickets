@@ -48,11 +48,16 @@ std::string FlexiAuditorium::getId() const{
 }
 //Unique Functions
 bool FlexiAuditorium::book(Person *person ,  size_t r , size_t c ){
-	if(!checkBoundry(r, c))
+	tryLock();
+	if(!checkBoundry(r, c)){
+		unlock();
 		return false;
+	}
 
-	if( fa->getValue(r,c)->getState() == SEAT_TAKEN )
+	if( fa->getValue(r,c)->getState() == SEAT_TAKEN ){
+		unlock();
 		return false;
+	}
 	else{
 		fa->getValue(r, c)->setState(SEAT_TAKEN);
 		fa->getValue(r, c)->bind(person);
@@ -68,13 +73,17 @@ bool FlexiAuditorium::book(Person *person ,  size_t r , size_t c ){
 			add_command(buffer);
 		}
 	}
+	unlock();
 	return true;
 }
 
 
 void FlexiAuditorium::cancelBooking(size_t r , size_t c ){
-	if(!checkBoundry(r, c))
+	tryLock();
+	if(!checkBoundry(r, c)){
+		unlock();
 		return;
+	}
 	// std::cout << r << " " << c << std::endl;
 	static_cast<Seat *>(fa->at( r , c ))->setState(SEAT_EMPTY);
 
@@ -91,7 +100,7 @@ void FlexiAuditorium::cancelBooking(size_t r , size_t c ){
 		add_command(buffer);
 	}
 	fa->getValue(r , c )->bind(NULL);
-
+	unlock();
 }
 
 
@@ -221,4 +230,12 @@ Auditorium *FlexiAuditorium::clone(){
 			newA->fa->getValue( i , j )->setState(fa->getValue( i , j )->getState());
 	newA->seats = seats;
 	return newA;
+}
+
+
+void FlexiAuditorium::clear(){
+	for(size_t i = 0 ; i < fa->getRows() ; i++)
+		for(size_t j = 0 ; j < fa->getColumns() ; j++)
+			if(fa->getValue( i , j )->getState() == SEAT_TAKEN)
+				fa->getValue( i , j )->setState( SEAT_EMPTY );
 }

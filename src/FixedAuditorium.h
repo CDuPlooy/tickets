@@ -32,6 +32,7 @@ public:
       short getState( size_t row, size_t column);
       Seat *getSeat( size_t row, size_t column);
 	Auditorium *clone();
+	void clear();
 
 
 
