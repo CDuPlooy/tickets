@@ -10,6 +10,8 @@ Auditorium::~Auditorium(){
 		deleteMemento();
 	if(printer)
 		delete printer;
+	if(strategy)
+		delete strategy;
 }
 
 Auditorium::Auditorium(){
@@ -17,6 +19,7 @@ Auditorium::Auditorium(){
 	memento = NULL;
 	guiMode = false;
 	_mutex = false;
+	strategy = NULL;
 }
 
 //Overloaded Functions

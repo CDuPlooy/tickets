@@ -10,6 +10,7 @@
 #include "Person.h"
 #include "TicketPrinter.h"
 #include "AuditoriumMemento.h"
+#include "Booking.h"
 #include <ctime>
 #include <pthread.h>
 //Class
@@ -227,10 +228,21 @@ public:
 	/*! Clears the auditorium in n seconds.
 	*/
 	virtual void clear() = 0;
+
+	/*! Used to enable/disable Booking strategies..
+	*/
+	void enableBookingStrategies(){
+		if( !strategy ){
+			strategy = new Booking();
+			strategy->setAuditorium(this);
+		}
+	}
+
     private:
 	bool _mutex;
 	AuditoriumMemento *memento;
 	TicketPrinter *printer;
+	Booking *strategy;
       std::string name;
 	size_t _seconds;
 };

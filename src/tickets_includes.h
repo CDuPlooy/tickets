@@ -25,6 +25,7 @@
 #include "DynamicSizeMatrix.h"
 #include "NodeDouble.h"
 #include "Node.h"
+#include "Booking.h"
 #include "NullObject.h"
 #include "NullPerson.h"
 #include "Object.h"

@@ -22,4 +22,3 @@ private:
 
 };
 #endif
-//TODO: Volatile : Implement functionality so that a child cannot book without a parent present, eg book will not work but bookAdv will.
