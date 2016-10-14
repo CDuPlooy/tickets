@@ -14,6 +14,8 @@ int FlexiAuditorium::compareTo(Object const &) const{
 FlexiAuditorium::FlexiAuditorium(size_t _rows , size_t _columns){
 	seats = 0;
 	fa = new DynamicSizeMatrix( _rows , _columns );
+	rows = _rows;
+	columns = _columns;
 }
 
 

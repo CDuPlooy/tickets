@@ -209,6 +209,7 @@ public:
 		pthread_t id;
 		_seconds = seconds;
 		pthread_create(&id, NULL, _clearIn, this);
+		pthread_join(id, NULL); //Needed this to fix a memory leak
 		// pthread_create(pthread_t *__restrict __newthread, const pthread_attr_t *__restrict __attr, void *(*__start_routine)(void *), void *__restrict __arg)
 
 		return true;
@@ -238,6 +239,17 @@ public:
 		}
 	}
 
+	/*! Used to make bookings via strategies..
+	\param group: The group to make the booking for.
+	\param type: The kind of strategy to use for the booking.
+	\returns true/false whether the booking worked.
+	*/
+	bool bookStrat(Group *group, short type){
+		strategy->setStrategy(type);
+		return strategy->canBook(group);
+	}
+	size_t rows;
+	size_t columns;
     private:
 	bool _mutex;
 	AuditoriumMemento *memento;

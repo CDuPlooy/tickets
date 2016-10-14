@@ -4,11 +4,13 @@
 */
 #include "Auditorium.h"
 #include "Object.h"
+#include "Group.h"
 #ifndef BOOKING_H
 #define BOOKING_H
 #define BOOK_BEST_VIEW 1
 #define BOOK_BEST_FIT 2
 #define BOOK_FAMILY 3
+#define BOOK_BAD_SIGHT 4
 class Booking : public Object{
 public:
 	/*! Associates an auditorium with a booking.
@@ -25,14 +27,11 @@ public:
 		return auditorium;
 	}
 
-	/*! Determines whether a booking for a particular strategy could be made.
+	/*! Determines whether a booking for a particular strategy could be made, makes the booking if possible.
     \return true/false if booking could be made or not.
 	*/
-	// virtual bool canBook() = 0;
-	//
-	// /*! Calls the auditorium class to make bookings.
-	// */
-	// virtual void book() = 0;
+	bool canBook(Group *group);
+
 
 	//Inheritance issues
 	~Booking(){
@@ -54,11 +53,19 @@ public:
 	std::string getId() const{
 		return "Booking";
 	}
+
+	/*! Sets a particular kind of strategy.
+    \param stratType: The type of strategy you want to use.
+	*/
+	void setStrategy(short stratType){
+		strategyType = stratType;
+	}
 protected:
 	int compareTo(Object const &) const{
 		return 1;
 	}
 private:
 	Auditorium *auditorium;
+	short strategyType;
 };
 #endif

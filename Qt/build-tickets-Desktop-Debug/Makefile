@@ -309,6 +309,7 @@ moc_mainwindow.cpp: ../../src/FixedAuditorium.h \
 		../../src/Group.h \
 		../../src/TicketPrinter.h \
 		../../src/AuditoriumMemento.h \
+		../../src/Booking.h \
 		../../src/FixedSizeMatrix.h \
 		../../src/Matrix.h \
 		../../src/Container.h \
@@ -342,6 +343,7 @@ main.o: ../tickets/main.cpp ../tickets/mainwindow.h \
 		../../src/Group.h \
 		../../src/TicketPrinter.h \
 		../../src/AuditoriumMemento.h \
+		../../src/Booking.h \
 		../../src/FixedSizeMatrix.h \
 		../../src/Matrix.h \
 		../../src/Container.h
@@ -356,6 +358,7 @@ mainwindow.o: ../tickets/mainwindow.cpp ../tickets/mainwindow.h \
 		../../src/Group.h \
 		../../src/TicketPrinter.h \
 		../../src/AuditoriumMemento.h \
+		../../src/Booking.h \
 		../../src/FixedSizeMatrix.h \
 		../../src/Matrix.h \
 		../../src/Container.h \
@@ -373,6 +376,7 @@ mainwindow.o: ../tickets/mainwindow.cpp ../tickets/mainwindow.h \
 		../../src/DynamicSizeMatrix.h \
 		../../src/ListAsSLL.h \
 		../../src/Node.h \
+		../../src/FlexiAuditorium.h \
 		../../src/Integer.h \
 		../../src/ListAsDLL.h \
 		../../src/NodeDouble.h \

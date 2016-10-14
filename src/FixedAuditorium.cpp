@@ -9,6 +9,8 @@
 FixedAuditorium::FixedAuditorium(size_t _rows , size_t _columns){
 	seats = 0;
 	fa = new FixedSizeMatrix( _rows , _columns );
+	rows = _rows;
+	columns = _columns;
 }
 
 FixedAuditorium::~FixedAuditorium(){

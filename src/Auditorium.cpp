@@ -20,6 +20,7 @@ Auditorium::Auditorium(){
 	guiMode = false;
 	_mutex = false;
 	strategy = NULL;
+	enableBookingStrategies();
 }
 
 //Overloaded Functions

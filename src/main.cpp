@@ -210,6 +210,7 @@ void pauseC(){
 	char a;
 	cin >> a;
 	system("clear");
+	cout << "* * * * Time passes . . . * * * * " << endl << endl;
 }
 
 void dayOne(){
@@ -222,7 +223,7 @@ void dayOne(){
 	cout << "Perfect ! The auditorium has been saved for another day." << endl;
 	pauseC();
 	delete aud;
-	cout << "* * * * Time passes . . . * * * * " << endl << endl;
+
 }
 
 void dayTwo(){
@@ -255,7 +256,6 @@ void dayTwo(){
 	delete Mandy;
 	delete Timmy;
 	delete aud;
-	cout << "* * * * Time passes . . . * * * * " << endl << endl;
 
 }
 
@@ -281,7 +281,6 @@ void dayThree(){
 	delete dAud;
 	pauseC();
 	delete Nia;
-	cout << "* * * * Time passes . . . * * * * " << endl << endl;
 
 }
 
@@ -322,7 +321,6 @@ void dayFour(){
 	delete Nia;
 
 	pauseC();
-	cout << "* * * * Time passes . . . * * * * " << endl << endl;
 }
 
 void dayFive(){
@@ -364,6 +362,21 @@ void daySix(){
 	dAud->print(cout);
 	delete dAud;
 	delete Nia;
+	pauseC();
+}
+
+void daySeven(){
+cout << "DAY 7:" << endl;
+cout << "Larry wants to book a seat , but he has bad eye sight. Luckily we have different strategies for customers with different needs." << endl;
+FixedAuditorium fa(5,5);
+Pensioner *Larry = new Pensioner();
+Group group;
+Larry->setName("Larry");
+group.push_back(Larry);
+fa.enablePrinter(true);
+fa.bookStrat(&group, BOOK_BEST_VIEW);
+fa.print(cout);
+delete Larry;
 }
 
 void demo(){
@@ -373,6 +386,7 @@ void demo(){
 	dayFour();
 	dayFive();
 	daySix();
+	daySeven();
 }
 
 void testMemento(){
