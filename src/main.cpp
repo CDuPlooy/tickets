@@ -220,7 +220,7 @@ void dayOne(){
 	Auditorium *aud = audDev.construct(AUD_FIXED, 5	, 5);
 	aud->print(cout);
 	aud->dumpFile(".DynamicStandard.raw");
-	cout << "Perfect ! The auditorium has been saved for another day." << endl;
+	cout << "Perfect ! The auditorium has been saved for yet another day." << endl;
 	pauseC();
 	delete aud;
 
