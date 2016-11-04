@@ -219,7 +219,7 @@ void dayOne(){
 	AuditoriumDeveloper audDev;
 	Auditorium *aud = audDev.construct(AUD_FIXED, 5	, 5);
 	aud->print(cout);
-	aud->dumpFile("DynamicStandard.raw");
+	aud->dumpFile(".DynamicStandard.raw");
 	cout << "Perfect ! The auditorium has been saved for another day." << endl;
 	pauseC();
 	delete aud;
@@ -230,7 +230,7 @@ void dayTwo(){
 	cout << "DAY 2: " << endl;
 	cout << "Management likes the new auditorium design , they want you to load it as an active template! Let's try the auditorium modeller" << endl;
 	AuditoriumModeller audMod;
-	if(!audMod.loadFromFile("DynamicStandard.raw")){
+	if(!audMod.loadFromFile(".DynamicStandard.raw")){
 		cout << "Unexpected error during demo ; What did you do? " << endl;
 		exit(1);
 	}
@@ -249,7 +249,7 @@ void dayTwo(){
 	cout << "Someone else wants to book a ticket at 3x3!" << endl;
 	aud->book(Timmy, 3, 3);
 	aud->print(cout);
-	cout << "Ah! Darn kids , alwats messing with the clerks , luckily we can cancel an operation!" << endl;
+	cout << "Ah! Darn kids , always messing with the clerks , luckily we can cancel an operation!" << endl;
 	aud->cancelBooking(3,3);
 	aud->print(cout);
 	pauseC();
