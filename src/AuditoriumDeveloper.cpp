@@ -12,6 +12,7 @@ AuditoriumDeveloper::AuditoriumDeveloper(){
 }
 
 AuditoriumDeveloper::~AuditoriumDeveloper(){
+	auditorium = NULL;
 }
 
 //Overloaded Functions

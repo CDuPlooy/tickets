@@ -101,6 +101,20 @@ void bookings(Auditorium *auditorium){
       }
 
       cout << "What strategy would you like to use ? " << endl;
+      cout <<" 1.) Bad sight" << endl;
+      cout <<" 2.) Best fit" << endl;
+      cout <<" 3.) Best view" << endl;
+
+      short bookType = BOOK_BEST_FIT;
+      short temp;
+      cin >> temp;
+      if(temp == 1)
+            bookType = BOOK_BAD_SIGHT;
+      else if(temp == 2)
+            bookType = BOOK_BEST_FIT;
+
+      auditorium->bookStrat(&group , bookType);
+      auditorium->print(cout);
 }
 
 int main(){
@@ -124,6 +138,7 @@ int main(){
                         cin >> name;
                         auditorium->setName(name);
                         auditorium->print(cout);
+                        auditorium->enableMemento(true);
                         audList.push_back(auditorium);
                         break;
                   }
@@ -171,6 +186,8 @@ int main(){
                         cout << GREEN ">>> " RESET;
                         cin >> filename;
                         if(audDev.loadFromFile(filename)){
+                              audDev.getAuditorium()->enableMemento(true);
+
                               audList.push_back(audDev.getAuditorium());
                               string audName;
                               for( size_t i = 0 ; i < filename.length() ; i++ )
@@ -192,6 +209,7 @@ int main(){
                   case('e') :{
                         if( audList.getSize() == 0){
                               cout << RED "No auditoriums!" << RESET << endl;
+                              choice = 0x0;
                               break;
                         }
                         cout << "Pick an auditorium to make a booking" << endl;
@@ -203,20 +221,24 @@ int main(){
                         num--;
                         if(num > audList.getSize() || num < 0){
                               cout << RED "Invalid option!" << RESET << endl;
+                              choice = 0x0;
                               break;
                         }
                         //Transfer execution flow to a temporary subsystem , the example CLI is getting messy.
                         bookings(audList.at(num));
+                        choice = 0x0;
                         break;
 
                   }
                   case('f') :{
 
+
                         break;
                   }
                   case('g'):{
-                        for( size_t i = 0 ; i < audList.getSize() ; i++)
-                              delete audList.at(i);
+                         for( size_t i = 0 ; i < audList.getSize() ; i++){
+                               delete audList.at(i);
+                         }
                         cout << GREEN "Thank" BLUE " you" RED " for" GREEN " using" BLUE " tickets" RED " !"  RESET << endl;
                         return 0;
                   }

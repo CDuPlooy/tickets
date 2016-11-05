@@ -5,6 +5,7 @@
  */
 
 #include "Auditorium.h"
+#include <iostream>
 Auditorium::~Auditorium(){
 	if(memento)
 		deleteMemento();
@@ -12,6 +13,7 @@ Auditorium::~Auditorium(){
 		delete printer;
 	if(strategy)
 		delete strategy;
+
 }
 
 Auditorium::Auditorium(){
@@ -52,7 +54,7 @@ void Auditorium::enableMemento(bool value){
 	if(value){
 		createMemento();
 	}
-	else
+	else if(memento)
 		deleteMemento();
 }
 
