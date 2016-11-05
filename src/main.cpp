@@ -3,226 +3,224 @@ Connor Armand Du Plooy
 u16169532
 */
 #include <iostream>
+#include <cstdio>
+#include <vector>
 #include "tickets_includes.h"
-
+#define VER "2.1"
+#define MAGIC_NUMBER 1
 using namespace std;
-bool guiMode;
 
-void testCases(){
-		cout << "PENDING" << endl;
+char MainMenu(){
+      char acceptableChars [7] = { 'a' , 'b', 'c' , 'd', 'e' ,'f','g' };
+      char a = 0x0;
+      cout << "Ticktes " VER << endl;
+      cout <<"Main menu: " << endl;
+      cout << "a.) Create an auditorium" << endl;
+      cout << "b.) List auditoriums" << endl;
+      cout << "c.) Save an auditorium" << endl;
+      cout << "d.) Load an auditorium" << endl;
+      cout << "e.) Booking subsystem" << endl;
+      cout << "f.) Summary " << endl;
+      cout << "g.) Exit" << endl;
 
-}
-void pauseC(){
-	cout << "Press <e> followed by enter to continue the demo!" << endl;
-	char a;
-	cin >> a;
-	system("clear");
-	cout << "* * * * Time passes . . . * * * * " << endl << endl;
-}
+      bool canExit = false;
+      while( MAGIC_NUMBER ){
+      cout << GREEN ">>> " RESET;
+      a = getchar();
 
-void dayOne(){
-	cout << "DAY 1: " << endl;
-	cout << "SterKinekor wants to develop a new 5x5 auditorium , let's use the auditorium developer to create and save one."  << endl;
-	AuditoriumDeveloper audDev;
-	Auditorium *aud = audDev.construct(AUD_FIXED, 5	, 5);
-	aud->print(cout);
-	aud->dumpFile(".DynamicStandard.raw");
-	cout << "Perfect ! The auditorium has been saved for yet another day." << endl;
-	pauseC();
-	delete aud;
-
-}
-
-void dayTwo(){
-	cout << "DAY 2: " << endl;
-	cout << "Management likes the new auditorium design , they want you to load it as an active template! Let's try the auditorium modeller" << endl;
-	AuditoriumModeller audMod;
-	if(!audMod.loadFromFile(".DynamicStandard.raw")){
-		cout << "Unexpected error during demo ; What did you do? " << endl;
-		exit(1);
-	}
-	Auditorium *aud = audMod.getAuditorium();
-	cout << "Look! A charming family would like to buy ticktes!" << endl;
-	Group group;
-	Adult *Mandy = new Adult();
-	Adult *Timmy = new Adult();
-	group.push_back(Mandy);
-	group.push_back(Timmy);
-
-	aud->bookAdv(group);
-	aud->print(cout);
-
-	pauseC();
-	cout << "Someone else wants to book a ticket at 3x3!" << endl;
-	aud->book(Timmy, 3, 3);
-	aud->print(cout);
-	cout << "Ah! Darn kids , always messing with the clerks , luckily we can cancel an operation!" << endl;
-	aud->cancelBooking(3,3);
-	aud->print(cout);
-	pauseC();
-	delete Mandy;
-	delete Timmy;
-	delete aud;
-
+      for(unsigned short i = 0 ; i < 7 ; i++)
+            if(a == acceptableChars[i])
+                  canExit = true;
+      if(canExit)
+            break;
+      }
+      system("clear");
+      return a;
 }
 
-void dayThree(){
-	cout << "You come into the auditorium to find that someone has broken an entire row of seats!" << endl;
-	cout << "We'll need to disable row 3 of  the auditorium" << endl;
-	DynamicAuditorium *dAud = new DynamicAuditorium(5,5);
-	dAud->setVoid(3, 0, 5, true);
-	dAud->print(cout);
-	cout << endl << "Bookings are now more complicated, let's have the system assign free spaces to people!" << endl;
-	Pensioner *Nia = new Pensioner;
-	size_t x;
-	size_t y;
-	dAud->findFree(x, y);
-	cout << "The system found an empty seat at " << x << ":" << y << endl;
-	dAud->book(Nia, x, y);
-	dAud->findFree(x, y);
-	dAud->print(cout);
-	cout << "Another customer wants to book!" << endl;
-	cout << "The system found an empty seat at " << x << ":" << y << endl;
-	dAud->book(Nia, x, y);
-	dAud->print(cout);
-	delete dAud;
-	pauseC();
-	delete Nia;
+char audType(){
+      char acceptableChars [2] = {'d' ,'f' };
+      char a = 0x0;
+      cout << "d.) Dynamic" << endl;
+      cout << "f.) Fixed" << endl;
 
+
+      bool canExit = false;
+      while( MAGIC_NUMBER ){
+      cout << GREEN ">>> " RESET;               //This might seem like an error but it's not , the compiler will optimize it. Linux kernel modules use the same trick.
+      a = getchar();
+
+      for(unsigned short i = 0 ; i < 2 ; i++)
+            if(a == acceptableChars[i])
+                  canExit = true;
+      if(canExit)
+            break;
+      }
+      system("clear");
+      return a;
 }
 
-void dayFour(){
-	cout << "DAY 4: " << endl;
-	cout << "Management has requested the system support a sort of plugin. Luckily we used the decorator pattern!" << endl;
-	DynamicAuditorium *dAud = new DynamicAuditorium(5,5);
-	Pensioner *Nia = new Pensioner();
-	cout << "Press continue to see the new functionality ( random bookings will be  made but a TicketPrinter will print beautiful tickets )" << endl;
-	pauseC();
-	dAud->enableMemento(true);
-	dAud->enablePrinter(true);
-	dAud->setName("Brooklyn");
-
-	Nia->setName("Nia");
-	dAud->book(Nia, 0, 0);
-	Nia->setName("Melly");
-
-	dAud->book(Nia, 1, 0);
-	Nia->setName("Billy");
-
-	dAud->book(Nia, 0, 3);
-	Nia->setName("Timmy");
-
-	dAud->book(Nia, 4, 0);
-	Nia->setName("Chris");
-
-	dAud->book(Nia, 0, 2);
-	Nia->setName("Stephan");
-
-	dAud->print(cout);
-	cout << "We can now even undo bookings!" << endl;
-	dAud->undo();
-	dAud->print(cout);
-
-	delete dAud;
-	pauseC();
-	delete Nia;
-
-	pauseC();
+bool checkMinorOnly(Group group){
+      for(size_t i = 0 ; i < group.getSize() ; i++ )
+            if( group.at(i)->getId() != "Minor" )
+                  return false;
+      return true;
 }
 
-void dayFive(){
-	cout << "DAY 5 : " << endl;
-	cout << "Miraculously , the franchise has gotten bigger!" << endl;
-	cout << "We should organise auditoriums in the same complexes together!" << endl;
-	AuditoriumList AudList;
-	FixedAuditorium fa(2,4);
-	fa.setName("Subgroup A");
-	FixedAuditorium faOne(14,14);
-	faOne.setName("Subgroup B");
-	FixedAuditorium faTwo(5,5);
-	faTwo.setName("Subgroup C");
-	AudList.push_back(&fa);
-	AudList.push_back(&faOne);
-	AudList.push_back(&faTwo);
+void bookings(Auditorium *auditorium){
+      cout << "Enter names <s to stop>" << endl;
+      Group group;
+      std::string name = "abc";
+      while(name != "s"){
+            cout << GREEN ">>>" BLUE ">>> " RESET << endl;
+            cin >> name;
+            if(name != "s"){
+                  Person *person;
+                  cout << "What are you <p>ensioner , <a>dult or <m>inor" << endl;
+                  cout << GREEN ">>>" BLUE ">>>" RED ">>> " RESET << endl;
+                  char type = 'a';
+                  cin >> type;
+                  if(type == 'a')
+                        person = new Adult();
+                  else if(type == 'p')
+                        person = new Pensioner();
+                  else
+                        person = new Minor();
 
+                  person->setName(name);
 
+                  group.push_back(person);
+                  name = "abc";
+            }
+      }
+      if(checkMinorOnly(group)){
+            for(size_t i = 0 ; i < group.getSize() ; i++)
+                  delete group.at(i);
+            cout << RED "Minors cannot book alone!" << RESET << endl;
+            return;
+      }
 
-	for(size_t i = 0 ; i < AudList.getSize() ; i++){
-		cout << i + 1 << ".) " << AudList.at(i)->getName() << endl;
-		AudList.at(i)->print(cout);
-	}
-	pauseC();
-
+      cout << "What strategy would you like to use ? " << endl;
 }
 
-void daySix(){
-	cout << "DAY 6: " << endl;
-	cout << "Management wants auditoriums to be able to clear themselves after a specified amount of time!" << endl;
-	cout << "Luckily we linked to the pthread library!" << endl;
-	DynamicAuditorium *dAud = new DynamicAuditorium(5,5);
-	Pensioner *Nia = new Pensioner;
-	dAud->book(Nia, 0, 2);
-	dAud->print(cout);
-	dAud->clearIn(5);
-	cout << "The current movie is really short , the auditorium should be cleared in 5 seconds!" << endl;
-	sleep(6);
-	dAud->print(cout);
-	delete dAud;
-	delete Nia;
-	pauseC();
-}
-
-void daySeven(){
-cout << "DAY 7:" << endl;
-cout << "Larry wants to book a seat , but he has bad eye sight. Luckily we have different strategies for customers with different needs." << endl;
-FixedAuditorium fa(5,5);
-Pensioner *Larry = new Pensioner();
-Group group;
-Larry->setName("Larry");
-group.push_back(Larry);
-fa.enablePrinter(true);
-fa.bookStrat(&group, BOOK_BEST_VIEW);
-fa.print(cout);
-delete Larry;
-}
-
-void demo(){
-	dayOne();
-	dayTwo();
-	dayThree();
-	dayFour();
-	dayFive();
-	daySix();
-	daySeven();
-}
-
-void testMemento(){
-	FlexiAuditorium fa(3,3);
-	fa.enableMemento(true);
-	Minor *billy = new Minor();
-	fa.book(billy, 0, 0);
-	fa.print(cout);
-	fa.getMemento()->print(cout);
-	fa.undo();
-	fa.print(cout);
-	fa.getMemento()->print(cout);
-	delete billy;
-}
-int main( int argc , char **argv ){
-	// testMemento();
+int main(){
+      char choice = 0x0;
+      AuditoriumList audList;
 
 
+      while(choice != 'e'){
+            choice = MainMenu();
+            switch (choice) {
+                  case('a') :{
+                        char audChoice = audType();
+                        Auditorium *auditorium;
+                        if( audChoice == 'd')
+                              auditorium  = new DynamicAuditorium(5,5); //TODO: Prompt for values
+                        else
+                              auditorium = new FixedAuditorium(5,5);
+                        cout << "Enter a name for the auditorium" << endl;
+                        cout << GREEN ">>> " RESET;
+                        string name;
+                        cin >> name;
+                        auditorium->setName(name);
+                        auditorium->print(cout);
+                        audList.push_back(auditorium);
+                        break;
+                  }
+                  case('b') :{
+                        if( audList.getSize() == 0){
+                              cout << RED "No auditoriums!" << RESET << endl;
+                              break;
+                        }
 
-	cout << "Welcome to the demo version of tickets! Press <s> for the demo/case examples or press <d> for debugging tests" << endl;
-	char decision;
-	cin >> decision;
-	if(decision == 'd')
-		testCases();
-	if(decision == 's')
-		demo();
+                        for( size_t i = 0 ; i < audList.getSize() ; i++)
+                              cout << i+1 << ".) " << GREEN << audList.at(i)->getName() <<  RESET << endl;
+                        break;
+                  }
+                  case('c') :{
+                        if( audList.getSize() == 0){
+                              cout << RED "No auditoriums!" << RESET << endl;
+                              break;
+                        }
+
+                        for( size_t i = 0 ; i < audList.getSize() ; i++)
+                              cout << i+1 << ".) " << GREEN << audList.at(i)->getName() <<  RESET << endl;
+                        cout << GREEN ">>> " RESET;
+                        unsigned short num = -1; //Once again a compiler trick
+                        cin >> num;
+
+                        if(num > audList.getSize() || num < 0){
+                              cout << RED "Invalid option!" << RESET << endl;
+                              break;
+                        }
+                        std::string filename;
+                        cout << "Enter an auditorium name." << endl;
+                        cout << GREEN ">>> " RESET;
+                        cin >> filename;
+                        filename.append(".aud");
+                        num--;
+                        audList.at(num)->dumpFile(filename);
+                        cout << "File " GREEN << filename << RESET " saved!" << endl;
+
+                        break;
+                  }
+                  case('d') :{
+                        AuditoriumDeveloper audDev;
+                        string filename;
+                        cout << "Enter the name of the file to load." << endl;
+                        cout << GREEN ">>> " RESET;
+                        cin >> filename;
+                        if(audDev.loadFromFile(filename)){
+                              audList.push_back(audDev.getAuditorium());
+                              string audName;
+                              for( size_t i = 0 ; i < filename.length() ; i++ )
+                                    if(filename[i] != '.')
+                                          audName.push_back(filename[i]);
+                                    else
+                                          break;
+                              audList.at(audList.getSize()-1)->setName(audName);
+                              audList.at(audList.getSize()-1)->print(cout);
+                        }
+                        else{
+                              cout << RED "Loading " << filename << RESET " failed!" << endl;
+                        }
+
+
+                        break;
+
+                  }
+                  case('e') :{
+                        if( audList.getSize() == 0){
+                              cout << RED "No auditoriums!" << RESET << endl;
+                              break;
+                        }
+                        cout << "Pick an auditorium to make a booking" << endl;
+                        for( size_t i = 0 ; i < audList.getSize() ; i++)
+                              cout << i+1 << ".) " << GREEN << audList.at(i)->getName() <<  RESET << endl;
+                        cout << GREEN ">>> " RESET;
+                        unsigned short num = -1; //Once again a compiler trick
+                        cin >> num;
+                        num--;
+                        if(num > audList.getSize() || num < 0){
+                              cout << RED "Invalid option!" << RESET << endl;
+                              break;
+                        }
+                        //Transfer execution flow to a temporary subsystem , the example CLI is getting messy.
+                        bookings(audList.at(num));
+                        break;
+
+                  }
+                  case('f') :{
+
+                        break;
+                  }
+                  case('g'):{
+                        for( size_t i = 0 ; i < audList.getSize() ; i++)
+                              delete audList.at(i);
+                        cout << GREEN "Thank" BLUE " you" RED " for" GREEN " using" BLUE " tickets" RED " !"  RESET << endl;
+                        return 0;
+                  }
+            }
+      }
       return 0;
 }
-
-
-//TODO: Add strategies to bookAdv
-//TODO: Create a minimal working CLI interface.
