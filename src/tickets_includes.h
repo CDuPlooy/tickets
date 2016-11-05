@@ -34,5 +34,6 @@
 #include "Seat.h"
 #include "Store.h"
 #include "TicketPrinter.h"
-#include "unistd.h"
+#include <unistd.h>
+#include "Summary.h"
 #endif

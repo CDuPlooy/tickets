@@ -19,7 +19,7 @@ char MainMenu(){
       cout << "b.) List auditoriums" << endl;
       cout << "c.) Save an auditorium" << endl;
       cout << "d.) Load an auditorium" << endl;
-      cout << "e.) Booking subsystem" << endl;
+      cout << "e.) Booking subsystem" << endl;        //TODO: Enable undo functionality ; Setup working backup
       cout << "f.) Summary " << endl;
       cout << "g.) Exit" << endl;
 
@@ -231,13 +231,22 @@ int main(){
 
                   }
                   case('f') :{
+                        if( audList.getSize() == 0){
+                              cout << RED "No auditoriums!" << RESET << endl;
+                              choice = 0x0;
+                              break;
+                        }
 
+                              for( size_t i = 0 ; i < audList.getSize() ; i++){
+                                    Summary summary(audList.at(i));
+                                    summary.print(cout);
+                              }
 
                         break;
                   }
                   case('g'):{
                          for( size_t i = 0 ; i < audList.getSize() ; i++){
-                               delete audList.at(i);
+                              delete audList.at(i);
                          }
                         cout << GREEN "Thank" BLUE " you" RED " for" GREEN " using" BLUE " tickets" RED " !"  RESET << endl;
                         return 0;

@@ -222,7 +222,3 @@ int main( int argc , char **argv ){
 		demo();
       return 0;
 }
-
-
-//TODO: Add strategies to bookAdv
-//TODO: Create a minimal working CLI interface.

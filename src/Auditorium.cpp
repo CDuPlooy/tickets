@@ -7,8 +7,6 @@
 #include "Auditorium.h"
 #include <iostream>
 Auditorium::~Auditorium(){
-	if(memento)
-		deleteMemento();
 	if(printer)
 		delete printer;
 	if(strategy)
