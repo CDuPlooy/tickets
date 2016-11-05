@@ -19,7 +19,7 @@ char MainMenu(){
       cout << "b.) List auditoriums" << endl;
       cout << "c.) Save an auditorium" << endl;
       cout << "d.) Load an auditorium" << endl;
-      cout << "e.) Booking subsystem" << endl;        //TODO: Enable undo functionality ; Setup working backup
+      cout << "e.) Booking subsystem" << endl;        //TODO:  Setup working backup
       cout << "f.) Summary " << endl;
       cout << "g.) Exit" << endl;
 
@@ -68,12 +68,17 @@ bool checkMinorOnly(Group group){
 }
 
 void bookings(Auditorium *auditorium){
-      cout << "Enter names <s to stop>" << endl;
+      cout << "Enter names ; <s> to stop and <undo> to undo an action." << endl;
       Group group;
       std::string name = "abc";
       while(name != "s"){
             cout << GREEN ">>>" BLUE ">>> " RESET << endl;
             cin >> name;
+            if(name == "undo"){
+                  auditorium->undo();
+                  auditorium->print(cout);
+                  continue;
+            }
             if(name != "s"){
                   Person *person;
                   cout << "What are you <p>ensioner , <a>dult or <m>inor" << endl;
@@ -128,8 +133,14 @@ int main(){
                   case('a') :{
                         char audChoice = audType();
                         Auditorium *auditorium;
-                        if( audChoice == 'd')
-                              auditorium  = new DynamicAuditorium(5,5); //TODO: Prompt for values
+                        if( audChoice == 'd'){
+                              size_t x = 5 , y = 5;
+                              cout << "Rows " GREEN ">>> " RESET ;
+                              cin >> x;
+                              cout << "Columns " BLUE  ">>> " RESET;
+                              cin >> y;
+                              auditorium  = new DynamicAuditorium(x,y); 
+                        }
                         else
                               auditorium = new FixedAuditorium(5,5);
                         cout << "Enter a name for the auditorium" << endl;
@@ -139,6 +150,7 @@ int main(){
                         auditorium->setName(name);
                         auditorium->print(cout);
                         auditorium->enableMemento(true);
+                        auditorium->enablePrinter(true);
                         audList.push_back(auditorium);
                         break;
                   }
@@ -187,7 +199,7 @@ int main(){
                         cin >> filename;
                         if(audDev.loadFromFile(filename)){
                               audDev.getAuditorium()->enableMemento(true);
-
+                              audDev.getAuditorium()->enablePrinter(true);
                               audList.push_back(audDev.getAuditorium());
                               string audName;
                               for( size_t i = 0 ; i < filename.length() ; i++ )

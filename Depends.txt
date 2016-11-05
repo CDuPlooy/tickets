@@ -1,2 +1,5 @@
 qt5-default
 pthread
+doxygen
+graphviz
+

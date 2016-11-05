@@ -214,11 +214,7 @@ int main( int argc , char **argv ){
 
 
 	cout << "Welcome to the demo version of tickets! Press <s> for the demo/case examples or press <d> for debugging tests" << endl;
-	char decision;
-	cin >> decision;
-	if(decision == 'd')
-		testCases();
-	if(decision == 's')
-		demo();
+	demo();
+	cout << "Thank you for looking at the tickets demo!" << endl;
       return 0;
 }

@@ -6,12 +6,28 @@ COMPILER = clang++
 
 .PHONY: documentation
 
-default: compile_bind_main
+default: compile_bind_main demo
+	@clear
+	@echo "Compilation done;"
+	@echo "A demonstration of what my classes can do will run in 5 seconds . . . "
+	@sleep 5
+	src/demo.out
+	@sleep 2
+	@clear
+	@echo "Demonstration done , the CLI interface example will launch in 5 seconds..."
+	@sleep 5
 	src/a.out
+	@sleep 2
+	@clear
+	@echo "CLI interface example was closed , the GUI interface will launch in 5 seconds...."
+	@sleep 5
+	Qt/build-tickets-Desktop-Debug/tickets
+	@sleep 2
+	@clear
+	@echo "All examples/interfaces were launched , I hope you enjoyed my practical!"
 
 demo: compile_nullObject compile_integer compile_list compile_listAsVector compile_listAsDynamicArray compile_NullPerson compile_container compile_Seat compile_listAsSLL compile_Person compile_Adult compile_Minor compile_Pensioner compile_listAsDLL compile_dynamicAuditorium compile_dynamicSizeMatrix compile_matrix compile_AuditoriumModeller compile_Summary compile_AuditoriumList compile_fixedSizeMatrix compile_Group compile_fixedAuditorium compile_AuditoriumDeveloper compile_flexiAuditorium compile_ticketPrinter compile_Auditorium compile_Store compile_Booking compile_AuditoriumMemento
-	${COMPILER} src/NullObject.o src/Container.o src/Matrix.o src/DynamicSizeMatrix.o src/FixedSizeMatrix.o src/Auditorium.o src/FixedAuditorium.o src/DynamicAuditorium.o src/AuditoriumModeller.o src/Seat.o src/Integer.o src/Person.o src/Minor.o src/Adult.o src/Pensioner.o src/NullPerson.o src/List.o src/ListAsDynamicArray.o src/ListAsVector.o src/ListAsSLL.o src/ListAsDLL.o  src/AuditoriumList.o src/Summary.o src/AuditoriumDeveloper.o src/Group.o src/AuditoriumMemento.o src/FlexiAuditorium.o src/Store.o src/TicketPrinter.o src/Booking.o src/demo.cpp -lpthread -ggdb -o src/demo.out -Wall
-	src/demo.out
+	${COMPILER} src/NullObject.o src/Container.o src/Matrix.o src/DynamicSizeMatrix.o src/FixedSizeMatrix.o src/Auditorium.o src/FixedAuditorium.o src/DynamicAuditorium.o src/AuditoriumModeller.o src/Seat.o src/Integer.o src/Person.o src/Minor.o src/Adult.o src/Pensioner.o src/NullPerson.o src/List.o src/ListAsDynamicArray.o src/ListAsVector.o src/ListAsSLL.o src/ListAsDLL.o  src/AuditoriumList.o src/Summary.o src/AuditoriumDeveloper.o src/Group.o src/AuditoriumMemento.o src/FlexiAuditorium.o src/Store.o src/TicketPrinter.o src/Booking.o src/demo.cpp -lpthread -ggdb  -o src/demo.out -Wall
 
 compile_bind_main: compile_nullObject compile_integer compile_list compile_listAsVector compile_listAsDynamicArray compile_NullPerson compile_container compile_Seat compile_listAsSLL compile_Person compile_Adult compile_Minor compile_Pensioner compile_listAsDLL compile_dynamicAuditorium compile_dynamicSizeMatrix compile_matrix  compile_AuditoriumModeller compile_Summary  compile_AuditoriumList compile_fixedSizeMatrix compile_Group compile_fixedAuditorium compile_AuditoriumDeveloper compile_flexiAuditorium compile_ticketPrinter compile_Auditorium compile_Store compile_Booking compile_AuditoriumMemento
 	@clear
@@ -20,7 +36,7 @@ compile_bind_main: compile_nullObject compile_integer compile_list compile_listA
 	@echo "\n"
 	@echo "Finished!"
 
-compile_bind_allz: compile_nullObject compile_integer compile_list compile_listAsVector compile_listAsDynamicArray compile_NullPerson compile_container compile_Seat compile_listAsSLL compile_Person compile_Adult compile_Minor compile_Pensioner compile_listAsDLL compile_dynamicAuditorium compile_dynamicSizeMatrix compile_matrix compile_Summary compile_AuditoriumModeller compile_AuditoriumList compile_fixedSizeMatrix compile_Group compile_fixedAuditorium compile_AuditoriumDeveloper compile_flexiAuditorium compile_ticketPrinter compile_Auditorium compile_Store compile_Booking compile_AuditoriumMemento
+compile_bind_all: compile_nullObject compile_integer compile_list compile_listAsVector compile_listAsDynamicArray compile_NullPerson compile_container compile_Seat compile_listAsSLL compile_Person compile_Adult compile_Minor compile_Pensioner compile_listAsDLL compile_dynamicAuditorium compile_dynamicSizeMatrix compile_matrix compile_Summary compile_AuditoriumModeller compile_AuditoriumList compile_fixedSizeMatrix compile_Group compile_fixedAuditorium compile_AuditoriumDeveloper compile_flexiAuditorium compile_ticketPrinter compile_Auditorium compile_Store compile_Booking compile_AuditoriumMemento
 	@echo "Compiling QT Application."
 	@$(MAKE) clean -C "Qt/build-tickets-Desktop-Debug"
 	@$(MAKE) -C "Qt/build-tickets-Desktop-Debug"
@@ -130,10 +146,10 @@ documentation:
 	@$(MAKE) -C documentation	#Executes make in a directory
 	@echo "Finished compiling documentation!"
 
-valgrind: compile_bind_all
+valgrind:
 	valgrind src/a.out
 
-gdb: compile_bind_all
+gdb:
 	gdb src/a.out
 
 run:
