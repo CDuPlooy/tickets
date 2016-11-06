@@ -1,7 +1,9 @@
-//!  An abstract class.
-/*!
-  An abstract class which provides an interface to the different types of auditoriums.
-*/
+/**
+ * \class Auditorium
+
+ * \brief An abstract auditorium class used for modelling all other auditoriums.
+
+ */
 #ifndef AUDITORIUM_H
 #define AUDITORIUM_H
 #include "Object.h"

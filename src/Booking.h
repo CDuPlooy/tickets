@@ -1,7 +1,9 @@
-//!  An abstract class.
-/*!
-  Allows for the definition of multiple strategies to book an auditorium.
-*/
+/**
+ * \class Booking
+
+ * \brief  Class used for making bookings.
+
+ */
 #include "Auditorium.h"
 #include "Object.h"
 #include "Group.h"

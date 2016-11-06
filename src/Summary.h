@@ -1,7 +1,7 @@
 /**
- * \class AuditoriumMemento
+ * \class Summary
 
- * \brief Aggregate of auditorium and it's subclasses , can undo any operation performed on auditorium.
+ * \brief  Creates summaries of auditoriums by using the print function.
 
  */
 #ifndef SUMMARY_H

@@ -28,3 +28,14 @@ Something went wrong:
       This script needs root rights but will prompt you for it.
 
       If none of the above solutions worked , please contact me.
+
+
+Additional Notes:
+      When using the CLI , you can use memento's undo by typing undo when prompted for a username.
+      A ticketprinter is dynamically linked to all auditoriums created in the CLI. This functionality as well as the
+            memento is optional;
+      Memento is implemented as a basic interpreter ; as to not store entire objects in memory.
+      The entire project is maintaned using git , if something goes seriously wrong I can give you access to the repository. There are multiple stable releases.
+       The doxygen config file is configured to generate html , you can open it by opening documentation/index.html in your browser.
+       My documentation will be in listed as documentation/COS121.pdf
+       JPEG versions of my UML diagrams are in the documentation directory , I apologise for the watermakrs ( as explained in the PDF)
